@@ -1,0 +1,129 @@
+\documentclass[10pt,twocolumn,twoside]{article}
+
+\usepackage{palatino}  % use 10pt size with Palatino.
+\usepackage[T1]{fontenc}
+
+\usepackage[left=3.5cm,top=2.54cm,right=2.5cm,bottom=2.8cm,nohead]{geometry} % load first
+\usepackage{amsmath}
+\usepackage[font=sf]{caption}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{lettrine}
+\usepackage[super,sort&compress]{natbib}
+\usepackage{pifont}
+\usepackage{sectsty}
+\usepackage{setspace}
+\usepackage{sidecap}  % allows side captions for figures
+\usepackage{subfig}
+\usepackage{wrapfig}
+
+\lhead{}\rhead{}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\definecolor{sectcol}{rgb}{0.0,0.24,0.43} % {0,0,0}
+\definecolor{dropped}{rgb}{0.55,0.06,0.11}
+\definecolor{update}{rgb}{0.098,0.357,0.675} % ------------ REVISED TEXT COLOR, change to {0,0,0}
+
+\setcounter{DefaultLines}{4}
+\renewcommand{\DefaultLoversize}{0.05}
+
+\renewcommand{\captionlabelfont}{\bf\sffamily}
+\renewcommand{\captionfont}{\sffamily\footnotesize}
+\sectionfont{\large\sffamily\color{sectcol}\vspace{-2mm}}
+\subsectionfont{\normalsize\sffamily\bfseries\vspace{-2mm}}
+\renewcommand{\bibfont}{\sffamily\footnotesize}
+
+\newlength{\up}
+\setlength{\up}{-2.5mm}
+
+% hyperref package should always be loaded as the very last one
+% to be sure that it has the last word ...
+\usepackage[
+    pdftex,
+    pdftitle={},
+    pdfauthor={L.~A. Barba},
+    pdfpagemode={UseOutlines},
+    bookmarks, bookmarksopen,bookmarksnumbered={True},
+    colorlinks, linkcolor={black},citecolor={black},urlcolor={black}
+    ]{hyperref}
+    
+%\title{\Huge{\color{sectcol}Fast \textit{N}-body Simulations on GPUs}}
+%
+%\author{ \sf \textbf {Rio Yokota, L.~A. Barba}\\
+%\sf\normalsize  Mechanical Engineering Department, Boston University, Boston MA 02215}
+%\date{}
+%
+%\begin{document}
+%\maketitle
+
+\begin{document}
+\pagestyle{fancy}
+
+\twocolumn[ %this produces full-width text on a twocolumn document
+{\Huge{\color{sectcol}Title}}
+\vspace{0.8cm}
+
+{ \sf 
+\onehalfspacing
+{\large \textit{Short summary}}
+\vspace{1cm}
+
+\textbf {Olivier Mesnard, Lorena A. Barba}\\
+  Mechanical and Aerospace Engineering, George Washington University, Washington DC 20052
+
+\vspace{1cm}
+}
+] %close full-width text
+
+
+\lettrine{\textcolor{dropped}{R}}{}eproducibility
+
+%\section*{}
+%\vspace{\up}
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.49\textwidth]{figs/figurefile.pdf}
+%\caption{Caption.}
+%\label{fig:template}
+%\end{figure}
+
+\vspace{2cm}
+
+Our codes are available for unrestricted use, under the MIT license; to obtain the codes and run the tests in this paper, the reader may follow instructions on ...
+
+
+
+\section*{Acknowledgements}
+\vspace{\up}
+
+{\sf \emph{We're grateful for the support from the US National Science Foundation and the Office of Naval Research. Recent grant numbers are NSF OCI-0946441, and ONR award \#N00014-11-1-0356.}
+
+\bigskip
+
+}
+
+\bibliographystyle{unsrt}
+\bibliography{scicomp}
+
+\vspace{1cm}
+
+\small
+{\sf 
+
+
+\noindent \textbf{Olivier Mesnard} bio
+\bigskip
+
+\noindent\textbf{Lorena A. Barba} is Associate Professor of Mechanical and Aerospace Engineering at the George Washington University.
+She obtained her PhD in Aeronautics from the California Institute of Technology.
+Her research interests include computational fluid dynamics, especially particle methods for fluid simulation and immersed boundary methods; fundamental and applied aspects of fluid dynamics, especially flows dominated by vorticity dynamics; the fast multipole method and applications; and scientific computing on GPU architecture. 
+She received the Amelia Earhart Fellowship, a First Grant award from the UK Engineering and Physical Sciences (EPSRC), the National Science Foundation Early CAREER award, and was named CUDA Fellow by NVIDIA, Corp.
+}
+
+
+\end{document}
