@@ -1,0 +1,17 @@
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_OpenFOAM/flyingSnake2d/snappyHexMesh/surfaceFeatureExtract/flyingSnake2dRe2000AoA30_20151103
+	- description: IcoFOAM
+	- software: openfoam
+[info] reading force-coefficients in /home/mesnardo/simulations_OpenFOAM/flyingSnake2d/snappyHexMesh/surfaceFeatureExtract/flyingSnake2dRe2000AoA30_20151103/postProcessing/forceCoeffs ...
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/phdBook/projects/snakeReproducibility/openfoam
+	- description: Krishnan et al. (2014)
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA30/forces ... done
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 10 periods of the lift curve between 33.338 and 62.364 time-units.
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 10 periods of the lift curve between 33.8672 and 63.4752 time-units.
+                          <Cd>    <Cl>    <St>
+IcoFOAM                 0.9810  1.5753  0.3445
+Krishnan et al. (2014)  0.9674  1.5324  0.3378

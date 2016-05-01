@@ -1,0 +1,17 @@
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe2000AoA35_directForcing_20160405
+	- description: cuIBM - direct-forcing method
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe2000AoA35_directForcing_20160405/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/phdBook/projects/snakeReproducibility/cuibm
+	- description: Krishnan et al. (2014)
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA35/forces ... done
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 9 periods of the lift curve between 34.7392 and 61.99 time-units.
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 11 periods of the lift curve between 34.496 and 62.676 time-units.
+                                 <Cd>    <Cl>    <St>
+cuIBM - direct-forcing method  1.1084  1.7793  0.3307
+Krishnan et al. (2014)         1.3162  2.1471  0.3904
