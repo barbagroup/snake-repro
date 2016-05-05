@@ -67,6 +67,16 @@ Are these the same solutions?
 Is it acceptable as a replication study? 
 We think yes, but this is a judgement call.
 
+### Story 2: Other researchers' open-source codes can present many traps
+
+Open-source research software can often be poorly documented and unsupported, and on occasion it can even be an unreadable mess. 
+But in this case, we are in luck.
+IBAMR is a solid piece of software, well documented, and you can even get swift response from the authors via the topical online forum.
+Still, we ran against an obscure trick of the trade that changed our results completely. 
+
+
+
+
 ## References
 
 1. ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), https://icerm.brown.edu/tw12-5-rcem/
