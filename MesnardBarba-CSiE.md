@@ -74,6 +74,30 @@ But in this case, we are in luck.
 IBAMR is a solid piece of software, well documented, and you can even get swift response from the authors via the topical online forum.
 Still, we ran against an obscure trick of the trade that changed our results completely. 
 
+### Story 3: A different external linear algebra library can fail your replication
+
+The immersed-boundary projection-method requires the solution of two linear systems (an intermediate velocity system and a modified-Poisson system) every time-step of the simulation.
+As it is commonly done in CFD research-codes, we rely on an external linear algebra library.
+Our previous publication reports simulations with cuIBM, an in-house code that uses the library CUSP to solve the linear systems on a single-GPU.
+With cuIBM, we were limited to small mesh-sizes to not exceed the memory capacity of the device.
+As a workaround, we decided to develop PetIBM, CPU-based code that runs on distributed-memory architectures.
+PetIBM implements the same mathematical formulation of the immersed-boundary method than cuIBM.
+We replaced the GPU-library CUSP with the well-known PETSc-library (version 3.5.2); therefore, solving the linear systems on a different hardware.
+Both libraries use the same convergence criterion for the linear solvers.
+As a verification test-case, we ran the snake simulations to compare with previous cuIBM results.
+The results did not fully meet our expectations.
+Comparing the instantaneous force coefficients with those reported with cuIBM, we find some discrepancies as the we increase the Reynolds number and the angle-of-attack of the snake cross-section.
+We failed to replicate of our own findings: we did not observe a lift enhancement of the snake cross-section for the particular angle-of-attack 35 degrees.
+The instantaneous force coefficients closely follows the cuIBM ones up to 35 time-units of flow simulation.
+Afterwards, we observe drop in the mean force coefficients.
+Consequently, if we use the same time-integration period (32 to 64 time-units) to average the force coefficients, we are not able to observe a pick in the lift-curve.
+While we were checking the PetIBM simulations parameters were identical to the cuIBM ones, we found that the set of markers used to discretized the immersed-boundary were a little bit shifted (less than an edge of the finest grid-cell) compared the our previous study.
+This displacement happened as we have not rotated the geometry around the same center to provide the desired pitch angle.
+Our new hope rapidly vanished when we saw that the same set of markers did not provide the same extra-lift than in our previous study.
+Visualizations of the wake vortices show that a vortex merging phenomenon occurred in the middle of the wake affecting the near-body flow and lowering the forces on the bluff-body.
+The vortex merging affects the near-wake signature: the previously aligned vortices now form a wider wake with a 1S+1P pattern (a single clockwise vortex on the top side and a vortex dipole on the bottom part).
+We also note that a small shift in the Lagrangian markers is responsible for a significant change in the forces acting on the snake at moderate Reynolds number 2000.
+Although PetIBM implements the same immersed-boundary method and was developed by the same research-group, we have not been able to fully replicate the findings of our previous study.
 
 
 
