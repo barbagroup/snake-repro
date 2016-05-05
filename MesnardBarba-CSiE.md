@@ -74,7 +74,15 @@ But in this case, we are in luck.
 IBAMR is a solid piece of software, well documented, and you can even get swift response from the authors via the topical online forum.
 Still, we ran against an obscure trick of the trade that changed our results completely. 
 
+The numerical approach in IBAMR belongs to the same family as that used in our published work on wakes of flying snakes: an immersed boundary method. 
+The essence of the approach is that the fluid is represented by a fixed structured mesh, while the immersed body is represented by its own mesh that moves with the body. 
+We speak of an Eulerian mesh for the fluid, and a Lagrangian mesh for the solid. 
+The forces exerted by the fluid on the body, and vice versa, appear as an additional integral equation and interpolation schemes between the two meshes. 
+The role of these is to make the fluid "stick" to the wall (no-slip boundary condition) and allow the body to feel aerodynamic forces (lift and drag).
+Our cuIBM code uses a variant called the immersed boundary projection method, while IBAMR uses a form called the "direct-forcing" method. 
+Despite the variations, the essence is the same, and we assumed they would work similarly.
 
+We already know that boundary conditions at the outlet of the computational domain can be problematic. This is no different with immersed boundary methods. Our first attempt with IBAMR
 
 
 ## References
