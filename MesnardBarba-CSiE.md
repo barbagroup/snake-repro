@@ -120,23 +120,35 @@ One of the issues may be that our community does not have a habit of communicati
 We learned from this experience that using an open research code and getting correct results with it could involve a long investigative period, potentially requiring communication with the original authors and many failed attempts. 
 If the code is not well documented and the original authors not responsive to questions, then building your own code from scratch could be more sensible!
 
-### Story 3: A different external linear algebra library can fail your replication
+### Story 3: All linear algebra libraries are not created equal
 
-The immersed-boundary projection-method requires the solution of two linear systems (an intermediate velocity system and a modified-Poisson system) every time-step of the simulation.
-As it is commonly done in CFD research-codes, we rely on an external linear algebra library.
-Our previous publication reports simulations with cuIBM, an in-house code that uses the library CUSP to solve the linear systems on a single-GPU.
-With cuIBM, we were limited to small mesh-sizes to not exceed the memory capacity of the device.
-As a workaround, we decided to develop PetIBM, CPU-based code that runs on distributed-memory architectures.
-PetIBM implements the same mathematical formulation of the immersed-boundary method than cuIBM.
-We replaced the GPU-library CUSP with the well-known PETSc-library (version 3.5.2); therefore, solving the linear systems on a different hardware.
-Both libraries use the same convergence criterion for the linear solvers.
-As a verification test-case, we ran the snake simulations to compare with previous cuIBM results.
-The results did not fully meet our expectations.
-Comparing the instantaneous force coefficients with those reported with cuIBM, we find some discrepancies as the we increase the Reynolds number and the angle-of-attack of the snake cross-section.
-We failed to replicate of our own findings: we did not observe a lift enhancement of the snake cross-section for the particular angle-of-attack 35 degrees.
-The instantaneous force coefficients closely follows the cuIBM ones up to 35 time-units of flow simulation.
-Afterwards, we observe drop in the mean force coefficients.
-Consequently, if we use the same time-integration period (32 to 64 time-units) to average the force coefficients, we are not able to observe a pick in the lift-curve.
+Our previous study used cuIBM, running on a single GPU device. 
+The largest problem that we can fit in the memory of a high-end GPU has just a few million mesh points, which is not enough to solve three-dimensional flows. 
+We developed PetIBM, a code that uses the same mathematical formulation as cuIBM, to allow solving larger problems on distributed CPU systems. 
+Since PetIBM and cuIBM implement exactly the same numerical method, you'd expect that giving the two codes the same mesh with the same initial conditions will result in the same solution (within floating-point error). 
+Not so fast! 
+We rely on external libraries to solve sparse linear systems of equations: _Cusp_ for GPU devices and PETSc for distributed CPU systems. 
+It turns out, the iterative solvers may have differences that affect the final solution.
+
+When repeating our previous simulations of the aerodynamics of a snake cross-section with PetIBM, the solutions do not always match those with cuIBM. 
+At a Reynolds number of 1000, both the time-averaged lift and drag coefficients match. 
+But at Reynolds equal to 2000, average lift and drag match up to 30 degrees angle-of-attack, but not at 35 degrees. 
+That means that we don't see lift enhancement and the main finding of our previous study is not fully replicated. 
+Looking at the time evolution of the force coefficients for the simulation with PetIBM at Re=2000 and 35 degrees angle-of-attack, we see a marked drop in lift after 35 time units. 
+What is different in the two codes? 
+Apart from using different linear algebra libraries, they run on different hardware. 
+Leaving hardware aside for now, let's focus on the iterative solvers. 
+Both _Cusp_ and PETSc use the same convergence criterion. 
+This is not always the case, and needs to be checked! 
+We're also not using the same iterative solver with each library. 
+The cuIBM runs (with _Cusp_) used an algebraic multigrid preconditioner and conjugate gradient (CG) solver for the pressure modified-Poisson equation. 
+With PETSc, the CG solver resulted in an error message with "indefinite preconditioner," and we had to select a different method: we used biCGstab. 
+Could this difference in linear solvers affect our unsteady fluid-flow solution? 
+We don't know. 
+The solutions with both codes match at lower angles of attack (and lower Reynolds numbers), so what is going on? 
+We checked everything two, three times. 
+In the process, we did find a few discrepancies. 
+Even a small bug (or two).
 While we were checking the PetIBM simulations parameters were identical to the cuIBM ones, we found that the set of markers used to discretized the immersed-boundary were a little bit shifted (less than an edge of the finest grid-cell) compared the our previous study.
 This displacement happened as we have not rotated the geometry around the same center to provide the desired pitch angle.
 Our new hope rapidly vanished when we saw that the same set of markers did not provide the same extra-lift than in our previous study.
