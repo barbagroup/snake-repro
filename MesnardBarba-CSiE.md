@@ -100,7 +100,7 @@ Of course, this is unphysical and the result unacceptable.
 After a long search in the literature and in the code documentation, we discovered that IBAMR needs us to select a "stabilized outlet," which is a boundary condition that acts like a force pushing the vortices out. 
 (IBAMR does not provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study. 
-Another deep dive in the literature led us to notice that a benchmark example described in the paper that announced IBAMR^(3) was set up in an unexpected way: 
+Another deep dive in the literature led us to notice that a benchmark example described in a paper describing extensions to IBAMR^(3) was set up in an unexpected way: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
 Other papers using immersed boundary methods apply the constraint only on boundary points.
@@ -113,9 +113,10 @@ Like in the previous case, using OpenFOAM, we make a judgement call that this re
  
 **Postmortem**. 
 Even a well-documented open-source research code can have unexpected tricks of the trade that only the original authors may know about. 
-In the end, we don't have an explanation for _why_ IBAMR required interior body points to be constrained. 
+In the end, we don't know _why_ IBAMR required interior body points to be constrained. 
 The published record is incomplete in this regard: we could find no explanation for it in any paper using IBAMR. 
-We learned that using an open research code and getting correct results with it could involve a long investigative period, potentially requiring communication with the original authors and many failed attempts. 
+One of the issues may be that our community does not have a habit of communicating negative results, nor of publishing papers about software. 
+We learned from this experience that using an open research code and getting correct results with it could involve a long investigative period, potentially requiring communication with the original authors and many failed attempts. 
 If the code is not well documented and the original authors not responsive to questions, then building your own code from scratch could be more sensible!
 
 ### Story 3: A different external linear algebra library can fail your replication
