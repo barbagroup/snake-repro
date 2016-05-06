@@ -81,9 +81,25 @@ We speak of an Eulerian mesh for the fluid, and a Lagrangian mesh for the solid.
 The forces exerted by the fluid on the body, and vice versa, appear as an additional integral equation and interpolation schemes between the two meshes. 
 The role of these is to make the fluid "stick" to the wall (no-slip boundary condition) and allow the body to feel aerodynamic forces (lift and drag).
 Our cuIBM code uses a variant called the immersed boundary projection method, while IBAMR uses a form called the "direct-forcing" method. 
-Despite the variations, the essence is the same, and we assumed they would work similarly.
+Despite the variations, the essence is the same, and it is reasonable to assume they would work similarly.
 
-We already know that boundary conditions at the outlet of the computational domain can be problematic. This is no different with immersed boundary methods. Our first attempt with IBAMR
+We already know that boundary conditions at the outlet of the computational domain can be problematic. This is no different with immersed boundary methods. 
+Our first attempt with IBAMR used a zero-gradient velocity boundary condition at the outlet. 
+This resulted in some blockage effect when the wake vortices reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain. 
+Of course, this is unphysical and the result unacceptable. 
+After a long search in the literature and in the code documentation, we discovered that IBAMR needs us to select a "stabilized outlet," which is a boundary condition that acts like a force pushing the vortices out. 
+(IBAMR does not provide a convective/advective boundary condition.) 
+With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study. 
+Another deep dive in the literature led us to notice that a benchmark example described in the paper that announced IBAMR was set up in an unexpected way: 
+the no-slip condition is forced _inside_ the body, and not just on the boundary. 
+As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
+When we followed this example, our simulations with IBAMR were able to reproduce the lift enhancement at 35 degress angle-of-attack, although with a slightly different value of lift (<5% off). 
+The successful result comes with a caveat, though. 
+If we look at the time signature of the lift and drag coefficients, there excellent agreement with our previous results for 30 degress angle-of-attack (Re-2000). 
+But at 35 degress, the time signatures drift apart after about 40 time units (10,000 time steps). 
+There is a marked drop in the lift coefficient, but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
+ 
+
 
 ### Story 3: A different external linear algebra library can fail your replication
 
