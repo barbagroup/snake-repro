@@ -144,14 +144,17 @@ We're also not using the same iterative solver with each library.
 The cuIBM runs (with _Cusp_) used an algebraic multigrid preconditioner and conjugate gradient (CG) solver for the pressure modified-Poisson equation. 
 With PETSc, the CG solver resulted in an error message with "indefinite preconditioner," and we had to select a different method: we used biCGstab. 
 Could this difference in linear solvers affect our unsteady fluid-flow solution? 
-We don't know. 
 The solutions with both codes match at lower angles of attack (and lower Reynolds numbers), so what is going on? 
 We checked everything two, three times. 
-In the process, we did find a few discrepancies. 
+In the process, we did find some small discrepancies. 
 Even a small bug (or two).
-While we were checking the PetIBM simulations parameters were identical to the cuIBM ones, we found that the set of markers used to discretized the immersed-boundary were a little bit shifted (less than an edge of the finest grid-cell) compared the our previous study.
-This displacement happened as we have not rotated the geometry around the same center to provide the desired pitch angle.
-Our new hope rapidly vanished when we saw that the same set of markers did not provide the same extra-lift than in our previous study.
+We found, for example, that the first set of runs with PetIBM created a slightly different problem set-up, compared with our previous study, where the body was shifted by less than one grid-cell width. 
+Rotating the body to achieve different angles of attack was made around a different center, in each case (one used grid origin at 0,0 while the other used the body center of mass). 
+This tiny difference does produce a different lift coefficient! 
+The time signal of lift coefficient shows that the drop we were seing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
+Again, this range for computing the average is a choice we made. 
+It covers about ten vortex shedding cycles, which seems enough to calculate the avarage if the flow is periodic.
+
 Visualizations of the wake vortices show that a vortex merging phenomenon occurred in the middle of the wake affecting the near-body flow and lowering the forces on the bluff-body.
 The vortex merging affects the near-wake signature: the previously aligned vortices now form a wider wake with a 1S+1P pattern (a single clockwise vortex on the top side and a vortex dipole on the bottom part).
 We also note that a small shift in the Lagrangian markers is responsible for a significant change in the forces acting on the snake at moderate Reynolds number 2000.
