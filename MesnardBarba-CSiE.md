@@ -73,8 +73,8 @@ OpenFOAM solves the fluid equations using a finite-volume method in an unstructu
 Comparing results obtained under such different conditions is a delicate operation. 
 We made our best attempt at creating a fluid mesh for OpenFOAM that was of similar resolution near the body as we had used before. 
 But unstructured grids are complex geometrical objects. 
-Two meshes build with the same parameters will not be exactly the same, even. 
-The complication of building a _good quality_ mesh is one of the reasons to prefer immersed boundary methods!
+Two meshes built with the same parameters will not be exactly the same, even. 
+The complication of building a _good quality_ mesh is one of the reasons some prefer immersed boundary methods!
 
 ### Story 2: Other researchers' open-source codes come with traps
 
@@ -101,13 +101,19 @@ With this new configuration, the simulations of the snake profile resulted in a 
 Another deep dive in the literature led us to notice that a benchmark example described in the paper that announced IBAMR was set up in an unexpected way: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
-When we followed this example, our simulations with IBAMR were able to reproduce the lift enhancement at 35 degress angle-of-attack, although with a slightly different value of lift (<5% off). 
+Other papers using immersed boundary methods apply the constraint only on boundary points.
+When we followed their example, our simulations with IBAMR were able to reproduce the lift enhancement at 35 degress angle-of-attack, although with a slightly different value of lift (<5% off). 
 The successful result comes with a caveat, though. 
-If we look at the time signature of the lift and drag coefficients, there excellent agreement with our previous results for 30 degress angle-of-attack (Re-2000). 
+If we look at the time signature of the lift and drag coefficients, there is excellent agreement with our previous results for 30 degress angle-of-attack (Re-2000). 
 But at 35 degress, the time signatures drift apart after about 40 time units (10,000 time steps). 
 There is a marked drop in the lift coefficient, but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
  
-
+**Postmortem**. 
+Even a well-documented open-source research code can have unexpected tricks of the trade that only the original authors may know about. 
+In the end, we don't have an explanation for _why_ IBAMR required interior body points to be constrained. 
+The published record is incomplete in this regard: we could find no explanation in any paper using IBAMR. 
+Using an open research code and getting correct results with it could involve a long investigative period, potentially requiring communication with the original authors and many failed attempts. 
+If the code is not well documented and the original authors are not responsive to questions, then building your own code from scratch could be more sensible!
 
 ### Story 3: A different external linear algebra library can fail your replication
 
