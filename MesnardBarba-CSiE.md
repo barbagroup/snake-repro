@@ -18,7 +18,9 @@ Beyond reasons that have to do with inventing new methods, it’s a good questio
 To explore using an existing CFD solver for future research, we decided to first complete a full replication of our previous results with these alternatives. 
 Our commitment to open-source software for research is unwavering, which rules out commercial packages. 
 Perhaps the most well known open-source fluid-flow software is OpenFOAM, so we set out to replicate our published results with this code. 
-A more specialist open-source code is IBAMR, a project born at New York University that has continued development for half a decade. And finally, our own group developed a new code, implementing the same solution method, but providing parallel computing via the renowned PETSc library. We embarked on a full replication study of our previous work, using three new fluid-flow codes.
+A more specialist open-source code is IBAMR, a project born at New York University that has continued development for half a decade. 
+And finally, our own group developed a new code, implementing the same solution method we had before, but providing parallel computing via the renowned PETSc library. 
+We embarked on a full replication study of our previous work, using three new fluid-flow codes.
 
 This is the story of what happened next: three years of dedicated work that encountered a dozen ways that things can go wrong, conquered one after another, to arrive finally at (approximately) the same findings and a whole new understanding of what it means to do “reproducible research” in computational fluid dynamics.
 
@@ -58,7 +60,7 @@ No unphysical patches in the vorticity field this time.
 But another problem persisted: after the wake vortices hit the edge of the computational domain in the downstream side, a nasty back pressure appeared there and started propagating to the inside of the domain. 
 This situation is also unphysical, and we were certain there was a problem with the chosen outflow boundary condition in OpenFOAM, but did not find any way to stipulate another, more appropriate boundary condition. 
 We used a zero-gradient condition for the pressure at the outlet, which we found was a widespread choice in the examples and documentation of OpenFOAM. 
-After months, one typing mistake when launching a run from the command line made OpenFOAM print out the set of available boundary conditions, and we found that an _advective_ condition was available that could solve our problem (all this time, we were looking for _convective_ condition, which is just another name for the same thing). 
+After months, one typing mistake when launching a run from the command line made OpenFOAM print out the set of available boundary conditions, and we found that an _advective_ condition was available that could solve our problem (all this time, we were looking for a _convective_ condition, which is just another name for the same thing). 
 Finally, simulations with OpenFOAM were looking correct—and happily, the main feature of the aerodynamics was replicated: an enhanced lift coefficient at 35º angle-of-attack. 
 But not all is perfect. 
 The time signatures of lift and drag coefficient do show differences between our OpenFOAM calculation and the original published ones. 
@@ -73,8 +75,9 @@ OpenFOAM solves the fluid equations using a finite-volume method in an unstructu
 Comparing results obtained under such different conditions is a delicate operation. 
 We made our best attempt at creating a fluid mesh for OpenFOAM that was of similar resolution near the body as we had used before. 
 But unstructured grids are complex geometrical objects. 
-Two meshes built with the same parameters will not be exactly the same, even. 
-The complication of building a _good quality_ mesh is one of the reasons some prefer immersed boundary methods!
+Two unstructured meshes built with the same parameters will not be exactly the same, even. 
+The mesh-generation procedures are not necessarily deterministic, and regularly produce bad triangles that need to be repaired. 
+The complications of building a _good quality_ mesh is one of the reasons some prefer immersed boundary methods!
 
 ### Story 2: Other researchers' open-source codes come with traps
 
@@ -98,46 +101,65 @@ Of course, this is unphysical and the result unacceptable.
 After a long search in the literature and in the code documentation, we discovered that IBAMR needs us to select a "stabilized outlet," which is a boundary condition that acts like a force pushing the vortices out. 
 (IBAMR does not provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study. 
-Another deep dive in the literature led us to notice that a benchmark example described in the paper that announced IBAMR was set up in an unexpected way: 
+Another deep dive in the literature led us to notice that a benchmark example described in a paper describing extensions to IBAMR^(3) was set up in an unexpected way: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
 Other papers using immersed boundary methods apply the constraint only on boundary points.
-When we followed their example, our simulations with IBAMR were able to reproduce the lift enhancement at 35 degress angle-of-attack, although with a slightly different value of lift (<5% off). 
+When we followed their example, our simulations with IBAMR were able to reproduce the lift enhancement at 35 degrees angle-of-attack, although with a slightly different value of average lift (<5% off). 
 The successful result comes with a caveat, though. 
-If we look at the time signature of the lift and drag coefficients, there is excellent agreement with our previous results for 30 degress angle-of-attack (Re-2000). 
-But at 35 degress, the time signatures drift apart after about 40 time units (10,000 time steps). 
-There is a marked drop in the lift coefficient, but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
+If we look at the time signature of the lift and drag coefficients, there is excellent agreement with our previous results for 30 degrees angle-of-attack (Re=2000). 
+But at 35 degrees, the time signatures drift apart after about 40 time units (more than 150 thousand time steps). 
+There is a marked drop in the (time varying) lift coefficient, but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
+Like in the previous case, using OpenFOAM, we make a judgement call that this result does indeed pass muster as a replication of our previous result. 
  
 **Postmortem**. 
 Even a well-documented open-source research code can have unexpected tricks of the trade that only the original authors may know about. 
-In the end, we don't have an explanation for _why_ IBAMR required interior body points to be constrained. 
-The published record is incomplete in this regard: we could find no explanation in any paper using IBAMR. 
-Using an open research code and getting correct results with it could involve a long investigative period, potentially requiring communication with the original authors and many failed attempts. 
-If the code is not well documented and the original authors are not responsive to questions, then building your own code from scratch could be more sensible!
+In the end, we don't know _why_ IBAMR required interior body points to be constrained. 
+The published record is incomplete in this regard: we could find no explanation for it in any paper using IBAMR. 
+One of the issues may be that our community does not have a habit of communicating negative results, nor of publishing papers about software. 
+We learned from this experience that using an open research code and getting correct results with it could involve a long investigative period, potentially requiring communication with the original authors and many failed attempts. 
+If the code is not well documented and the original authors not responsive to questions, then building your own code from scratch could be more sensible!
 
-### Story 3: A different external linear algebra library can fail your replication
+### Story 3: All linear algebra libraries are not created equal
 
-The immersed-boundary projection-method requires the solution of two linear systems (an intermediate velocity system and a modified-Poisson system) every time-step of the simulation.
-As it is commonly done in CFD research-codes, we rely on an external linear algebra library.
-Our previous publication reports simulations with cuIBM, an in-house code that uses the library CUSP to solve the linear systems on a single-GPU.
-With cuIBM, we were limited to small mesh-sizes to not exceed the memory capacity of the device.
-As a workaround, we decided to develop PetIBM, CPU-based code that runs on distributed-memory architectures.
-PetIBM implements the same mathematical formulation of the immersed-boundary method than cuIBM.
-We replaced the GPU-library CUSP with the well-known PETSc-library (version 3.5.2); therefore, solving the linear systems on a different hardware.
-Both libraries use the same convergence criterion for the linear solvers.
-As a verification test-case, we ran the snake simulations to compare with previous cuIBM results.
-The results did not fully meet our expectations.
-Comparing the instantaneous force coefficients with those reported with cuIBM, we find some discrepancies as the we increase the Reynolds number and the angle-of-attack of the snake cross-section.
-We failed to replicate of our own findings: we did not observe a lift enhancement of the snake cross-section for the particular angle-of-attack 35 degrees.
-The instantaneous force coefficients closely follows the cuIBM ones up to 35 time-units of flow simulation.
-Afterwards, we observe drop in the mean force coefficients.
-Consequently, if we use the same time-integration period (32 to 64 time-units) to average the force coefficients, we are not able to observe a pick in the lift-curve.
-While we were checking the PetIBM simulations parameters were identical to the cuIBM ones, we found that the set of markers used to discretized the immersed-boundary were a little bit shifted (less than an edge of the finest grid-cell) compared the our previous study.
-This displacement happened as we have not rotated the geometry around the same center to provide the desired pitch angle.
-Our new hope rapidly vanished when we saw that the same set of markers did not provide the same extra-lift than in our previous study.
-Visualizations of the wake vortices show that a vortex merging phenomenon occurred in the middle of the wake affecting the near-body flow and lowering the forces on the bluff-body.
-The vortex merging affects the near-wake signature: the previously aligned vortices now form a wider wake with a 1S+1P pattern (a single clockwise vortex on the top side and a vortex dipole on the bottom part).
-We also note that a small shift in the Lagrangian markers is responsible for a significant change in the forces acting on the snake at moderate Reynolds number 2000.
+Our previous study used cuIBM, running on a single GPU device. 
+The largest problem that we can fit in the memory of a high-end GPU has just a few million mesh points, which is not enough to solve three-dimensional flows. 
+We developed PetIBM, a code that uses the same mathematical formulation as cuIBM, to allow solving larger problems on distributed CPU systems. 
+Since PetIBM and cuIBM implement exactly the same numerical method, you'd expect that giving the two codes the same mesh with the same initial conditions will result in the same solution (within floating-point error). 
+Not so fast! 
+We rely on external libraries to solve sparse linear systems of equations: _Cusp_ for GPU devices and PETSc for distributed CPU systems. 
+It turns out, the iterative solvers may have differences that affect the final solution.
+
+When repeating our previous simulations of the aerodynamics of a snake cross-section with PetIBM, the solutions do not always match those with cuIBM. 
+At a Reynolds number of 1000, both the time-averaged lift and drag coefficients match. 
+But at Reynolds equal to 2000, average lift and drag match up to 30 degrees angle-of-attack, but not at 35 degrees. 
+That means that we don't see lift enhancement and the main finding of our previous study is not fully replicated. 
+Looking at the time evolution of the force coefficients for the simulation with PetIBM at Re=2000 and 35 degrees angle-of-attack, we see a marked drop in lift after 35 time units. 
+What is different in the two codes? 
+Apart from using different linear algebra libraries, they run on different hardware. 
+Leaving hardware aside for now, let's focus on the iterative solvers. 
+Both _Cusp_ and PETSc use the same convergence criterion. 
+This is not always the case, and needs to be checked! 
+We're also not using the same iterative solver with each library. 
+The cuIBM runs (with _Cusp_) used an algebraic multigrid preconditioner and conjugate gradient (CG) solver for the pressure modified-Poisson equation. 
+With PETSc, the CG solver resulted in an error message with "indefinite preconditioner," and we had to select a different method: we used biCGstab. 
+
+Could this difference in linear solvers affect our unsteady fluid-flow solution? 
+The solutions with both codes match at lower angles of attack (and lower Reynolds numbers), so what is going on? 
+We checked everything two, three times. 
+In the process, we did find some small discrepancies. 
+Even a small bug (or two).
+We found, for example, that the first set of runs with PetIBM created a slightly different problem set-up, compared with our previous study, where the body was shifted by less than one grid-cell width. 
+Rotating the body to achieve different angles of attack was made around a different center, in each case (one used grid origin at 0,0 while the other used the body center of mass). 
+This tiny difference does result in a different average lift coefficient! 
+The time signal of lift coefficient shows that the drop we were seing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
+Again, this range for computing the average is a choice we made. 
+It covers about ten vortex shedding cycles, which seems enough to calculate the avarage if the flow is periodic.
+What is causing the drop of lift? 
+Visualizations of the wake vortices show that a vortex-merging event occurred in the middle of the wake, changing the near-wake pattern. 
+The previously aligned positive and negative vortices are replaced by a wider wake with a single clockwise vortex on the top side and a vortex dipole on the bottom part. 
+With the change in wake pattern comes a drop in the lift force. 
+
 Although PetIBM implements the same immersed-boundary method and was developed by the same research-group, we have not been able to fully replicate the findings of our previous study.
 
 ### Story 4: How much reproducible is our research?
@@ -172,4 +194,5 @@ But what does it really mean to do reproducible research?
 ## References
 
 1. ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), https://icerm.brown.edu/tw12-5-rcem/
-2. Krishnan, A., Socha, J. J., Vlachos, P. P., & Barba, L. A. (2014). Lift and wakes of flying snakes. Physics of Fluids, 26(3), 031901.
+2. Krishnan, A., Socha, J. J., Vlachos, P. P., Barba, L. A. (2014). Lift and wakes of flying snakes. Physics of Fluids, 26(3), 031901.
+3. Bhalla, A. P. S., Bale, R., Griffith, B. E., Patankar, N. A. (2013). A unified mathematical framework and an adaptive numerical method for fluid–structure interaction with rigid, deforming, and elastic bodies. Journal of Computational Physics, 250, 446-476.
