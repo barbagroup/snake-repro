@@ -26,7 +26,8 @@ This is the story of what happened next: three years of dedicated work that enco
 
 > ###Fluid-flow solvers we used
 > **cuIBM**--- Used for our original study (Krishan et al., 2014), this code is written in C CUDA to exploit GPU hardware, but is serial on CPU. 
-> It uses the NVIDIA *Cusp* library for solving sparse linear systems on GPU.  
+> It uses the NVIDIA *Cusp* library for solving sparse linear systems on GPU. 
+> <https://github.com/barbagroup/cuIBM>  
 > **OpenFOAM**--- A free and open-source CFD package that includes a suite of numerical solvers.
 > The core discretization scheme is a finite-volume method applied on mesh cells of arbitrary shape. 
 > <http://www.openfoam.org>  
@@ -34,7 +35,7 @@ This is the story of what happened next: three years of dedicated work that enco
 > <https://github.com/ibamr/ibamr>  
 > **PetIBM**--- This is our own re-implementation of *cuIBM*, but for distributed-memory parallel systems.
 > It uses the PETSc library for solving sparse linear systems in parallel.
-> 
+> <https://github.com/barbagroup/PetIBM> 
 
 --
 
@@ -67,14 +68,15 @@ Are these the same solutions?
 Is it acceptable as a replication study? 
 We think yes, but this is a judgement call.
 
-### Story 2: Other researchers' open-source codes can present many traps
+### Story 2: Other researchers' open-source codes come with traps
 
 Open-source research software can often be poorly documented and unsupported, and on occasion it can even be an unreadable mess. 
 But in this case, we are in luck.
 IBAMR is a solid piece of software, well documented, and you can even get swift response from the authors via the topical online forum.
 Still, we ran against an obscure trick of the trade that changed our results completely. 
+
 The numerical approach in IBAMR belongs to the same family as that used in our published work on wakes of flying snakes: an immersed boundary method. 
-The essence of the approach is that the fluid is represented by a fixed structured mesh, while the immersed body is represented by its own mesh that moves with the body. 
+The essence of the approach is that the fluid is represented by a fixed structured mesh, while the immersed body is represented by its own, separate mesh that moves with the body. 
 We speak of an Eulerian mesh for the fluid, and a Lagrangian mesh for the solid. 
 The forces exerted by the fluid on the body, and vice versa, appear as an additional integral equation and interpolation schemes between the two meshes. 
 The role of these is to make the fluid "stick" to the wall (no-slip boundary condition) and allow the body to feel aerodynamic forces (lift and drag).
