@@ -160,7 +160,13 @@ Visualizations of the wake vortices show that a vortex-merging event occurred in
 The previously aligned positive and negative vortices are replaced by a wider wake with a single clockwise vortex on the top side and a vortex dipole on the bottom part. 
 With the change in wake pattern comes a drop in the lift force. 
 
-Although PetIBM implements the same immersed-boundary method and was developed by the same research-group, we have not been able to fully replicate the findings of our previous study.
+**Postmortem**. 
+Although PetIBM implements the same immersed-boundary method and was developed by the same research group, we were not able to fully replicate the previous findings. 
+The aerodynamic lift on a snake section at 35 degrees angle-of-attack is a consequence of the near-wake vortices providing extra suction on the upper side of the body. 
+When a vortex merger event changes the wake pattern, lift drops. 
+Vortex merging is a fundentally two-dimensional instability, so we may expect that this problem won't trouble us in more realistic 3D simulations. 
+But it is surprising that small changes---within the bounds of truncation error, roundoff error and algebraic errors---can trigger this instability, changing the flow appreciably. 
+Even when the only difference between two equivalent simulations is the linear algebra library used, there can be challenges to reproducibility.
 
 
 ## References
