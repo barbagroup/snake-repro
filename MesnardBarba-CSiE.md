@@ -18,7 +18,9 @@ Beyond reasons that have to do with inventing new methods, it’s a good questio
 To explore using an existing CFD solver for future research, we decided to first complete a full replication of our previous results with these alternatives. 
 Our commitment to open-source software for research is unwavering, which rules out commercial packages. 
 Perhaps the most well known open-source fluid-flow software is OpenFOAM, so we set out to replicate our published results with this code. 
-A more specialist open-source code is IBAMR, a project born at New York University that has continued development for half a decade. And finally, our own group developed a new code, implementing the same solution method, but providing parallel computing via the renowned PETSc library. We embarked on a full replication study of our previous work, using three new fluid-flow codes.
+A more specialist open-source code is IBAMR, a project born at New York University that has continued development for half a decade. 
+And finally, our own group developed a new code, implementing the same solution method we had before, but providing parallel computing via the renowned PETSc library. 
+We embarked on a full replication study of our previous work, using three new fluid-flow codes.
 
 This is the story of what happened next: three years of dedicated work that encountered a dozen ways that things can go wrong, conquered one after another, to arrive finally at (approximately) the same findings and a whole new understanding of what it means to do “reproducible research” in computational fluid dynamics.
 
@@ -58,7 +60,7 @@ No unphysical patches in the vorticity field this time.
 But another problem persisted: after the wake vortices hit the edge of the computational domain in the downstream side, a nasty back pressure appeared there and started propagating to the inside of the domain. 
 This situation is also unphysical, and we were certain there was a problem with the chosen outflow boundary condition in OpenFOAM, but did not find any way to stipulate another, more appropriate boundary condition. 
 We used a zero-gradient condition for the pressure at the outlet, which we found was a widespread choice in the examples and documentation of OpenFOAM. 
-After months, one typing mistake when launching a run from the command line made OpenFOAM print out the set of available boundary conditions, and we found that an _advective_ condition was available that could solve our problem (all this time, we were looking for _convective_ condition, which is just another name for the same thing). 
+After months, one typing mistake when launching a run from the command line made OpenFOAM print out the set of available boundary conditions, and we found that an _advective_ condition was available that could solve our problem (all this time, we were looking for a _convective_ condition, which is just another name for the same thing). 
 Finally, simulations with OpenFOAM were looking correct—and happily, the main feature of the aerodynamics was replicated: an enhanced lift coefficient at 35º angle-of-attack. 
 But not all is perfect. 
 The time signatures of lift and drag coefficient do show differences between our OpenFOAM calculation and the original published ones. 
@@ -98,22 +100,23 @@ Of course, this is unphysical and the result unacceptable.
 After a long search in the literature and in the code documentation, we discovered that IBAMR needs us to select a "stabilized outlet," which is a boundary condition that acts like a force pushing the vortices out. 
 (IBAMR does not provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study. 
-Another deep dive in the literature led us to notice that a benchmark example described in the paper that announced IBAMR was set up in an unexpected way: 
+Another deep dive in the literature led us to notice that a benchmark example described in the paper that announced IBAMR^(3) was set up in an unexpected way: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
 Other papers using immersed boundary methods apply the constraint only on boundary points.
-When we followed their example, our simulations with IBAMR were able to reproduce the lift enhancement at 35 degress angle-of-attack, although with a slightly different value of lift (<5% off). 
+When we followed their example, our simulations with IBAMR were able to reproduce the lift enhancement at 35 degrees angle-of-attack, although with a slightly different value of average lift (<5% off). 
 The successful result comes with a caveat, though. 
 If we look at the time signature of the lift and drag coefficients, there is excellent agreement with our previous results for 30 degrees angle-of-attack (Re=2000). 
 But at 35 degrees, the time signatures drift apart after about 40 time units (10,000 time steps). 
 There is a marked drop in the (time varying) lift coefficient, but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
+Like in the previous case, using OpenFOAM, we make a judgement call that this result does indeed pass muster as a replication of our previous result. 
  
 **Postmortem**. 
 Even a well-documented open-source research code can have unexpected tricks of the trade that only the original authors may know about. 
 In the end, we don't have an explanation for _why_ IBAMR required interior body points to be constrained. 
-The published record is incomplete in this regard: we could find no explanation in any paper using IBAMR. 
+The published record is incomplete in this regard: we could find no explanation for it in any paper using IBAMR. 
 We learned that using an open research code and getting correct results with it could involve a long investigative period, potentially requiring communication with the original authors and many failed attempts. 
-If the code is not well documented and the original authors are not responsive to questions, then building your own code from scratch could be more sensible!
+If the code is not well documented and the original authors not responsive to questions, then building your own code from scratch could be more sensible!
 
 ### Story 3: A different external linear algebra library can fail your replication
 
@@ -144,4 +147,5 @@ Although PetIBM implements the same immersed-boundary method and was developed b
 ## References
 
 1. ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), https://icerm.brown.edu/tw12-5-rcem/
-2. Krishnan, A., Socha, J. J., Vlachos, P. P., & Barba, L. A. (2014). Lift and wakes of flying snakes. Physics of Fluids, 26(3), 031901.
+2. Krishnan, A., Socha, J. J., Vlachos, P. P., Barba, L. A. (2014). Lift and wakes of flying snakes. Physics of Fluids, 26(3), 031901.
+3. Bhalla, A. P. S., Bale, R., Griffith, B. E., Patankar, N. A. (2013). A unified mathematical framework and an adaptive numerical method for fluid–structure interaction with rigid, deforming, and elastic bodies. Journal of Computational Physics, 250, 446-476.
