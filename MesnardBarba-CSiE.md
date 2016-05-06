@@ -143,6 +143,7 @@ This is not always the case, and needs to be checked!
 We're also not using the same iterative solver with each library. 
 The cuIBM runs (with _Cusp_) used an algebraic multigrid preconditioner and conjugate gradient (CG) solver for the pressure modified-Poisson equation. 
 With PETSc, the CG solver resulted in an error message with "indefinite preconditioner," and we had to select a different method: we used biCGstab. 
+
 Could this difference in linear solvers affect our unsteady fluid-flow solution? 
 The solutions with both codes match at lower angles of attack (and lower Reynolds numbers), so what is going on? 
 We checked everything two, three times. 
@@ -150,14 +151,15 @@ In the process, we did find some small discrepancies.
 Even a small bug (or two).
 We found, for example, that the first set of runs with PetIBM created a slightly different problem set-up, compared with our previous study, where the body was shifted by less than one grid-cell width. 
 Rotating the body to achieve different angles of attack was made around a different center, in each case (one used grid origin at 0,0 while the other used the body center of mass). 
-This tiny difference does produce a different lift coefficient! 
+This tiny difference does result in a different average lift coefficient! 
 The time signal of lift coefficient shows that the drop we were seing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
 Again, this range for computing the average is a choice we made. 
 It covers about ten vortex shedding cycles, which seems enough to calculate the avarage if the flow is periodic.
+What is causing the drop of lift? 
+Visualizations of the wake vortices show that a vortex-merging event occurred in the middle of the wake, changing the near-wake pattern. 
+The previously aligned positive and negative vortices are replaced by a wider wake with a single clockwise vortex on the top side and a vortex dipole on the bottom part. 
+With the change in wake pattern comes a drop in the lift force. 
 
-Visualizations of the wake vortices show that a vortex merging phenomenon occurred in the middle of the wake affecting the near-body flow and lowering the forces on the bluff-body.
-The vortex merging affects the near-wake signature: the previously aligned vortices now form a wider wake with a 1S+1P pattern (a single clockwise vortex on the top side and a vortex dipole on the bottom part).
-We also note that a small shift in the Lagrangian markers is responsible for a significant change in the forces acting on the snake at moderate Reynolds number 2000.
 Although PetIBM implements the same immersed-boundary method and was developed by the same research-group, we have not been able to fully replicate the findings of our previous study.
 
 
