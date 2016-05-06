@@ -68,6 +68,14 @@ Are these the same solutions?
 Is it acceptable as a replication study? 
 We think yes, but this is a judgement call.
 
+**Postmortem**. 
+OpenFOAM solves the fluid equations using a finite-volume method in an unstructured grid, while our published study used an immersed boundary method in a stretched Cartesian grid. 
+Comparing results obtained under such different conditions is a delicate operation. 
+We made our best attempt at creating a fluid mesh for OpenFOAM that was of similar resolution near the body as we had used before. 
+But unstructured grids are complex geometrical objects. 
+Two meshes build with the same parameters will not be exactly the same, even. 
+The complication of building a _good quality_ mesh is one of the reasons to prefer immersed boundary methods!
+
 ### Story 2: Other researchers' open-source codes come with traps
 
 Open-source research software can often be poorly documented and unsupported, and on occasion it can even be an unreadable mess. 
