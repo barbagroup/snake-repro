@@ -164,9 +164,18 @@ With the change in wake pattern comes a drop in the lift force.
 Although PetIBM implements the same immersed-boundary method and was developed by the same research group, we were not able to fully replicate the previous findings. 
 The aerodynamic lift on a snake section at 35 degrees angle-of-attack is a consequence of the near-wake vortices providing extra suction on the upper side of the body. 
 When a vortex merger event changes the wake pattern, lift drops. 
-Vortex merging is a fundentally two-dimensional instability, so we may expect that this problem won't trouble us in more realistic 3D simulations. 
+Vortex merging is a fundamentally two-dimensional instability, so we may expect that this problem won't trouble us in more realistic 3D simulations. 
 But it is surprising that small changes---within the bounds of truncation error, roundoff error and algebraic errors---can trigger this instability, changing the flow appreciably. 
 Even when the only difference between two equivalent simulations is the linear algebra library used, there can be challenges to reproducibility.
+
+### Story 4: Different versions of your code, the external libraries or even compilers may challenge reproducibility
+
+In the span of about three years, we ran more than 100 simulations with OpenFOAM, IBAMR, and PetIBM, encountering about a dozen things that can go wrong. 
+We replicated our previous scientific finding (enhanced lift at 35 degrees angle-of-attack for sufficiently large Reynolds number) in two out of three campaigns. 
+Ironically, the case that did not replicate our findings was that of our own code re-write. 
+The original code (cuIBM) and the re-write (PetIBM) use different linear algebra libraries, and it's unnerving to think this could change our results. 
+This final story is about what happened when we went back to our _original_ code and tried to reproduce the published findings.
+
 
 
 ## References
