@@ -193,17 +193,20 @@ The code itself has been modified to implement new features.
 Happily, we have version control.
 So, we set out to reproduce our results with cuIBM using (1) the "same"  old version of the code and (2) the current version. 
 In both cases, we used identical input parameters (Lagrangian markers to discretize the geometry, grid parameters, flow conditions, and solver parameters). 
-But the three-year-old simulations were run with a version of the _Cusp_ library that is no longer compatible with the CUDA versions installed on our machines. 
-Thus, we adapted "old" cuIBM to be compatible with a newer version of _Cusp_ (0.4.0). 
-Running the case at angle-of-attack 35 degrees and Reynolds number 2000, we observe some discrepancies in the instantaneous force coefficients over the end of time-integration period: the mean force coefficients drop between 60 and 80 time-units.
-We did not observe this feature in our previous study.
-With the current version of cuIBM, we compared the numerical solution obtained with two versions of _Cusp_: 0.4.0 and 0.5.1. 
-We first notice that the current version of cuIBM with the same CUSP library (0.4.0) leads to the same force signals than the previous cuIBM version.
-Second, we observe differences when using different CUSP versions, only when the mean force coefficients are dropping -- up to 70 time-units of flow simulation, the difference is negligible.
+But the three-year-old simulations used a version of _Cusp_ (0.3.1) that is no longer compatible with the oldest CUDA version installed on our machines (5.0). 
+Thus, we adapted "old" cuIBM to be compatible with the oldest version of _Cusp_ (0.4.0) that we can run. 
+The case at angle-of-attack 35 degrees and Reynolds number 2000 now gave an appreciable difference compared with our previous study: 
+the instantaneous force coefficients start to slowly drop after about 60 time units. 
+Now, this is _really_ the same code, with only a difference in the _version_ of the linear algebra library. 
+Repeating the case with the most current version of cuIBM and the same version of _Cusp_ (0.4.0) leads to the same force signals, with a slight drop towards the end. 
+And the same is the case with the current version of cuIBM and a later version of _Cusp_ (0.5.1). 
+The final _findings_ in these cases do not vary from our published work: there is, in fact, lift enhancement at 35 degrees angle-of-attack ... but the results match only because we calculate the average lift in a time interval between 32 and 64. 
+Yet, the flow solution was affected by changing the version of a dependent library. 
+(The revision history of _Cusp_ says that they refactored the smooth-aggregation solver between the two versions we are using.) 
+The hardware was also different (a K20 GPU versus a C2070 in our older study), and the operating system, and the compiler. 
+In an iterative linear solver, any of these things could be related to lack of floating-point reproducibility. 
+And in unsteady fluid dynamics, small floating-point differences can add over thousands of time steps to eventually trigger a flow instability (like vortex merging).
 
-Although the instantaneous force coefficients exhibit some numerical differences over the end of the flow simulation, if we averaged them during the same time-interval than in our previous publication, we obtain similar enhanced lift coefficients acting on the snake cross-section at angle-of-attack 35 degrees and Reynolds number 2000.
-We have been able to reproduce our previous results to a certain level.
-If we are using a different version of an external library, are we really reproducing results or more likely replicating findings?
 
 
 ## References
