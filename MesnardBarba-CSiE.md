@@ -110,7 +110,7 @@ The successful result comes with a caveat, though.
 If we look at the time signature of the lift and drag coefficients, there is excellent agreement with our previous results for 30 degrees angle-of-attack (Re=2000). 
 But at 35 degrees, the time signatures drift apart after about 40 time units (more than 150 thousand time steps). 
 There is a marked drop in the (time varying) lift coefficient, but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
-Like in the previous case, using OpenFOAM, we make a judgement call that this result does indeed pass muster as a replication of our previous result. 
+Like in the previous case, using OpenFOAM, we make a judgement call that this result does indeed pass muster as a replication of our previous study. 
  
 **Postmortem**. 
 Even a well-documented open-source research code can have unexpected tricks of the trade that only the original authors may know about. 
@@ -142,7 +142,7 @@ Both _Cusp_ and PETSc use the same convergence criterion.
 This is not always the case, and needs to be checked! 
 We're also not using the same iterative solver with each library. 
 The cuIBM runs (with _Cusp_) used an algebraic multigrid preconditioner and conjugate gradient (CG) solver for the pressure modified-Poisson equation. 
-With PETSc, the CG solver resulted in an error message with "indefinite preconditioner," and we had to select a different method: we used biCGstab. 
+With PETSc, the CG solver resulted in an error message with "indefinite preconditioner," and we had to select a different method: we used biCGstab (with still an algebraic multigrid preconditioner). 
 
 Could this difference in linear solvers affect our unsteady fluid-flow solution? 
 The solutions with both codes match at lower angles of attack (and lower Reynolds numbers), so what is going on? 
