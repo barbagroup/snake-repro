@@ -176,25 +176,28 @@ Ironically, the case that did not replicate our findings was that of our own cod
 The original code (cuIBM) and the re-write (PetIBM) use different linear algebra libraries, and it's unnerving to think this could change our results. 
 This final story is about what happened when we went back to our _original_ code and tried to reproduce the published findings.
 
-The first hurdle we faced is that, three years after we published our previous study, we now have updated our lab computers.
+As we mentioned in the opening of this article, we adopted a set of practices years ago to make our research reproducible. 
+The study published as "Lift and wakes of flying snakes" was completed under the guidance of the "Reproducibility PI Manifesto," 
+which includes: 
+(1) the code was developed under version control; 
+(2) we completed validation and verification, publishing the report on Figshare; 
+(3) the data and figures for the main results of the paper are open; 
+(4) the pre-print is available on arXiv; 
+(5) the code was relesed under MIT License; 
+(6) we included a Reproducibility statement in the paper. 
+Of course we expect to be able to reproduce our own results!
 
-
-As mentioned earlier, our previous study was published under the "Reproducibility PI Manifesto" with the code and the data being openly-shared; thus, we decided to reproduce our own findings.
-
-From the time of our previous publication to now, the settings of our lab-machines have changed a lot: new operating systems, new GPU devices, new external libraries.
-The code itself has been modified to implement new features.
-
-We tried to reproduce our own results with cuIBM using (1) the "same" version of the code and (2) the current version of cuIBM.
-In both cases, we used identical input parameters (Lagrangian markers to discretize the geometry, grid parameters, flow conditions, and solvers parameters).
-
-As mentioned before, we use the library CUSP to solve the linear system on a GPU.
-The two-year-old simulations were run with a version of CUSP that is no longer compatible with the CUDA versions installed on our machines.
-Thus, we adapted "old" cuIBM to be compatible with a newer version of CUSP (0.4.0).
-We ran a simulation of the snake at angle-of-attack 35 degrees and Reynolds number 2000.
-We observe some discrepancies in the instantaneous force coefficients over the end of time-integration period: the mean force coefficients drop between 60 and 80 time-units.
+The first hurdle we faced is that, three years after we completed our previous study, we have updated our lab computers: 
+new operating systems, new GPU devices, new external libraries. 
+The code itself has been modified to implement new features. 
+Happily, we have version control.
+So, we set out to reproduce our results with cuIBM using (1) the "same"  old version of the code and (2) the current version. 
+In both cases, we used identical input parameters (Lagrangian markers to discretize the geometry, grid parameters, flow conditions, and solver parameters). 
+But the three-year-old simulations were run with a version of the _Cusp_ library that is no longer compatible with the CUDA versions installed on our machines. 
+Thus, we adapted "old" cuIBM to be compatible with a newer version of _Cusp_ (0.4.0). 
+Running the case at angle-of-attack 35 degrees and Reynolds number 2000, we observe some discrepancies in the instantaneous force coefficients over the end of time-integration period: the mean force coefficients drop between 60 and 80 time-units.
 We did not observe this feature in our previous study.
-
-Furthermore, we ran the same application with the actual version of cuIBM comparing the numerical solution obtained with two versions of the CUSP library: 0.4.0 and 0.5.1.
+With the current version of cuIBM, we compared the numerical solution obtained with two versions of _Cusp_: 0.4.0 and 0.5.1. 
 We first notice that the current version of cuIBM with the same CUSP library (0.4.0) leads to the same force signals than the previous cuIBM version.
 Second, we observe differences when using different CUSP versions, only when the mean force coefficients are dropping -- up to 70 time-units of flow simulation, the difference is negligible.
 
