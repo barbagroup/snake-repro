@@ -213,6 +213,15 @@ Unfortunately, some of those dependencies will get stale over time, and might ce
 Your application code may give the same answer with a different version of an external library, or it may not. 
 In the case of unsteady fluid dynamics, the nonlinear nature of the equations combined with numerical non-reproducibility of iterative linear solvers (in parallel!) can change the results. 
 
+--
+
+> ### Definitions
+> The literature is rife with confused and sometimes contradictory meanings for reproducible research, reproducibility, replicability, repetition, etc.  
+> **Reproducibility**---  
+> **Replication**---
+
+--
+
 ## References
 
 1. ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), https://icerm.brown.edu/tw12-5-rcem/
