@@ -35,7 +35,7 @@ This is the story of what happened next: three years of dedicated work that enco
 > <http://www.openfoam.org>  
 > **IBAMR**--- A parallel code using the immersed boundary method on Cartesian meshes, with adaptive mesh refinement.
 > <https://github.com/ibamr/ibamr>  
-> **PetIBM**--- This is our own re-implementation of *cuIBM*, but for distributed-memory parallel systems.
+> **PetIBM**--- Our own re-implementation of *cuIBM*, but for distributed-memory parallel systems.
 > It uses the PETSc library for solving sparse linear systems in parallel.
 > <https://github.com/barbagroup/PetIBM> 
 
@@ -91,7 +91,7 @@ The essence of the approach is that the fluid is represented by a fixed structur
 We speak of an Eulerian mesh for the fluid, and a Lagrangian mesh for the solid. 
 The forces exerted by the fluid on the body, and vice versa, appear as an additional integral equation and interpolation schemes between the two meshes. 
 The role of these is to make the fluid "stick" to the wall (no-slip boundary condition) and allow the body to feel aerodynamic forces (lift and drag).
-Our cuIBM code uses a variant called the immersed boundary projection method, while IBAMR uses a form called the "direct-forcing" method. 
+Our cuIBM code uses a variant called the immersed boundary projection method,^(4) while IBAMR uses a form called the "direct-forcing" method. 
 Despite the variations, the essence is the same, and it is reasonable to assume they would work similarly.
 
 We already know that boundary conditions at the outlet of the computational domain can be problematic. This is no different with immersed boundary methods. 
@@ -101,7 +101,7 @@ Of course, this is unphysical and the result unacceptable.
 After a long search in the literature and in the code documentation, we discovered that IBAMR needs us to select a "stabilized outlet," which is a boundary condition that acts like a force pushing the vortices out. 
 (IBAMR does not provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study. 
-Another deep dive in the literature led us to notice that a benchmark example described in a paper describing extensions to IBAMR^(4) was set up in an unexpected way: 
+Another deep dive in the literature led us to notice that a benchmark example described in a paper describing extensions to IBAMR^(5) was set up in an unexpected way: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
 Other papers using immersed boundary methods apply the constraint only on boundary points.
@@ -224,7 +224,8 @@ In the case of unsteady fluid dynamics, the nonlinear nature of the equations co
 
 ## References
 
-1. Barba, L. A., "Reproducibility PI Manifesto," figshare, <https://dx.doi.org/10.6084/m9.figshare.104539.v1>, ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), https://icerm.brown.edu/tw12-5-rcem/ 
+1. Barba, L. A. (2012), "Reproducibility PI Manifesto," figshare, <https://dx.doi.org/10.6084/m9.figshare.104539.v1>, ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), https://icerm.brown.edu/tw12-5-rcem/ 
 2. Krishnan, A., Socha, J. J., Vlachos, P. P., Barba, L. A. (2014). Lift and wakes of flying snakes. Physics of Fluids, 26(3), 031901, <http://dx.doi.org/10.1063/1.4866444>
 3. Krishnan, Anush; J. Socha, John; P. Vlachos, Pavlos; Barba, L. A. (2013): Lift and drag coefficient versus angle of attack for a flying snake cross-section. figshare. <https://dx.doi.org/10.6084/m9.figshare.705883.v2>
-4. Bhalla, A. P. S., Bale, R., Griffith, B. E., Patankar, N. A. (2013). A unified mathematical framework and an adaptive numerical method for fluid–structure interaction with rigid, deforming, and elastic bodies. Journal of Computational Physics, 250, 446-476.
+4. Taira, K., Colonius, T. (2007). The immersed boundary method: A projecion approach. Journal of Computational Physics, 225, 2118–2137.
+5. Bhalla, A. P. S., Bale, R., Griffith, B. E., Patankar, N. A. (2013). A unified mathematical framework and an adaptive numerical method for fluid–structure interaction with rigid, deforming, and elastic bodies. Journal of Computational Physics, 250, 446-476.
