@@ -21,12 +21,14 @@ simulation.plot_field_contours_paraview('pressure',
                                         width=600,
                                         colormap='viridis')
 
+# create pdf
 images_directory = os.path.join(directory, 
                                 'images', 
                                 'pressure_-2.00_-3.00_15.00_3.00')
-file_names_source = ['pressure052.00.png', 'pressure053.00.png']
-file_names_destination = ['openfoam_pressure52Re2000AoA35_gmshZeroGradient.pdf',
-                          'openfoam_pressure53Re2000AoA35_gmshZeroGradient.pdf']
-for source, destination in zip(file_names_source, file_names_destination):
-  os.system('convert {} {}'.format(os.path.join(images_directory, source),
-                                   os.path.join(os.getcwd(), destination)))
+names = ['pressure052.00.png', 'pressure053.00.png']
+source_paths = [os.path.join(images_directory, name) for name in names]
+destination_path = os.path.join(os.getcwd(),
+                                'openfoam_pressureRe2000AoA35_gmshZeroGradient.pdf')
+os.system('pdfjam {} --nup 1x{} --outfile {}'.format(' '.join(source_paths),
+                                                     len(source_paths),
+                                                     destination_path))
