@@ -207,7 +207,11 @@ The hardware was also different (a K20 GPU versus a C2070 in our older study), a
 In an iterative linear solver, any of these things could be related to lack of floating-point reproducibility. 
 And in unsteady fluid dynamics, small floating-point differences can add over thousands of time steps to eventually trigger a flow instability (like vortex merging).
 
-
+**Postmortem**. 
+Making research codes open-source is not enough for reproducibility: we must be meticulous in documenting every dependency and the versions used. 
+Unfortunately, some of those dependencies will get stale over time, and might cease to be available or usable. 
+Your application code may give the same answer with a different version of an external library, or it may not. 
+In the case of unsteady fluid dynamics, the nonlinear nature of the equations combined with numerical non-reproducibility of iterative linear solvers (in parallel!) can change the results. 
 
 ## References
 
