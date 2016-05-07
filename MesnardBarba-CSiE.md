@@ -176,7 +176,7 @@ Ironically, the case that did not replicate our findings was that of our own cod
 The original code (cuIBM) and the re-write (PetIBM) use different linear algebra libraries, and it's unnerving to think this could change our results. 
 This final story is about what happened when we went back to our _original_ code and tried to reproduce the published findings.
 
-
+The first hurdle we faced is that, three years after we published our previous study, we now have updated our lab computers.
 
 ## References
 
