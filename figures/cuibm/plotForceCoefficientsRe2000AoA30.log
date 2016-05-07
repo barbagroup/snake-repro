@@ -1,8 +1,8 @@
 [info] registering simulation ...
-	- directory: /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe2000AoA30_20160408
+	- directory: /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe2000AoA30_20160502
 	- description: cuIBM - cusp-0.5.1
 	- software: cuibm
-[info] reading forces from file /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe2000AoA30_20160408/forces ... done
+[info] reading forces from file /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe2000AoA30_20160502/forces ... done
 [info] registering simulation ...
 	- directory: /home/mesnardo/git/mesnardo/phdBook/projects/snakeReproducibility/cuibm
 	- description: Krishnan et al. (2014)
