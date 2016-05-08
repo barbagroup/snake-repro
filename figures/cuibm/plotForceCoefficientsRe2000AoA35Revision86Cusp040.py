@@ -2,7 +2,6 @@
 # author: Olivier Mesnard (mesnardo@gwu.edu)
 # description: Plots the instantaneous force coefficients
 #              and compare to results from Krishnan et al. (2014).
-# Run this script from the simulation directory.
 
 
 import os

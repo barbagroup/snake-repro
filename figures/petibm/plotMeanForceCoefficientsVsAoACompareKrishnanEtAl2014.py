@@ -1,7 +1,8 @@
 # file: plotMeanForceCoefficientsVsAoACompareKrishnanEtAl2014.py
 # author: Olivier Mesnard (mesnardo@gwu.edu)
-# description: Compute and plot the mean force coefficients versus the angle of
-#              attack and compare with results from Krishnan et al. (2014).
+# description: Computes and plots the mean force coefficients 
+#              versus the angle of attack 
+#              and compare with results from Krishnan et al. (2014).
 
 
 import os

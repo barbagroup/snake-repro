@@ -1,8 +1,7 @@
 # file: plotForceCoefficientsRe1000AoA35.py
 # author: Olivier Mesnard (mesnardo@gwu.edu)
 # description: Plots the instantaneous force coefficients
-#              and compare to results from Krishnan et al. (2014).
-# Run this script from the simulation directory.
+#              and compares to results from Krishnan et al. (2014).
 
 
 import os

@@ -1,6 +1,7 @@
 # file: plotPressure.py
 # author: Olivier Mesnard (mesnardo@gwu.edu)
-# description: Plots the 2D pressure field.
+# description: Plots the 2D pressure fields
+#              and cats the png files into a pdf page.
 
 
 import os

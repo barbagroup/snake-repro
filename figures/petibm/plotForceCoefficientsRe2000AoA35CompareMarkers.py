@@ -1,8 +1,7 @@
 # file: plotForceCoefficientsRe2000AoA35CompareMarkers.py
 # author: Olivier Mesnard (mesnardo@gwu.edu)
 # description: Plots the instantaneous force coefficients
-#              and compare to simulation with displaced markers.
-# Run this script from the simulation directory.
+#              and compares to simulation with displaced markers.
 
 
 import os

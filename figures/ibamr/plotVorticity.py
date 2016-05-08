@@ -1,6 +1,7 @@
 # file: plotVorticity.py
 # author: Olivier Mesnard (mesnardo@gwu.edu)
-# description: Plots the 2D vorticity field.
+# description: Plots the 2D vorticity fields
+#              and cats the png files into one pdf page.
 
 
 import os

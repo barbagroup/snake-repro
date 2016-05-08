@@ -1,9 +1,9 @@
 # file: plotForceCoefficientsRe2000AoA35CurrentRevision86.py
 # author: Olivier Mesnard (mesnardo@gwu.edu)
-# description: Plots the instantaneous force coefficients
-#              and compare with results from revision 86 and current version 
-#              with cusp-0.5.1.
-# Run this script from the simulation directory.
+# description: Plots the instantaneous force coefficients of three runs:
+#              1- 2k35 / current cuIBM with CUSP-0.4.0;
+#              2- 2k35 / current cuIBM with CUSP-0.5.1;
+#              3- 2k35 / older cuIBM with CUSP-0.4.0;
 
 
 import os
