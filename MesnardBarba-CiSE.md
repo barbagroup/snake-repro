@@ -55,19 +55,19 @@ OpenFOAM can take various types of discretization mesh as input.
 One popular mesh generator is called GMSH: it produces triangles that are as fine as you want them near the body, while getting coarser as the mesh points are farther away. 
 Already, we encounter a problem: how to create a mesh of triangles that gives a comparable resolution to that obtained with our original structured Cartesian mesh? 
 After dedicated effort (see separate section on mesh generation with OpenFOAM [or supplementary material?]), we produced the best mesh we could that matches our previous study in the finest cell width near the body. 
-But when using this mesh to solve the fluid flow around the snake geometry, we got spurious specks of high vorticity in places where there shouldn’t be any. 
+But when using this mesh to solve the fluid flow around the snake geometry, we got spurious specks of high vorticity in places where there shouldn’t be any (Figure 1). 
 The simulations did not blow up, but these unphysical vortices appeared for any flow Reynolds number or body angle of attack we tried.
 This is despite the fact that the mesh passed the quality checks of OpenFOAM. 
 Finally, we gave up with the (popular) GMSH and tried another mesh generator: SnappyHexMesh. 
 Success! 
 No unphysical patches in the vorticity field this time. 
-But another problem persisted: after the wake vortices hit the edge of the computational domain in the downstream side, a nasty back pressure appeared there and started propagating to the inside of the domain. 
+But another problem persisted: after the wake vortices hit the edge of the computational domain in the downstream side, a nasty back pressure appeared there and started propagating to the inside of the domain (Figure 2). 
 This situation is also unphysical, and we were certain there was a problem with the chosen outflow boundary condition in OpenFOAM, but did not find any way to stipulate another, more appropriate boundary condition. 
 We used a zero-gradient condition for the pressure at the outlet, which we found was a widespread choice in the examples and documentation of OpenFOAM. 
 After months, one typing mistake when launching a run from the command line made OpenFOAM print out the set of available boundary conditions, and we found that an _advective_ condition was available that could solve our problem (all this time, we were looking for a _convective_ condition, which is just another name for the same thing). 
-Finally, simulations with OpenFOAM were looking correct—and happily, the main feature of the aerodynamics was replicated: an enhanced lift coefficient at 35º angle-of-attack. 
+Finally, simulations with OpenFOAM were looking correct—and happily, the main feature of the aerodynamics was replicated: an enhanced lift coefficient at 35º angle-of-attack (Figure 3). 
 But not all is perfect. 
-The time signatures of lift and drag coefficient do show differences between our OpenFOAM calculation and the original published ones. 
+The time signatures of lift and drag coefficient do show differences between our OpenFOAM calculation and the original published ones (Figure 4). 
 The key finding uses an _average_ lift coefficient, calculated with data in a time range that is reasonable but arbitrary. 
 Although the average force coefficients match (within <3%) our previous results, the time series shows a phase difference. 
 Are these the same solutions? 
@@ -126,11 +126,11 @@ Despite the variations, the essence is the same, and it is reasonable to assume 
 
 We already know that boundary conditions at the outlet of the computational domain can be problematic. This is no different with immersed boundary methods. 
 Our first attempt with IBAMR used a zero-gradient velocity boundary condition at the outlet. 
-This resulted in some blockage effect when the wake vortices reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain. 
+This resulted in some blockage effect when the wake vortices reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain (Figure 5). 
 Of course, this is unphysical and the result unacceptable. 
 After a long search in the literature and in the code documentation, we discovered that IBAMR needs us to select a "stabilized outlet," which is a boundary condition that acts like a force pushing the vortices out. 
 (IBAMR does not provide a convective/advective boundary condition.) 
-With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study. 
+With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study (Figure 6). 
 Another deep dive in the literature led us to notice that a benchmark example described in a paper describing extensions to IBAMR^(5) was set up in an unexpected way: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
@@ -139,7 +139,7 @@ When we followed their example, our simulations with IBAMR were able to reproduc
 The successful result comes with a caveat, though. 
 If we look at the time signature of the lift and drag coefficients, there is excellent agreement with our previous results for 30 degrees angle-of-attack (Re=2000). 
 But at 35 degrees, the time signatures drift apart after about 40 time units (more than 150 thousand time steps). 
-There is a marked drop in the (time varying) lift coefficient, but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
+There is a marked drop in the (time varying) lift coefficient (Figure 7(b)), but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
 Like in the previous case, using OpenFOAM, we make a judgement call that this result does indeed pass muster as a replication of our previous study. 
  
 **Postmortem**. 
@@ -183,8 +183,8 @@ It turns out, the iterative solvers may have differences that affect the final s
 When repeating our previous simulations of the aerodynamics of a snake cross-section with PetIBM, the solutions do not always match those with cuIBM. 
 At a Reynolds number of 1000, both the time-averaged lift and drag coefficients match. 
 But at Reynolds equal to 2000, average lift and drag match up to 30 degrees angle-of-attack, but not at 35 degrees. 
-That means that we don't see lift enhancement and the main finding of our previous study is not fully replicated. 
-Looking at the time evolution of the force coefficients for the simulation with PetIBM at Re=2000 and 35 degrees angle-of-attack, we see a marked drop in lift after 35 time units. 
+That means that we don't see lift enhancement (Figure 8) and the main finding of our previous study is not fully replicated. 
+Looking at the time evolution of the force coefficients for the simulation with PetIBM at Re=2000 and 35 degrees angle-of-attack, we see a marked drop in lift after 35 time units (top graph in Figure 9). 
 What is different in the two codes? 
 Apart from using different linear algebra libraries, they run on different hardware. 
 Leaving hardware aside for now, let's focus on the iterative solvers. 
@@ -201,12 +201,12 @@ In the process, we did find some small discrepancies.
 Even a small bug (or two).
 We found, for example, that the first set of runs with PetIBM created a slightly different problem set-up, compared with our previous study, where the body was shifted by less than one grid-cell width. 
 Rotating the body to achieve different angles of attack was made around a different center, in each case (one used grid origin at 0,0 while the other used the body center of mass). 
-This tiny difference does result in a different average lift coefficient! 
+This tiny difference does result in a different average lift coefficient (bottom graph in Figure 9)! 
 The time signal of lift coefficient shows that the drop we were seing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
 Again, this range for computing the average is a choice we made. 
 It covers about ten vortex shedding cycles, which seems enough to calculate the average if the flow is periodic.
 What is causing the drop of lift? 
-Visualizations of the wake vortices show that a vortex-merging event occurred in the middle of the wake, changing the near-wake pattern. 
+Visualizations of the wake vortices (Figure 10) show that a vortex-merging event occurred in the middle of the wake, changing the near-wake pattern. 
 The previously aligned positive and negative vortices are replaced by a wider wake with a single clockwise vortex on the top side and a vortex dipole on the bottom part. 
 With the change in wake pattern comes a drop in the lift force. 
 
@@ -269,9 +269,9 @@ In both cases, we used identical input parameters (Lagrangian markers to discret
 But the three-year-old simulations used a version of _Cusp_ (0.3.1) that is no longer compatible with the oldest CUDA version installed on our machines (5.0). 
 Thus, we adapted "old" cuIBM to be compatible with the oldest version of _Cusp_ (0.4.0) that we can run. 
 The case at angle-of-attack 35 degrees and Reynolds number 2000 now gave an appreciable difference compared with our previous study: 
-the instantaneous force coefficients start to slowly drop after about 60 time units. 
+the instantaneous force coefficients start to slowly drop after about 60 time units (Figure 11(c)). 
 Now, this is _really_ the same code, with only a difference in the _version_ of the linear algebra library. 
-Repeating the case with the most current version of cuIBM and the same version of _Cusp_ (0.4.0) leads to the same force signals, with a slight drop towards the end. 
+Repeating the case with the most current version of cuIBM and the same version of _Cusp_ (0.4.0) leads to the same force signals, with a slight drop towards the end (Figure 11(d)). 
 And the same is the case with the current version of cuIBM and a later version of _Cusp_ (0.5.1). 
 The final _findings_ in these cases do not vary from our published work: there is, in fact, lift enhancement at 35 degrees angle-of-attack ... but the results match only because we calculate the average lift in a time interval between 32 and 64. 
 Yet, the flow solution was affected by changing the version of a dependent library. 
