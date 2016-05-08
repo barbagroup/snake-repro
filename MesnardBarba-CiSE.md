@@ -204,7 +204,7 @@ Rotating the body to achieve different angles of attack was made around a differ
 This tiny difference does result in a different average lift coefficient! 
 The time signal of lift coefficient shows that the drop we were seing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
 Again, this range for computing the average is a choice we made. 
-It covers about ten vortex shedding cycles, which seems enough to calculate the avarage if the flow is periodic.
+It covers about ten vortex shedding cycles, which seems enough to calculate the average if the flow is periodic.
 What is causing the drop of lift? 
 Visualizations of the wake vortices show that a vortex-merging event occurred in the middle of the wake, changing the near-wake pattern. 
 The previously aligned positive and negative vortices are replaced by a wider wake with a single clockwise vortex on the top side and a vortex dipole on the bottom part. 
@@ -256,7 +256,7 @@ which includes:
 (2) we completed validation and verification, publishing the report on Figshare; 
 (3) the data and figures for the main results of the paper are open; 
 (4) the pre-print is available on arXiv; 
-(5) the code was relesed under MIT License; 
+(5) the code was released under MIT License; 
 (6) we included a Reproducibility statement in the paper. 
 Of course we expect to be able to reproduce our own results!
 
@@ -301,7 +301,7 @@ Instantaneous force coefficients on the snake's section at (a) Reynolds number 1
 > ### Definition of reproducible research
 > The literature is rife with confused and sometimes contradictory meanings for reproducible research, reproducibility, replicability, repetition, etc. 
 > It is thus worth clarifying what we mean by these terms and why we've chosen this meaning. 
-> The term "reproducible research" in reference to computational studies that can be reproduced by other scientists was introduced by goephysics professor Jon Claerbout in the 1990s. 
+> The term "reproducible research" in reference to computational studies that can be reproduced by other scientists was introduced by geophysics professor Jon Claerbout in the 1990s. 
 > An early volume of CiSE published an article about the reproducible-research environment they created in his group at Stanford.^(6) 
 > Their goal was complete documentation of scientific computations, in such a way that a reader can reproduce all the results and figures in a paper using the author-provided computer programs and raw data. 
 > This ability requires open data and open-source software, and for this reason the _reproducibility_ movement is closely linked with the _open science_ movement. 
@@ -329,7 +329,7 @@ This includes documenting all failures.
 Current publication custom is biased towards positive results---this is why we had to spend so much time to discover that IBAMR gave correct results with Lagrangian points inside the body. 
 The negative results with points only on the boundary are not published. 
 We learned how important the computational mesh and the boundary conditions can be. 
-A reproducible computational paper should include the actual meshes used in the study (or a determministic mesh-generation code) and careful reporting of boundary conditions. 
+A reproducible computational paper should include the actual meshes used in the study (or a deterministic mesh-generation code) and careful reporting of boundary conditions. 
 This is rarely (if ever!) the case. 
 We learned that in addition to developing our code under version control, we need to carefully record the versions used for all dependencies. 
 In practice, such careful documentation is feasible only with a fully automated workflow: 
