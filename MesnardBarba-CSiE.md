@@ -267,6 +267,15 @@ We should continue the conversation about what it means to do reproducible resea
 When large simulations run on specific hardware with one-off compute allocations, they are unlikely to be reproduced. 
 In this case, it is even more important that the researchers advanced to the HPC application on a solid progression of fully reproducible research at the smaller scales. 
 
+Computational science and engineering makes ubiquitous use of linear algebra libraries like PETSc, Hypre, Trilinos and many others. 
+Rarely do we consider that using different libraries might produce different results. 
+But that is the case. 
+Sparse iterative solvers use various definitions of the _tolerance_ criterion to exit the iterations, for example. 
+The _relative tolerance_ could be with respect to the right-hand-side vector (e.g., PETSc) or with respect to the initial residual (e.g., NVIDIA AmgX).
+The very definition of _residual_ could be different. 
+Some libraries use a pre-conditioned residual and others use the original residual. 
+This means that even when we set the same value of the tolerance, different libraries may declare convergence differently!
+
 --
 
 > ### Supplementary materials
