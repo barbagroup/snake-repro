@@ -1,5 +1,7 @@
 #Reproducible research in computational fluid dynamics: it’s harder than you think
 
+**Olivier Mesnard, Lorena A. Barba**
+
 Our research group prides itself for having adopted Reproducible Research practices. 
 Barba made a public pledge titled *"Reproducibility PI Manifesto"* ^(1) (PI: Principal Investigator), which at the core is a promise to make all research materials and methods open access and discoverable: releasing code, data and analysis/visualization scripts.
 
