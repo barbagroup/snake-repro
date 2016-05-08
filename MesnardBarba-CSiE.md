@@ -219,10 +219,17 @@ In the case of unsteady fluid dynamics, the nonlinear nature of the equations co
 
 --
 
-> ### Definitions
-> The literature is rife with confused and sometimes contradictory meanings for reproducible research, reproducibility, replicability, repetition, etc.  
-> **Reproducibility**---  
-> **Replication**---
+> ### Definition of reproducible research
+> The literature is rife with confused and sometimes contradictory meanings for reproducible research, reproducibility, replicability, repetition, etc. 
+> It is thus worth clarifying what we mean by these terms and why we've chosen this meaning. 
+> The term "reproducible research" in reference to computational studies that can be reproduced by other scientists was introduced by goephysics professor Jon Claerbout in the 1990s. 
+> An early volume of CiSE published an article about the reproducible-research environment they created in his group at Stanford.^(6) 
+> Their goal was complete documentation of scientific computations, in such a way that a reader can reproduce all the results and figures in a paper using the author-provided computer programs and raw data. 
+> This ability requires open data and open-source software, and for this reason the _reproducibility_ movement is closely linked with the _open science_ movement. 
+> In following years, the term _replication_ was distinctly adopted to refer to an independent study, re-running experiments to generate new data that, when analyzed, leads to the same findings. 
+> We follow this convention, clarified more recently in an article in Science.^(7)  
+> **Reproducible research**--- Authors of a study provide their code and data, allowing readers to inspect and re-run the analysis to recreate the figures in the paper.  
+> **Replication**--- An independent study that generates new data, using similar or different methods, and analyzes it to arrive at the same findings as the original study.
 
 --
 
@@ -233,3 +240,5 @@ In the case of unsteady fluid dynamics, the nonlinear nature of the equations co
 3. Krishnan, Anush; J. Socha, John; P. Vlachos, Pavlos; Barba, L. A. (2013): Lift and drag coefficient versus angle of attack for a flying snake cross-section. figshare. <https://dx.doi.org/10.6084/m9.figshare.705883.v2>
 4. Taira, K., Colonius, T. (2007). The immersed boundary method: A projecion approach. Journal of Computational Physics, 225, 2118–2137.
 5. Bhalla, A. P. S., Bale, R., Griffith, B. E., Patankar, N. A. (2013). A unified mathematical framework and an adaptive numerical method for fluid–structure interaction with rigid, deforming, and elastic bodies. Journal of Computational Physics, 250, 446-476.
+6. Schwab, M., Karrenbach, N., Claerbout, J. (2000) Making scientific computations reproducible, Computing in Science and Engineering 2(6):61–67 <http://dx.doi.org/10.1109/5992.881708>
+7. Peng, R. (2011), Reproducible Research in Computational Science, Science 334(6060):1226–1227 <http://dx.doi.org/10.1126/science.1213847>
