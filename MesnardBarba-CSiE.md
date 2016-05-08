@@ -271,9 +271,7 @@ Computational science and engineering makes ubiquitous use of linear algebra lib
 Rarely do we consider that using different libraries might produce different results. 
 But that is the case. 
 Sparse iterative solvers use various definitions of the _tolerance_ criterion to exit the iterations, for example. 
-The _relative tolerance_ could be with respect to the right-hand-side vector (e.g., PETSc) or with respect to the initial residual (e.g., NVIDIA AmgX).
 The very definition of _residual_ could be different. 
-Some libraries use a pre-conditioned residual and others use the original residual. 
 This means that even when we set the same value of the tolerance, different libraries may declare convergence differently! 
 This poses a challenge to reproducibility, even if the application is not sensitive to algebraic error. 
 The situation is aggravated by parallel execution. 
