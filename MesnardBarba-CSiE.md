@@ -283,7 +283,10 @@ The origins of CFD in the Los Alamos Laboratory in the 1950s was secret research
 The 1970s saw the birth of commercial CFD, when university professors and their students founded companies funded under the US government's SBIR program. 
 It’s not unreasonable to speculate that the potential for commercial exploitation was a deterrent for open-source release of CFD codes for a long time. 
 It is only in the last 15 years or so that open-source CFD codes have become available. 
-But the CFD literature became entrenched in the habit of publishing results without making available the code that generated those results.
+But the CFD literature became entrenched in the habit of publishing results without making available the code that generated those results. 
+And now, we face the clash between the academic incentive system and the fact that reproducible research takes a substantial amount of time and effort. 
+This campaign to replicate our previous results taught us many lessons on how to improve our reproducibility practices, and we are committed to maintain this high standard. 
+We will continue to share our experiences.
 
 --
 
