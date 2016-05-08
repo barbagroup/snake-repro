@@ -274,7 +274,10 @@ Sparse iterative solvers use various definitions of the _tolerance_ criterion to
 The _relative tolerance_ could be with respect to the right-hand-side vector (e.g., PETSc) or with respect to the initial residual (e.g., NVIDIA AmgX).
 The very definition of _residual_ could be different. 
 Some libraries use a pre-conditioned residual and others use the original residual. 
-This means that even when we set the same value of the tolerance, different libraries may declare convergence differently!
+This means that even when we set the same value of the tolerance, different libraries may declare convergence differently! 
+This poses a challenge to reproducibility, even if the application is not sensitive to algebraic error. 
+The situation is aggravated by parallel execution. 
+Global operations on distributed vectors and matrices are subject to rounding errors that can accumulate to introduce uncertainty in the results. 
 
 --
 
