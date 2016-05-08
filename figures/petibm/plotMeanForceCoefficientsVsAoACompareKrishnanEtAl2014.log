@@ -1,0 +1,85 @@
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe1000AoA25_20150805
+	- description: None
+	- software: petibm
+[info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe1000AoA25_20150805/forces.txt ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe1000AoA30_20150807
+	- description: None
+	- software: petibm
+[info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe1000AoA30_20150807/forces.txt ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe1000AoA35_20150807
+	- description: None
+	- software: petibm
+[info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe1000AoA35_20150807/forces.txt ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe1000AoA40_20150807
+	- description: None
+	- software: petibm
+[info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe1000AoA40_20150807/forces.txt ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe2000AoA25_20150807
+	- description: None
+	- software: petibm
+[info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe2000AoA25_20150807/forces.txt ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe2000AoA30_20150807
+	- description: None
+	- software: petibm
+[info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe2000AoA30_20150807/forces.txt ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe2000AoA35_bugFixPoisson_20160202
+	- description: None
+	- software: petibm
+[info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe2000AoA35_bugFixPoisson_20160202/forces.txt ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe2000AoA40_20150807
+	- description: None
+	- software: petibm
+[info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe2000AoA40_20150807/forces.txt ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityBiCGStabPoissonBiCGStab/flyingSnake2dRe2000AoA35_20160426
+	- description: None
+	- software: petibm
+[info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityBiCGStabPoissonBiCGStab/flyingSnake2dRe2000AoA35_20160426/forces.txt ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA25
+	- description: None
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA25/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA30
+	- description: None
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA30/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA35
+	- description: None
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA35/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA40
+	- description: None
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA40/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA25
+	- description: None
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA25/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA30
+	- description: None
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA30/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA35
+	- description: None
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA35/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA40
+	- description: None
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA40/forces ... done

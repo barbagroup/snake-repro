@@ -1,0 +1,25 @@
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_cuIBM/production-cusp-0.4.0/flyingSnake2dRe2000AoA35_20160502
+	- description: cuIBM (current) - CUSP-0.4.0
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/simulations_cuIBM/production-cusp-0.4.0/flyingSnake2dRe2000AoA35_20160502/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe2000AoA35_20160502
+	- description: cuIBM (current) - CUSP-0.5.1
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe2000AoA35_20160502/forces ... done
+[info] registering simulation ...
+	- directory: /home/mesnardo/simulations_cuIBM/revision86-cusp-0.4.0/flyingSnake2dRe2000AoA35_20160502/numericalSolution
+	- description: cuIBM (old) - CUSP-0.4.0
+	- software: cuibm
+[info] reading forces from file /home/mesnardo/simulations_cuIBM/revision86-cusp-0.4.0/flyingSnake2dRe2000AoA35_20160502/numericalSolution/forces ... done
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 11 periods of the lift curve between 34.5792 and 62.9884 time-units.
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 11 periods of the lift curve between 34.5792 and 62.9888 time-units.
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 11 periods of the lift curve between 34.5792 and 62.988 time-units.
+                                <Cd>    <Cl>    <St>
+cuIBM (current) - CUSP-0.4.0  1.3050  2.1190  0.3872
+cuIBM (current) - CUSP-0.5.1  1.3049  2.1203  0.3872
+cuIBM (old) - CUSP-0.4.0      1.3050  2.1190  0.3872
