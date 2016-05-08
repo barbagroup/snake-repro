@@ -1,2 +1,5 @@
 # ignore Jupyter-Notebook checkpoints
 **/.ipynb_checkpoints
+
+# ignore html file generated from markdown
+MesnardBarba-CSiE.html
