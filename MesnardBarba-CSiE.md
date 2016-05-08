@@ -236,6 +236,23 @@ In the case of unsteady fluid dynamics, the nonlinear nature of the equations co
 
 --
 
+## Lessons learned
+
+Reproducibility and replication of studies are essential for the progress of science, and much of science today advances via computation. 
+We use computer simulations to create new knowledge. 
+How can we certify that this new knowledge is justified, that there is enough evidence to support it? 
+The truth is computational science and engineering lacks an accepted standard of evidence. 
+We label computational research *reproducible* when authors provide all the necessary data and the computer code to run the analysis again, re-creating the results. 
+But what data are necessary? 
+We found that open-source code and open data sets are a minimal requirement. 
+Exhaustive documentation during the process of computational research is key. 
+This includes documenting all failures. 
+Current publication custom is biased towards positive results---this is why we had to spend so much time to discover that IBAMR gave correct results with Lagrangian points inside the body. 
+The negative results with points on the boundary only are not published. 
+We learned how important the computational mesh and the boundary conditions can be. 
+A reproducible commputational paper should include the actual meshes used in the study (or a determministic mesh-generation code) and careful reporting of boundary conditions. 
+This is rarely (if ever!) the case. 
+
 ## References
 
 1. Barba, L. A. (2012), "Reproducibility PI Manifesto," figshare, <https://dx.doi.org/10.6084/m9.figshare.104539.v1>, ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), https://icerm.brown.edu/tw12-5-rcem/ 
