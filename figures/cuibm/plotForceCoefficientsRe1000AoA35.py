@@ -73,3 +73,6 @@ ax.legend(ncol=2, loc='upper right')
 pyplot.savefig('cuibm-cusp-0.5.1_forceCoefficientsRe1000AoA35.pdf',
                bbox_inches='tight',
                format='pdf')
+pyplot.savefig('cuibm-cusp-0.5.1_forceCoefficientsRe1000AoA35.png',
+               bbox_inches='tight',
+               format='png')

@@ -4,7 +4,7 @@
 	- software: petibm
 [info] reading forces from file /home/mesnardo/simulations_PetIBM/flyingSnake/2d/cuibmGrid/velocityCGPoissonBiCGStab/flyingSnake2dRe2000AoA35_bugFixPoisson_20160202/forces.txt ... done
 [info] registering simulation ...
-	- directory: /home/mesnardo/git/mesnardo/phdBook/projects/snakeReproducibility/petibm
+	- directory: /home/mesnardo/git/barbagroup/snake-repro/figures/petibm
 	- description: Krishnan et al. (2014)
 	- software: cuibm
 [info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA35/forces ... done

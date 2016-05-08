@@ -4,7 +4,7 @@
 	- software: openfoam
 [info] reading force-coefficients in /home/mesnardo/simulations_OpenFOAM/flyingSnake2d/snappyHexMesh/surfaceFeatureExtract/flyingSnake2dRe2000AoA30_20151103/postProcessing/forceCoeffs ...
 [info] registering simulation ...
-	- directory: /home/mesnardo/git/mesnardo/phdBook/projects/snakeReproducibility/openfoam
+	- directory: /home/mesnardo/git/barbagroup/snake-repro/figures/openfoam
 	- description: Krishnan et al. (2014)
 	- software: cuibm
 [info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA30/forces ... done

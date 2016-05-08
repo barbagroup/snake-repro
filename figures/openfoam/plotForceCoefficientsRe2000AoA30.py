@@ -75,3 +75,6 @@ ax.legend(ncol=2, loc='upper right')
 pyplot.savefig('openfoam_forceCoefficientsRe2000AoA30.pdf',
                bbox_inches='tight',
                format='pdf')
+pyplot.savefig('openfoam_forceCoefficientsRe2000AoA30.png',
+               bbox_inches='tight',
+               format='png')

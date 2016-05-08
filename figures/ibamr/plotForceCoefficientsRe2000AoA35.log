@@ -4,7 +4,7 @@
 	- software: ibamr
 [info] reading forces from /home/mesnardo/simulations_IBAMR/flyingSnake2d/discretizedBody/flyingSnake2dRe2000AoA35_20151115/dataIB/ib_Drag_force_struct_no_0 ... done
 [info] registering simulation ...
-	- directory: /home/mesnardo/git/mesnardo/phdBook/projects/snakeReproducibility/ibamr
+	- directory: /home/mesnardo/git/barbagroup/snake-repro/figures/ibamr
 	- description: Krishnan et al. (2014)
 	- software: cuibm
 [info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA35/forces ... done

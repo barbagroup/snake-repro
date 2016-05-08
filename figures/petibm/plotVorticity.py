@@ -1,10 +1,12 @@
 # file: plotVorticity.py
 # author: Olivier Mesnard (mesnardo@gwu.edu)
-# description: Plots the 2D vorticity fields 
-#              and cats png files into one pdf file.
+# description: Plots the 2D vorticity fields,
+#              copies each .png file here,
+#              and merges .png files into one .pdf page.
 
 
 import os
+import shutil
 
 from snake.petibm.simulation import PetIBMSimulation
 
@@ -35,7 +37,11 @@ for time_step in time_steps:
                                    'images',
                                    'vorticity_-1.00_-2.00_8.00_2.00',
                                    'vorticity{:0>7}.png'.format(time_step)))
-# create pdf
+  # copy .png file here
+  shutil.copy(source_paths[-1], 
+              'petibm-0.1.1_vorticity{}Re2000AoA35.png'.format(time_step))
+
+# create single .pdf page with pdfjam
 destination_path = os.path.join(os.getcwd(),
                                 'petibm-0.1.1_vorticityRe2000AoA35.pdf')
 os.system('pdfjam {} --nup 1x{} --outfile {}'.format(' '.join(source_paths),

@@ -1,9 +1,12 @@
 # file: plotVorticity.py
 # author: Olivier Mesnard (mesnardo@gwu.edu)
-# description: Plots the 2D vorticity field and converts png into pdf.
+# description: Plots the 2D vorticity field,
+#              copy .png file in same folder,
+#              and converts .png into one .pdf page.
 
 
 import os
+import shutil
 
 from snake.openfoam.simulation import OpenFOAMSimulation
 
@@ -26,5 +29,11 @@ images_directory = os.path.join(directory,
                                 'vorticity_-5.00_-8.00_10.00_2.00')
 file_name_source = 'vorticity052.00.png'
 file_name_destination = 'openfoam_vorticity52Re2000AoA35_gmshZeroGradient.pdf'
+# copy the .png file
+shutil.copy(os.path.join(images_directory,
+                         file_name_source), 
+            os.path.join(os.getcwd(), 
+                         file_name_destination.replace('.pdf', '.png')))
+# convert into .pdf file
 os.system('convert {} {}'.format(os.path.join(images_directory, file_name_source),
                                  os.path.join(os.getcwd(), file_name_destination)))

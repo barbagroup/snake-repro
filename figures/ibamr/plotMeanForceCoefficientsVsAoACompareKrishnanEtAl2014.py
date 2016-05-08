@@ -205,3 +205,6 @@ legend.get_title().set_fontsize('9')
 pyplot.savefig('ibamr_forceCoefficientsVsAoA.pdf',
                bbox_inches='tight',
                format='pdf')
+pyplot.savefig('ibamr_forceCoefficientsVsAoA.png',
+               bbox_inches='tight',
+               format='png')

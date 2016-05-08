@@ -190,3 +190,6 @@ legend.get_title().set_fontsize('9')
 pyplot.savefig('petibm-0.1.1_forceCoefficientsVsAoA.pdf',
                bbox_inches='tight',
                format='pdf')
+pyplot.savefig('petibm-0.1.1_forceCoefficientsVsAoA.png',
+               bbox_inches='tight',
+               format='png')

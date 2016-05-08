@@ -163,3 +163,6 @@ legend.get_title().set_fontsize('9')
 pyplot.savefig('openfoam_forceCoefficientsVsAoA.pdf',
                bbox_inches='tight',
                format='pdf')
+pyplot.savefig('openfoam_forceCoefficientsVsAoA.png',
+               bbox_inches='tight',
+               format='png')

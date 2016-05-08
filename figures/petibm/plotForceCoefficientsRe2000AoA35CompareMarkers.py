@@ -81,3 +81,6 @@ ax.legend(ncol=2, loc='upper right')
 pyplot.savefig('petibm-0.1.1_forceCoefficientsRe2000AoA35CompareMarkers.pdf',
                bbox_inches='tight',
                format='pdf')
+pyplot.savefig('petibm-0.1.1_forceCoefficientsRe2000AoA35CompareMarkers.png',
+               bbox_inches='tight',
+               format='png')

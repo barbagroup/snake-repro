@@ -75,3 +75,6 @@ ax.legend(ncol=2, loc='upper right')
 pyplot.savefig('ibamr_forceCoefficientsRe2000AoA35.pdf',
                bbox_inches='tight',
                format='pdf')
+pyplot.savefig('ibamr_forceCoefficientsRe2000AoA35.png',
+               bbox_inches='tight',
+               format='png')
