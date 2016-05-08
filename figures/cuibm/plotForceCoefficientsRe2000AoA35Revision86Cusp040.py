@@ -12,7 +12,7 @@ from matplotlib import pyplot
 from snake.cuibm.simulation import CuIBMSimulation
 
 
-simulation = CuIBMSimulation(description='cuIBM (old version) - cusp-0.4.0',
+simulation = CuIBMSimulation(description='cuIBM (old) - CUSP-0.4.0',
                              directory=os.path.join(os.environ['HOME'],
                                                     'simulations_cuIBM',
                                                     'revision86-cusp-0.4.0',
@@ -47,7 +47,7 @@ ax.grid(True, zorder=0)
 ax.set_xlabel('non-dimensional time-unit')
 ax.set_ylabel('force coefficients')
 ax.plot(simulation.forces[0].times, 2.0*simulation.forces[0].values,
-        label='$C_d$ - cuIBM (old version) - cusp-0.4.0',
+        label='$C_d$ - old - CUSP-0.4.0',
         color='#377eb8',
         linestyle='-',
         linewidth=2,
@@ -59,7 +59,7 @@ ax.plot(krishnan.forces[0].times, 2.0*krishnan.forces[0].values,
         linewidth=1,
         zorder=11)
 ax.plot(simulation.forces[1].times, 2.0*simulation.forces[1].values,
-        label='$C_l$ - cuIBM (old version) - cusp-0.4.0',
+        label='$C_l$ - old - CUSP-0.4.0',
         color='#ff7f00',
         linewidth=2,
         linestyle='-',
@@ -70,8 +70,8 @@ ax.plot(krishnan.forces[1].times, 2.0*krishnan.forces[1].values,
         linestyle=':',
         linewidth=2,
         zorder=11)
-ax.axis([40.0, 80.0, 0.75, 4.0])
-ax.legend(ncol=1, loc='upper right')
+ax.axis([40.0, 80.0, 0.75, 3.5])
+ax.legend(ncol=2, loc='upper right')
 pyplot.savefig('cuibm-revision86-cusp-0.4.0_forceCoefficientsRe2000AoA35.pdf',
                bbox_inches='tight',
                format='pdf')

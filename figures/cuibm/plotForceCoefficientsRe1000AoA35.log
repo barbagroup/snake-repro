@@ -1,10 +1,10 @@
 [info] registering simulation ...
 	- directory: /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe1000AoA35_20160408
-	- description: cuIBM - cusp-0.5.1
+	- description: cuIBM (current) - CUSP-0.5.1
 	- software: cuibm
 [info] reading forces from file /home/mesnardo/simulations_cuIBM/production-cusp-0.5.1/flyingSnake2dRe1000AoA35_20160408/forces ... done
 [info] registering simulation ...
-	- directory: /home/mesnardo/git/mesnardo/phdBook/projects/snakeReproducibility/cuibm
+	- directory: /home/mesnardo/git/barbagroup/snake-repro/figures/cuibm
 	- description: Krishnan et al. (2014)
 	- software: cuibm
 [info] reading forces from file /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA35/forces ... done
@@ -12,6 +12,6 @@
 [info] Strouhal number is averaged over the 10 periods of the lift curve between 34.3088 and 62.3364 time-units.
 [info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
 [info] Strouhal number is averaged over the 10 periods of the lift curve between 34.154 and 62.0284 time-units.
-                          <Cd>    <Cl>    <St>
-cuIBM - cusp-0.5.1      1.2101  1.8738  0.3568
-Krishnan et al. (2014)  1.2086  1.8759  0.3588
+                                <Cd>    <Cl>    <St>
+cuIBM (current) - CUSP-0.5.1  1.2101  1.8738  0.3568
+Krishnan et al. (2014)        1.2086  1.8759  0.3588

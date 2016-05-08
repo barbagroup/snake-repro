@@ -13,7 +13,7 @@ from matplotlib import pyplot
 from snake.cuibm.simulation import CuIBMSimulation
 
 
-simulation = CuIBMSimulation(description='cuIBM (current) - cusp-0.4.0',
+simulation = CuIBMSimulation(description='cuIBM (current) - CUSP-0.4.0',
                              directory=os.path.join(os.environ['HOME'],
                                                     'simulations_cuIBM',
                                                     'production-cusp-0.4.0',
@@ -22,7 +22,7 @@ simulation.read_forces()
 simulation.get_mean_forces(limits=[32.0, 64.0])
 simulation.get_strouhal(limits=[32.0, 64.0], order=200)
 
-other = CuIBMSimulation(description='cuIBM (current) - cusp-0.5.1',
+other = CuIBMSimulation(description='cuIBM (current) - CUSP-0.5.1',
                         directory=os.path.join(os.environ['HOME'],
                                                'simulations_cuIBM',
                                                'production-cusp-0.5.1',
@@ -31,7 +31,7 @@ other.read_forces()
 other.get_mean_forces(limits=[32.0, 64.0])
 other.get_strouhal(limits=[32.0, 64.0], order=200)
 
-revision86 = CuIBMSimulation(description='cuIBM (old) - cusp-0.4.0',
+revision86 = CuIBMSimulation(description='cuIBM (old) - CUSP-0.4.0',
                              directory=os.path.join(os.environ['HOME'],
                                                     'simulations_cuIBM',
                                                     'revision86-cusp-0.4.0',
@@ -63,37 +63,37 @@ ax.grid(True, zorder=0)
 ax.set_xlabel('non-dimensional time-unit')
 ax.set_ylabel('force coefficients')
 ax.plot(simulation.forces[0].times, 2.0*simulation.forces[0].values,
-        label='$C_d$ - current - cusp-0.4.0',
+        label='$C_d$ - current - CUSP-0.4.0',
         color='#377eb8',
         linestyle='-',
         linewidth=2,
         zorder=10)
 ax.plot(other.forces[0].times, 2.0*other.forces[0].values,
-        label='$C_d$ - current - cusp-0.5.1',
+        label='$C_d$ - current - CUSP-0.5.1',
         color='green',
         linestyle='-',
         linewidth=1,
         zorder=11)
 ax.plot(revision86.forces[0].times, 2.0*revision86.forces[0].values,
-        label='$C_d$ - old - cusp-0.5.1',
+        label='$C_d$ - old - CUSP-0.5.1',
         color='#111111',
         linestyle='-',
         linewidth=1,
         zorder=12)
 ax.plot(simulation.forces[1].times, 2.0*simulation.forces[1].values,
-        label='$C_l$ - current - cusp-0.4.0',
+        label='$C_l$ - current - CUSP-0.4.0',
         color='#ff7f00',
         linewidth=2,
         linestyle='-',
         zorder=10)
 ax.plot(other.forces[1].times, 2.0*other.forces[1].values,
-        label='$C_l$ - current - cusp-0.5.1',
+        label='$C_l$ - current - CUSP-0.5.1',
         color='red',
         linestyle='-',
         linewidth=1,
         zorder=11)
 ax.plot(revision86.forces[1].times, 2.0*revision86.forces[1].values,
-        label='$C_l$ - old - cusp-0.4.0',
+        label='$C_l$ - old - CUSP-0.4.0',
         color='#111111',
         linestyle=':',
         linewidth=2,

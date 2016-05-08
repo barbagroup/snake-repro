@@ -12,7 +12,7 @@ from matplotlib import pyplot
 from snake.cuibm.simulation import CuIBMSimulation
 
 
-simulation = CuIBMSimulation(description='cuIBM - cusp-0.5.1',
+simulation = CuIBMSimulation(description='cuIBM (current) - cusp-0.5.1',
                              directory=os.path.join(os.environ['HOME'],
                                                     'simulations_cuIBM',
                                                     'production-cusp-0.5.1',
@@ -46,7 +46,7 @@ ax.grid(True, zorder=0)
 ax.set_xlabel('non-dimensional time-unit')
 ax.set_ylabel('force coefficients')
 ax.plot(simulation.forces[0].times, 2.0*simulation.forces[0].values,
-        label='$C_d$ - current - cusp-0.5.1',
+        label='$C_d$ - current - CUSP-0.5.1',
         color='#377eb8',
         linestyle='-',
         linewidth=2,
@@ -58,7 +58,7 @@ ax.plot(krishnan.forces[0].times, 2.0*krishnan.forces[0].values,
         linewidth=1,
         zorder=11)
 ax.plot(simulation.forces[1].times, 2.0*simulation.forces[1].values,
-        label='$C_l$ - current - cusp-0.5.1',
+        label='$C_l$ - current - CUSP-0.5.1',
         color='#ff7f00',
         linewidth=2,
         linestyle='-',
