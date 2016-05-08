@@ -255,7 +255,7 @@ This is rarely (if ever!) the case.
 We learned that in addition to developing our code under version control, we need to carefully record the versions used for all dependencies. 
 In practice, such careful documentation is feasible only with a fully automated workflow: 
 launching simulations via running scripts, storing command-line arguments for every run, capturing complete environment settings. 
-Post-processing and visualization ideally should also be scripted, avoiding software GUIs. 
+Post-processing and visualization ideally should also be scripted, avoiding software GUIs for manipulation of images. 
 
 We learned that highly unsteady fluid dynamics is a particularly tough application for reproducibility. 
 The Navier-Stokes equations are nonlinear and can exhibit chaotic behavior under certain conditions (e.g., geometry, Reynolds number, external forcing). 
