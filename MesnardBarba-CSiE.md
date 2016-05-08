@@ -267,6 +267,18 @@ We should continue the conversation about what it means to do reproducible resea
 When large simulations run on specific hardware with one-off compute allocations, they are unlikely to be reproduced. 
 In this case, it is even more important that the researchers advanced to the HPC application on a solid progression of fully reproducible research at the smaller scales. 
 
+--
+
+> ### Supplementary materials
+> The GitHub repository for this paper contains the following supplementary materials:
+> 
+> * all input files to generate the runs reported in the paper
+> * summary of the mesh details in a separate markdown file
+> * additional Jupyter notebooks with simulation results
+> 
+> 
+
+--
 
 ## References
 
