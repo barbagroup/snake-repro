@@ -248,10 +248,25 @@ We found that open-source code and open data sets are a minimal requirement.
 Exhaustive documentation during the process of computational research is key. 
 This includes documenting all failures. 
 Current publication custom is biased towards positive results---this is why we had to spend so much time to discover that IBAMR gave correct results with Lagrangian points inside the body. 
-The negative results with points on the boundary only are not published. 
+The negative results with points only on the boundary are not published. 
 We learned how important the computational mesh and the boundary conditions can be. 
-A reproducible commputational paper should include the actual meshes used in the study (or a determministic mesh-generation code) and careful reporting of boundary conditions. 
+A reproducible computational paper should include the actual meshes used in the study (or a determministic mesh-generation code) and careful reporting of boundary conditions. 
 This is rarely (if ever!) the case. 
+We learned that in addition to developing our code under version control, we need to carefully record the versions used for all dependencies. 
+In practice, such careful documentation is feasible only with a fully automated workflow: 
+launching simulations via running scripts, storing command-line arguments for every run, capturing complete environment settings. 
+Post-processing and visualization ideally should also be scripted, avoiding software GUIs. 
+
+We learned that highly unsteady fluid dynamics is a particularly tough application for reproducibility. 
+The Navier-Stokes equations are nonlinear and can exhibit chaotic behavior under certain conditions (e.g., geometry, Reynolds number, external forcing). 
+Some flow situations are subject to instabilities, like vortex merging in two dimensions and other vortex instabilities in 3D. 
+In any application that has sufficient complexity, we should repeat simulations checking how robust they are to small variations. 
+And report negative results! 
+Understandably, long 3D simulations that take huge computational resources may not be feasible to repeat. 
+We should continue the conversation about what it means to do reproducible research in high-performance computing (HPC) scenarios. 
+When large simulations run on specific hardware with one-off compute allocations, they are unlikely to be reproduced. 
+In this case, it is even more important that the researchers advanced to the HPC application on a solid progression of fully reproducible research at the smaller scales. 
+
 
 ## References
 
