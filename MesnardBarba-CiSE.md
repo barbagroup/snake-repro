@@ -124,7 +124,8 @@ IBAMR implements a subclass of the immersed-boundary method called the direct-fo
 Our cuIBM code uses a variant called the immersed-boundary projection method.^(4) 
 Despite the variations, the essence is the same, and it is reasonable to assume they would work similarly.
 
-We already know that boundary conditions at the outlet of the computational domain can be problematic. This is no different with immersed boundary methods. 
+We already know that boundary conditions at the outlet of the computational domain can be problematic. 
+This is not different with immersed boundary methods. 
 Our first attempt with IBAMR used a zero-gradient velocity boundary condition at the outlet. 
 This resulted in some blockage effect when the wake vortices reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain (Figure 5). 
 Of course, this is unphysical and the result unacceptable. 
@@ -203,7 +204,7 @@ Even a small bug (or two).
 We found, for example, that the first set of runs with PetIBM created a slightly different problem set-up, compared with our previous study, where the body was shifted by less than one grid-cell width. 
 Rotating the body to achieve different angles of attack was made around a different center, in each case (one used grid origin at 0,0 while the other used the body center of mass). 
 This tiny difference does result in a different average lift coefficient (bottom graph in Figure 9)! 
-The time signal of lift coefficient shows that the drop we were seing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
+The time signal of lift coefficient shows that the drop we were seeing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
 Again, this range for computing the average is a choice we made. 
 It covers about ten vortex shedding cycles, which seems enough to calculate the average if the flow is periodic.
 What is causing the drop of lift? 
