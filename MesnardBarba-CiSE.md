@@ -56,8 +56,7 @@ One popular mesh generator is called GMSH: it produces triangles that are as fin
 Already, we encounter a problem: how to create a mesh of triangles that gives a comparable resolution to that obtained with our original structured Cartesian mesh? 
 After dedicated effort (see separate section on mesh generation with OpenFOAM [or supplementary material?]), we produced the best mesh we could that matches our previous study in the finest cell width near the body. 
 But when using this mesh to solve the fluid flow around the snake geometry, we got spurious specks of high vorticity in places where there shouldn’t be any (Figure 1). 
-The simulations did not blow up, but these unphysical vortices appeared for any flow Reynolds number or body angle of attack we tried.
-This is despite the fact that the mesh passed the quality checks of OpenFOAM. 
+Despite the fact that the mesh passed the quality checks of OpenFOAM, these unphysical vortices appeared for any flow Reynolds number or body angle of attack we tried—although they were not responsible for the simulations to blow up.
 Finally, we gave up with the (popular) GMSH and tried another mesh generator: SnappyHexMesh. 
 Success! 
 No unphysical patches in the vorticity field this time. 
@@ -93,7 +92,7 @@ We created a triangular mesh (about 700k triangles) with the free software GMSH.
 ![Figure 2b](./figures/openfoam/openfoam_pressure53Re2000AoA35_gmshZeroGradient.png)
 
 Figure 2:
-Pressure field after 52 (top) and 53 (bottom) time-units of flow-simulation with IcoFOAM for snake section with angle-of-attack 35° and Reynolds number 2000.
+Pressure field after 52 (top) and 53 (bottom) time-units of flow-simulation with IcoFOAM for snake section with angle-of-attack 35° and Reynolds number 2000. The simulation crashed after about 62 time-units because of the back pressure at the outlet boundary.
 
 ![Figure 3](./figures/openfoam/openfoam_forceCoefficientsVsAoA.png)
 
