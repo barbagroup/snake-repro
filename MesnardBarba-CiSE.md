@@ -49,7 +49,7 @@ This is the story of what happened next: three years of dedicated work that enco
 
 Generating good discretization meshes is probably the most vexing chore of computational fluid dynamics. 
 And stipulating boundary conditions on the edge of a discretization mesh takes some nerve, too. 
-Our first attempts at a full replication study of the 2D snake aerodynamics with OpenFOAM showed us just how vexing and unnerving this can be.
+Our first attempts at a full replication study of the 2D snake aerodynamics with IcoFOAM, the incompressible laminar Navier-Stokes solver of OpenFOAM, showed us just how vexing and unnerving this can be.
 
 OpenFOAM can take various types of discretization mesh as input. 
 One popular mesh generator is called GMSH: it produces triangles that are as fine as you want them near the body, while getting coarser as the mesh points are farther away. 
@@ -67,7 +67,7 @@ We used a zero-gradient condition for the pressure at the outlet, which we found
 After months, one typing mistake when launching a run from the command line made OpenFOAM print out the set of available boundary conditions, and we found that an _advective_ condition was available that could solve our problem (all this time, we were looking for a _convective_ condition, which is just another name for the same thing). 
 Finally, simulations with OpenFOAM were looking correct—and happily, the main feature of the aerodynamics was replicated: an enhanced lift coefficient at 35º angle-of-attack (Figure 3). 
 But not all is perfect. 
-The time signatures of lift and drag coefficient do show differences between our OpenFOAM calculation and the original published ones (Figure 4). 
+The time signatures of lift and drag coefficient do show differences between our IcoFOAM calculation and the original published ones (Figure 4). 
 The key finding uses an _average_ lift coefficient, calculated with data in a time range that is reasonable but arbitrary. 
 Although the average force coefficients match (within <3%) our previous results, the time series shows a phase difference. 
 Are these the same solutions? 
@@ -75,7 +75,7 @@ Is it acceptable as a replication study?
 We think yes, but this is a judgement call.
 
 **Postmortem**. 
-OpenFOAM solves the fluid equations using a finite-volume method in an unstructured grid, while our published study used an immersed boundary method in a stretched Cartesian grid. 
+IcoFOAM solves the fluid equations using a finite-volume method in an unstructured grid, while our published study used an immersed boundary method in a stretched Cartesian grid. 
 Comparing results obtained under such different conditions is a delicate operation. 
 We made our best attempt at creating a fluid mesh for OpenFOAM that was of similar resolution near the body as we had used before. 
 But unstructured grids are complex geometrical objects. 
