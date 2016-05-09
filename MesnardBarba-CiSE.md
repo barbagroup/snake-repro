@@ -22,7 +22,7 @@ Beyond reasons that have to do with inventing new methods, it’s a good questio
 To explore using an existing CFD solver for future research, we decided to first complete a full replication of our previous results with these alternatives. 
 Our commitment to open-source software for research is unwavering, which rules out commercial packages. 
 Perhaps the most well known open-source fluid-flow software is OpenFOAM, so we set out to replicate our published results with this code. 
-A more specialist open-source code is IBAMR, a project born at New York University that has continued development for half a decade. 
+A more specialist open-source code is IBAMR, a project born at New York University that has continued development for a decade. 
 And finally, our own group developed a new code, implementing the same solution method we had before, but providing parallel computing via the renowned PETSc library. 
 We embarked on a full replication study of our previous work, using three new fluid-flow codes.
 
