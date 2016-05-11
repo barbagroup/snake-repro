@@ -6,9 +6,9 @@ Our research group prides itself for having adopted Reproducible Research practi
 Barba made a public pledge titled *"Reproducibility PI Manifesto"* ^(1) (PI: Principal Investigator), which at the core is a promise to make all research materials and methods open access and discoverable: releasing code, data and analysis/visualization scripts.
 
 In 2014, we published a study on Physics of Fluids titled *"Lift and wakes of flying snakes."* ^(2) 
-It is a study that uses our in-house code for solving the equations of fluid motion in two dimensions (2D), with a solution approach called “immersed boundary method.” 
+It is a study that uses our in-house code for solving the equations of fluid motion in two dimensions (2D), with a solution approach called the “immersed boundary method.” 
 The key of such a method for solving the equations is that it exchanges complexity in the mesh generation step for complexity in the application of boundary conditions. 
-It makes possible using a simple discretization mesh (structured Cartesian), but at the cost of an elaborate process that interpolates values of fluid velocity at the boundary points to ensure the no-slip boundary condition (that fluid sticks to a wall). 
+It makes it possible to use a simple discretization mesh (structured Cartesian), but at the cost of an elaborate process that interpolates values of fluid velocity at the boundary points to ensure the no-slip boundary condition (that fluid sticks to a wall). 
 The main finding of our study on wakes of flying snakes was that the 2D section with anatomically correct geometry for the snake’s body experiences lift enhancement at a given angle of attack.
 A previous experimental study had already shown that the lift coefficient of a snake cross section in a wind tunnel gets an extra oomph of lift at 35 degrees angle-of-attack. 
 Our simulations showed the same feature in the plot of lift coefficient.^(3) 
@@ -85,26 +85,26 @@ The complications of building a _good quality_ mesh is one of the reasons some p
 ![Figure 1](./figures/openfoam/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.png)
 
 Figure 1: 
-Vorticity field after 52 time-units of flow-simulation with IcoFOAM for a snake's section with angle-of-attack 35° and Reynolds number 2000.
+Vorticity field after 52 time-units of flow-simulation with IcoFOAM for a snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
 We created a triangular mesh (about 700k triangles) with the free software GMSH.
 
 ![Figure 2a](./figures/openfoam/openfoam_pressure52Re2000AoA35_gmshZeroGradient.png)
 ![Figure 2b](./figures/openfoam/openfoam_pressure53Re2000AoA35_gmshZeroGradient.png)
 
 Figure 2:
-Pressure field after 52 (top) and 53 (bottom) time-units of flow-simulation with IcoFOAM for snake section with angle-of-attack 35° and Reynolds number 2000. The simulation crashed after about 62 time-units because of the back pressure at the outlet boundary.
+Pressure field after 52 (top) and 53 (bottom) time-units of flow-simulation with IcoFOAM for snake section with angle-of-attack 35 degrees and Reynolds number 2000. The simulation crashed after about 62 time-units because of the back pressure at the outlet boundary.
 
 ![Figure 3](./figures/openfoam/openfoam_forceCoefficientsVsAoA.png)
 
 Figure 3:
-Time-averaged drag (top) lift (bottom) coefficients as function of the snake's angle-of-attack for Reynolds numbers 1000 and 2000.
+Time-averaged drag (top) and lift (bottom) coefficients as function of the snake's angle-of-attack for Reynolds numbers 1000 and 2000.
 We averaged all IcoFOAM force coefficients between 32 and 64 time-units of flow-simulation as we have done in our previous study.
 
 ![Figure 4a](./figures/openfoam/openfoam_forceCoefficientsRe2000AoA30.png)
 ![Figure 4b](./figures/openfoam/openfoam_forceCoefficientsRe2000AoA35.png)
 
 Figure 4:
-Instantaneous force coefficients on the snake's section with angle-of-attack 30° (top) and 35° (bottom) at Reynolds number 2000.
+Instantaneous force coefficients on the snake's section with angle-of-attack 30 degrees (top) and 35 degrees (bottom) at Reynolds number 2000.
 We compare the IcoFOAM results with the cuIBM results from our previous study.
 We created a 3.4 million cells (mostly hexahedra) with SnappyHexMesh, one of the OpenFOAM mesh utilities.
 
@@ -127,13 +127,13 @@ Despite the variations, the essence is the same, and it is reasonable to assume 
 We already know that boundary conditions at the outlet of the computational domain can be problematic. 
 This is no different with immersed boundary methods. 
 Our first attempt with IBAMR used a zero-gradient velocity boundary condition at the outlet. 
-This resulted in some blockage effect when the wake vortices reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain (Figure 5). 
+This resulted in a spurious blockage of the wake vortices when they reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain (Figure 5). 
 Of course, this is unphysical and the result unacceptable. 
 
 After a long search in the literature and in the documentation, it was through a conversation with the main developers on the online forum that we discovered the solution: using a "stabilized outlet" boundary condition, which adds a forcing to push the vortices out.
 (IBAMR does not provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study (Figure 6). 
-Another deep dive in the literature led us to notice that a benchmark example described in a paper describing extensions to IBAMR^(5) was set up in an unexpected way: 
+Another deep dive in the literature led us to notice that a benchmark example defined in a paper describing extensions to IBAMR^(5) was set up in an unexpected way: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
 Other papers using immersed boundary methods apply the constraint only on boundary points.
@@ -155,7 +155,7 @@ If the code is not well documented and the original authors not responsive to qu
 ![Figure 5](./figures/ibamr/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet.png)
 
 Figure 5:
-Vorticity field after about 61 time-units of flow-simulation with IBAMR for a snake's section with angle-of-attack 35° and Reynolds number 2000.
+Vorticity field after about 61 time-units of flow-simulation with IBAMR for a snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
 We used a zero-gradient condition at the outlet for both the velocity and pressure quantities.
 
 ![Figure 6](./figures/ibamr/ibamr_forceCoefficientsVsAoA.png)
@@ -168,7 +168,7 @@ We averaged each force signal between 32 and 64 time-units of flow-simulation wi
 ![Figure 7b](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png)
 
 Figure 7:
-Instantaneous force coefficients at Reynolds number 2000 for the snake's section at angle-of-attack 30° (top) and 35° (bottom).
+Instantaneous force coefficients at Reynolds number 2000 for the snake's section at angle-of-attack 30 (top) and 35 (bottom) degrees.
 Here, the no-slip condition is enforced inside the section.
 We compare the IBAMR results with cuIBM ones from our past study.
 
@@ -182,7 +182,7 @@ Not so fast!
 We rely on external libraries to solve sparse linear systems of equations: _Cusp_ for GPU devices and PETSc for distributed CPU systems. 
 It turns out, the iterative solvers may have differences that affect the final solution.
 
-When repeating our previous simulations of the aerodynamics of a snake cross-section with PetIBM, the solutions do not always match those with cuIBM. 
+When repeating our previous simulations of the aerodynamics of a snake cross-section with PetIBM, the solutions do not always match those computed with cuIBM. 
 At a Reynolds number of 1000, both the time-averaged lift and drag coefficients match. 
 But at Reynolds equal to 2000, average lift and drag match up to 30 degrees angle-of-attack, but not at 35 degrees. 
 That means that we don't see lift enhancement (Figure 8) and the main finding of our previous study is not fully replicated. 
@@ -193,22 +193,22 @@ Leaving hardware aside for now, let's focus on the iterative solvers.
 Both _Cusp_ and PETSc use the same convergence criterion. 
 This is not always the case, and needs to be checked! 
 We're also not using the same iterative solver with each library. 
-The cuIBM runs (with _Cusp_) used an algebraic multigrid preconditioner and conjugate gradient (CG) solver for the pressure modified-Poisson equation. 
-With PETSc, the CG solver crashed because of an indefinite preconditioner (having both positive and negative eigenvalues), and we had to select a different method: we used a bi-CG stabilized algorithm (with still an algebraic multigrid preconditioner). 
+The cuIBM runs (with _Cusp_) used an algebraic multigrid preconditioner and conjugate gradient (CG) solver for the modified-Poisson equation. 
+With PETSc, the CG solver crashed because of an indefinite preconditioner (having both positive and negative eigenvalues), and we had to select a different method: we used a bi-CG stabilized algorithm (while still using an algebraic multigrid preconditioner). 
 
 Could this difference in linear solvers affect our unsteady fluid-flow solution? 
 The solutions with both codes match at lower angles of attack (and lower Reynolds numbers), so what is going on? 
-We checked everything two, three times. 
+We checked everything multiple times. 
 In the process, we did find some small discrepancies. 
 Even a small bug (or two).
 We found, for example, that the first set of runs with PetIBM created a slightly different problem set-up, compared with our previous study, where the body was shifted by less than one grid-cell width. 
-Rotating the body to achieve different angles of attack was made around a different center, in each case (one used grid origin at 0,0 while the other used the body center of mass). 
+Rotating the body to achieve different angles of attack was made around a different center, in each case (one used the grid origin at 0,0 while the other used the body center of mass). 
 This tiny difference does result in a different average lift coefficient (bottom graph in Figure 9)! 
 The time signal of lift coefficient shows that the drop we were seeing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
 Again, this range for computing the average is a choice we made. 
 It covers about ten vortex shedding cycles, which seems enough to calculate the average if the flow is periodic.
-What is causing the drop of lift? 
-Visualizations of the wake vortices (Figure 10) show that a vortex-merging event occurred in the middle of the wake, changing the near-wake pattern. 
+What is causing the drop in lift? 
+Visualizations of the wake vortices (Figure 10) show that a vortex-merging event occurs in the middle of the wake, changing the near-wake pattern. 
 The previously aligned positive and negative vortices are replaced by a wider wake with a single clockwise vortex on the top side and a vortex dipole on the bottom part. 
 With the change in wake pattern comes a drop in the lift force. 
 
@@ -216,23 +216,23 @@ With the change in wake pattern comes a drop in the lift force.
 Although PetIBM implements the same immersed-boundary method and was developed by the same research group, we were not able to fully replicate the previous findings. 
 The aerodynamic lift on a snake section at 35 degrees angle-of-attack is a consequence of the near-wake vortices providing extra suction on the upper side of the body. 
 When a vortex merger event changes the wake pattern, lift drops. 
-Vortex merging is a fundamentally two-dimensional instability, so we may expect that this problem won't trouble us in more realistic 3D simulations. 
+Vortex merging is a fundamentally two-dimensional instability, so we expect that this problem won't trouble us in more realistic 3D simulations. 
 But it is surprising that small changes---within the bounds of truncation error, roundoff error and algebraic errors---can trigger this instability, changing the flow appreciably. 
 Even when the only difference between two equivalent simulations is the linear algebra library used, there can be challenges to reproducibility.
 
 ![Figure 8](./figures/petibm/petibm-0.1.1_forceCoefficientsVsAoA.png)
 
 Figure 8:
-Time-averaged drag (top) and lift (bottom) coefficients as function of the snake's angle-of-attack and for Reynolds numbers 1000 and 2000 using the same Eulerian mesh than the one in our past cuIBM simulations.
+Time-averaged drag (top) and lift (bottom) coefficients as function of the snake's angle-of-attack and for Reynolds numbers 1000 and 2000 using the same Eulerian mesh as in our past cuIBM simulations.
 We show PetIBM results obtained when the immersed-boundary is rotated around: (1) its center of mass (green and orange symbols) and (2) the reference origin (solo red marker).
 
 ![Figure 9a](./figures/petibm/petibm-0.1.1_forceCoefficientsRe2000AoA35.png)
 ![Figure 9b](./figures/petibm/petibm-0.1.1_forceCoefficientsRe2000AoA35CompareMarkers.png)
 
 Figure 9: 
-Instantaneous force coefficients for the snake's section with angle-of-attack 35° and Reynolds number 2000.
+Instantaneous force coefficients for the snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
 The figure on top compares the PetIBM results with those reported in our previous study.
-The second figure compares results with the immersed-boundary being rotated around its center of mass (slightly shifted than in our previous study) and around the reference origin (identical set of markers than in our previous study).
+The second figure compares results with the immersed-boundary being rotated around its center of mass (slightly shifted compared to our previous study) and around the reference origin (identical set of markers to our previous study).
 
 ![Figure 10a](./figures/petibm/petibm-0.1.1_vorticity47500Re2000AoA35.png)
 ![Figure 10b](./figures/petibm/petibm-0.1.1_vorticity130000Re2000AoA35.png)
@@ -240,7 +240,7 @@ The second figure compares results with the immersed-boundary being rotated arou
 ![Figure 10d](./figures/petibm/petibm-0.1.1_vorticity160000Re2000AoA35.png)
 
 Figure 10:
-Vorticity field after 19, 52, 53, and 64 time-units of flow-simulation with PetIBM for a snake's section at angle-of-attack 35° and Reynolds number 2000.
+Vorticity field after 19, 52, 53, and 64 time-units of flow-simulation with PetIBM for a snake's section at angle-of-attack 35 degrees and Reynolds number 2000.
 The vortex-merging event is responsible for the change in the wake signature and the drop in the mean lift coefficient.
 
 ### Story 4: Different versions of your code, the external libraries or even compilers may challenge reproducibility
@@ -254,12 +254,12 @@ This final story is about what happened when we went back to our _original_ code
 As we mentioned in the opening of this article, we adopted a set of practices years ago to make our research reproducible. 
 The study published as "Lift and wakes of flying snakes" was completed under the guidance of the "Reproducibility PI Manifesto," 
 which includes: 
-(1) the code was developed under version control; 
-(2) we completed validation and verification, publishing the report on Figshare; 
-(3) the data and figures for the main results of the paper are open; 
-(4) the pre-print is available on arXiv; 
-(5) the code was released under MIT License; 
-(6) we included a Reproducibility statement in the paper. 
+(1) code developed under version control; 
+(2) completed validation and verification, report published on Figshare; 
+(3) data and figures for the main results of the paper are open; 
+(4) pre-print is available on arXiv; 
+(5) code was released under MIT License; 
+(6) a Reproducibility statement included in the paper. 
 Of course we expect to be able to reproduce our own results!
 
 The first hurdle we faced is that, three years after we completed our previous study, we have updated our lab computers: 
@@ -280,7 +280,7 @@ Yet, the flow solution was affected by changing the version of a dependent libra
 (The revision history of _Cusp_ says that they refactored the smooth-aggregation solver between the two versions we are using.) 
 The hardware was also different (a K20 GPU versus a C2070 in our older study), and the operating system, and the compiler. 
 In an iterative linear solver, any of these things could be related to lack of floating-point reproducibility. 
-And in unsteady fluid dynamics, small floating-point differences can add over thousands of time steps to eventually trigger a flow instability (like vortex merging).
+And in unsteady fluid dynamics, small floating-point differences can add up over thousands of time steps to eventually trigger a flow instability (like vortex merging).
 
 **Postmortem**. 
 Making research codes open-source is not enough for reproducibility: we must be meticulous in documenting every dependency and the versions used. 
@@ -294,8 +294,8 @@ In the case of unsteady fluid dynamics, the nonlinear nature of the equations co
 ![Figure 11d](./figures/cuibm/cuibm-current-revision86_forceCoefficientsRe2000AoA35.png)
 
 Figure 11:
-Instantaneous force coefficients on the snake's section at (a) Reynolds number 1000 and angle 35° and (b) Reynolds number 2000 and angle 30°.
-(c) Instantaneous force coefficients at Reynolds number 2000 and angle-of-attack 35° running the same version of cuIBM (adapted to CUSP-0.4.0) than the one used for our previous study.
+Instantaneous force coefficients on the snake's section at (a) Reynolds number 1000 and angle 35 degrees and (b) Reynolds number 2000 and angle 30 degrees.
+(c) Instantaneous force coefficients at Reynolds number 2000 and angle-of-attack 35 degrees running the same version of cuIBM (adapted to CUSP-0.4.0) than the one used for our previous study.
 (d) Drop of the mean force coefficients observed over the end of the simulation using two versions of cuIBM ("current" and "old") with different CUSP versions (0.4.0 and 0.5.1).
 
 --
@@ -346,7 +346,7 @@ And report negative results!
 Understandably, long 3D simulations that take huge computational resources may not be feasible to repeat. 
 We should continue the conversation about what it means to do reproducible research in high-performance computing (HPC) scenarios. 
 When large simulations run on specific hardware with one-off compute allocations, they are unlikely to be reproduced. 
-In this case, it is even more important that the researchers advanced to the HPC application on a solid progression of fully reproducible research at the smaller scales. 
+In this case, it is even more important that researchers advance towards these HPC applications on a solid progression of fully reproducible research at the smaller scales. 
 
 Computational science and engineering makes ubiquitous use of linear algebra libraries like PETSc, Hypre, Trilinos and many others. 
 Rarely do we consider that using different libraries might produce different results. 
@@ -366,7 +366,7 @@ It’s not unreasonable to speculate that the potential for commercial exploitat
 It is only in the last 15 years or so that open-source CFD codes have become available. 
 But the CFD literature became entrenched in the habit of publishing results without making available the code that generated those results. 
 And now, we face the clash between the academic incentive system and the fact that reproducible research takes a substantial amount of time and effort. 
-This campaign to replicate our previous results taught us many lessons on how to improve our reproducibility practices, and we are committed to maintain this high standard. 
+This campaign to replicate our previous results taught us many lessons on how to improve our reproducibility practices, and we are committed to maintaining this high standard. 
 We will continue to share our experiences.
 
 --
