@@ -194,7 +194,7 @@ Both _Cusp_ and PETSc use the same convergence criterion.
 This is not always the case, and needs to be checked! 
 We're also not using the same iterative solver with each library. 
 The cuIBM runs (with _Cusp_) used an algebraic multigrid preconditioner and conjugate gradient (CG) solver for the pressure modified-Poisson equation. 
-With PETSc, the CG solver crashed because of an indefinite preconditioner (that has both positive and negative eigenvalues), and we had to select a different method: we used a bi-CG stabilized algorithm (with still an algebraic multigrid preconditioner). 
+With PETSc, the CG solver crashed because of an indefinite preconditioner (having both positive and negative eigenvalues), and we had to select a different method: we used a bi-CG stabilized algorithm (with still an algebraic multigrid preconditioner). 
 
 Could this difference in linear solvers affect our unsteady fluid-flow solution? 
 The solutions with both codes match at lower angles of attack (and lower Reynolds numbers), so what is going on? 
