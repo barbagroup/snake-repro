@@ -22,7 +22,7 @@ Beyond reasons that have to do with inventing new methods, it’s a good questio
 To explore using an existing CFD solver for future research, we decided to first complete a full replication of our previous results with these alternatives. 
 Our commitment to open-source software for research is unwavering, which rules out commercial packages. 
 Perhaps the most well known open-source fluid-flow software is OpenFOAM, so we set out to replicate our published results with this code. 
-A more specialist open-source code is IBAMR, a project born at New York University that has continued development for half a decade. 
+A more specialist open-source code is IBAMR, a project born at New York University that has continued development for a decade. 
 And finally, our own group developed a new code, implementing the same solution method we had before, but providing parallel computing via the renowned PETSc library. 
 We embarked on a full replication study of our previous work, using three new fluid-flow codes.
 
@@ -49,25 +49,24 @@ This is the story of what happened next: three years of dedicated work that enco
 
 Generating good discretization meshes is probably the most vexing chore of computational fluid dynamics. 
 And stipulating boundary conditions on the edge of a discretization mesh takes some nerve, too. 
-Our first attempts at a full replication study of the 2D snake aerodynamics with OpenFOAM showed us just how vexing and unnerving this can be.
+Our first attempts at a full replication study of the 2D snake aerodynamics with IcoFOAM, the incompressible laminar Navier-Stokes solver of OpenFOAM, showed us just how vexing and unnerving this can be.
 
 OpenFOAM can take various types of discretization mesh as input. 
 One popular mesh generator is called GMSH: it produces triangles that are as fine as you want them near the body, while getting coarser as the mesh points are farther away. 
 Already, we encounter a problem: how to create a mesh of triangles that gives a comparable resolution to that obtained with our original structured Cartesian mesh? 
 After dedicated effort (see separate section on mesh generation with OpenFOAM [or supplementary material?]), we produced the best mesh we could that matches our previous study in the finest cell width near the body. 
 But when using this mesh to solve the fluid flow around the snake geometry, we got spurious specks of high vorticity in places where there shouldn’t be any (Figure 1). 
-The simulations did not blow up, but these unphysical vortices appeared for any flow Reynolds number or body angle of attack we tried.
-This is despite the fact that the mesh passed the quality checks of OpenFOAM. 
+Despite the fact that the mesh passed the quality checks of OpenFOAM, these unphysical vortices appeared for any flow Reynolds number or body angle of attack we tried—although they were not responsible for the simulations to blow up.
 Finally, we gave up with the (popular) GMSH and tried another mesh generator: SnappyHexMesh. 
 Success! 
 No unphysical patches in the vorticity field this time. 
 But another problem persisted: after the wake vortices hit the edge of the computational domain in the downstream side, a nasty back pressure appeared there and started propagating to the inside of the domain (Figure 2). 
 This situation is also unphysical, and we were certain there was a problem with the chosen outflow boundary condition in OpenFOAM, but did not find any way to stipulate another, more appropriate boundary condition. 
-We used a zero-gradient condition for the pressure at the outlet, which we found was a widespread choice in the examples and documentation of OpenFOAM. 
+We used a zero-gradient condition for the pressure at the outlet (and tried several other possibilities), which we found was a widespread choice in the examples and documentation of OpenFOAM. 
 After months, one typing mistake when launching a run from the command line made OpenFOAM print out the set of available boundary conditions, and we found that an _advective_ condition was available that could solve our problem (all this time, we were looking for a _convective_ condition, which is just another name for the same thing). 
 Finally, simulations with OpenFOAM were looking correct—and happily, the main feature of the aerodynamics was replicated: an enhanced lift coefficient at 35º angle-of-attack (Figure 3). 
 But not all is perfect. 
-The time signatures of lift and drag coefficient do show differences between our OpenFOAM calculation and the original published ones (Figure 4). 
+The time signatures of lift and drag coefficient do show differences between our IcoFOAM calculation and the original published ones (Figure 4). 
 The key finding uses an _average_ lift coefficient, calculated with data in a time range that is reasonable but arbitrary. 
 Although the average force coefficients match (within <3%) our previous results, the time series shows a phase difference. 
 Are these the same solutions? 
@@ -75,7 +74,7 @@ Is it acceptable as a replication study?
 We think yes, but this is a judgement call.
 
 **Postmortem**. 
-OpenFOAM solves the fluid equations using a finite-volume method in an unstructured grid, while our published study used an immersed boundary method in a stretched Cartesian grid. 
+IcoFOAM solves the fluid equations using a finite-volume method in an unstructured grid, while our published study used an immersed boundary method in a stretched Cartesian grid. 
 Comparing results obtained under such different conditions is a delicate operation. 
 We made our best attempt at creating a fluid mesh for OpenFOAM that was of similar resolution near the body as we had used before. 
 But unstructured grids are complex geometrical objects. 
@@ -93,7 +92,7 @@ We created a triangular mesh (about 700k triangles) with the free software GMSH.
 ![Figure 2b](./figures/openfoam/openfoam_pressure53Re2000AoA35_gmshZeroGradient.png)
 
 Figure 2:
-Pressure field after 52 (top) and 53 (bottom) time-units of flow-simulation with IcoFOAM for snake section with angle-of-attack 35° and Reynolds number 2000.
+Pressure field after 52 (top) and 53 (bottom) time-units of flow-simulation with IcoFOAM for snake section with angle-of-attack 35° and Reynolds number 2000. The simulation crashed after about 62 time-units because of the back pressure at the outlet boundary.
 
 ![Figure 3](./figures/openfoam/openfoam_forceCoefficientsVsAoA.png)
 
@@ -117,18 +116,21 @@ IBAMR is a solid piece of software, well documented, and you can even get swift 
 Still, we ran against an obscure trick of the trade that changed our results completely. 
 
 The numerical approach in IBAMR belongs to the same family as that used in our published work on wakes of flying snakes: an immersed boundary method. 
-The essence of the approach is that the fluid is represented by a fixed structured mesh, while the immersed body is represented by its own, separate mesh that moves with the body. 
+The essence of the approach is that the fluid is represented by a structured mesh, while the immersed body is represented by its own, separate mesh that moves with the body. 
 We speak of an Eulerian mesh for the fluid, and a Lagrangian mesh for the solid. 
 The forces exerted by the fluid on the body, and vice versa, appear as an additional integral equation and interpolation schemes between the two meshes. 
 The role of these is to make the fluid "stick" to the wall (no-slip boundary condition) and allow the body to feel aerodynamic forces (lift and drag).
-Our cuIBM code uses a variant called the immersed boundary projection method,^(4) while IBAMR uses a form called the "direct-forcing" method. 
+IBAMR implements a subclass of the immersed-boundary method called the direct-forcing method suitable for rigid bodies.
+Our cuIBM code uses a variant called the immersed-boundary projection method.^(4) 
 Despite the variations, the essence is the same, and it is reasonable to assume they would work similarly.
 
-We already know that boundary conditions at the outlet of the computational domain can be problematic. This is no different with immersed boundary methods. 
+We already know that boundary conditions at the outlet of the computational domain can be problematic. 
+This is no different with immersed boundary methods. 
 Our first attempt with IBAMR used a zero-gradient velocity boundary condition at the outlet. 
 This resulted in some blockage effect when the wake vortices reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain (Figure 5). 
 Of course, this is unphysical and the result unacceptable. 
-After a long search in the literature and in the code documentation, we discovered that IBAMR needs us to select a "stabilized outlet," which is a boundary condition that acts like a force pushing the vortices out. 
+
+After a long search in the literature and in the documentation, it was through a conversation with the main developers on the online forum that we discovered the solution: using a "stabilized outlet" boundary condition, which adds a forcing to push the vortices out.
 (IBAMR does not provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study (Figure 6). 
 Another deep dive in the literature led us to notice that a benchmark example described in a paper describing extensions to IBAMR^(5) was set up in an unexpected way: 
@@ -192,7 +194,7 @@ Both _Cusp_ and PETSc use the same convergence criterion.
 This is not always the case, and needs to be checked! 
 We're also not using the same iterative solver with each library. 
 The cuIBM runs (with _Cusp_) used an algebraic multigrid preconditioner and conjugate gradient (CG) solver for the pressure modified-Poisson equation. 
-With PETSc, the CG solver resulted in an error message with "indefinite preconditioner," and we had to select a different method: we used biCGstab (with still an algebraic multigrid preconditioner). 
+With PETSc, the CG solver crashed because of an indefinite preconditioner (having both positive and negative eigenvalues), and we had to select a different method: we used a bi-CG stabilized algorithm (with still an algebraic multigrid preconditioner). 
 
 Could this difference in linear solvers affect our unsteady fluid-flow solution? 
 The solutions with both codes match at lower angles of attack (and lower Reynolds numbers), so what is going on? 
@@ -202,7 +204,7 @@ Even a small bug (or two).
 We found, for example, that the first set of runs with PetIBM created a slightly different problem set-up, compared with our previous study, where the body was shifted by less than one grid-cell width. 
 Rotating the body to achieve different angles of attack was made around a different center, in each case (one used grid origin at 0,0 while the other used the body center of mass). 
 This tiny difference does result in a different average lift coefficient (bottom graph in Figure 9)! 
-The time signal of lift coefficient shows that the drop we were seing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
+The time signal of lift coefficient shows that the drop we were seeing at around 35 time units now occurs closer to 50 time units, resulting in a different value for the average taken in a range between 32 and 64. 
 Again, this range for computing the average is a choice we made. 
 It covers about ten vortex shedding cycles, which seems enough to calculate the average if the flow is periodic.
 What is causing the drop of lift? 
