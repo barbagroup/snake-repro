@@ -125,7 +125,7 @@ Our cuIBM code uses a variant called the immersed-boundary projection method.^(4
 Despite the variations, the essence is the same, and it is reasonable to assume they would work similarly.
 
 We already know that boundary conditions at the outlet of the computational domain can be problematic. 
-This is not different with immersed boundary methods. 
+This is no different with immersed boundary methods. 
 Our first attempt with IBAMR used a zero-gradient velocity boundary condition at the outlet. 
 This resulted in some blockage effect when the wake vortices reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain (Figure 5). 
 Of course, this is unphysical and the result unacceptable. 
