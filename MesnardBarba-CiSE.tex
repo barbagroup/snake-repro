@@ -64,7 +64,7 @@
 \pagestyle{fancy}
 
 \twocolumn[ %this produces full-width text on a twocolumn document
-{\Huge{\color{sectcol}Reproducible and replicable computational fluid dynamics: it?s harder than you think}}
+{\Huge{\color{sectcol}Reproducible and replicable CFD: \\ it's harder than you think}}
 \vspace{0.8cm}
 
 { \sf 
@@ -94,7 +94,7 @@
 
 
 \lettrine{\textcolor{dropped}{O}}{}ur research group prides itself for having adopted Reproducible Research practices. 
-Barba made a public pledge titled ``Reproducibility PI Manifesto'' \textsuperscript{1} (PI: Principal Investigator), which at the core is a promise to make all research materials and methods open access and discoverable: releasing code, data and analysis/visualization scripts.
+Barba made a public pledge titled ``Reproducibility PI Manifesto''\textsuperscript{1} (PI: Principal Investigator), which at the core is a promise to make all research materials and methods open access and discoverable: releasing code, data and analysis/visualization scripts.
 
 In 2014, we published a study on Physics of Fluids titled ``Lift and wakes of flying snakes.''\textsuperscript{2} 
 It is a study that uses our in-house code for solving the equations of fluid motion in two dimensions (2D), with a solution approach called ``immersed boundary method.'' 
@@ -120,20 +120,23 @@ We embarked on a full replication study of our previous work, using three new fl
 This is the story of what happened next: three years of dedicated work that encountered a dozen ways that things can go wrong, conquered one after another, to arrive finally at (approximately) the same findings and a whole new understanding of what it means to do ``reproducible research'' in computational fluid dynamics.
 
 
-
-\section*{Fluid-flow solvers we used}
-
+\twocolumn[ %this produces full-width text on a twocolumn document
+\subsection*{Fluid-flow solvers we used}
+{\sf \footnotesize
 \textbf{cuIBM}--- Used for our original study (Krishan et al., 2014), this code is written in C CUDA to exploit GPU hardware, but is serial on CPU. 
  It uses the NVIDIA \textit{Cusp} library for solving sparse linear systems on GPU. 
-\href{https://github.com/barbagroup/cuIBM}{https://github.com/barbagroup/cuIBM} 
+\href{https://github.com/barbagroup/cuIBM}{https://github.com/barbagroup/cuIBM} \\
 \textbf{OpenFOAM}--- A free and open-source CFD package that includes a suite of numerical solvers.
 The core discretization scheme is a finite-volume method applied on mesh cells of arbitrary shape. 
-\href{http://www.openfoam.org}{http://www.openfoam.org} 
+\href{http://www.openfoam.org}{http://www.openfoam.org} \\
 \textbf{IBAMR}--- A parallel code using the immersed boundary method on Cartesian meshes, with adaptive mesh refinement.
-\href{https://github.com/ibamr/ibamr}  
-\textbf{PetIBM}--- Our own re-implementation of \textbf{cuIBM}, but for distributed-memory parallel systems.
+\href{https://github.com/ibamr/ibamr}{https://github.com/ibamr/ibamr}    \\
+\textbf{PetIBM}--- Our own re-implementation of \textsl{cuIBM}, but for distributed-memory parallel systems.
 It uses the PETSc library for solving sparse linear systems in parallel.
 \href{https://github.com/barbagroup/PetIBM}{https://github.com/barbagroup/PetIBM} 
+}
+\vspace{1cm}
+] % close full-width text
 
 
 
@@ -178,7 +181,7 @@ The complications of building a \textit{good quality} mesh is one of the reasons
 
 \begin{figure*}
 \centering
-%\includegraphics[width=0.8\textwidth]{./figures/openfoam/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.pdf}
+\includegraphics[width=0.8\textwidth]{./figures/openfoam/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.pdf}
 \caption{
 Vorticity field after 52 time units of flow simulation with IcoFOAM for a snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
 We created a triangular mesh (about 700k triangles) with the free software GMSH.
@@ -188,8 +191,8 @@ We created a triangular mesh (about 700k triangles) with the free software GMSH.
 
 \begin{figure*}
 \centering
-%\includegraphics[width=0.8\textwidth]{./figures/openfoam/openfoam_pressure52Re2000AoA35_gmshZeroGradient.pdf}
-%\includegraphics[width=0.8\textwidth]{./figures/openfoam/openfoam_pressure53Re2000AoA35_gmshZeroGradient.pdf}
+\includegraphics[width=0.8\textwidth]{./figures/openfoam/openfoam_pressure52Re2000AoA35_gmshZeroGradient.png} % << not available in pdf ?
+\includegraphics[width=0.8\textwidth]{./figures/openfoam/openfoam_pressure53Re2000AoA35_gmshZeroGradient.png} % << not available in pdf ?
 \caption{
 Pressure field after 52 (top) and 53 (bottom) time units of flow simulation with IcoFOAM for snake section with angle-of-attack 35 degrees and Reynolds number 2000.
 }
