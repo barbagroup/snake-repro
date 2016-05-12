@@ -120,7 +120,11 @@ We embarked on a full replication study of our previous work, using three new fl
 This is the story of what happened next: three years of dedicated work that encountered a dozen ways that things can go wrong, conquered one after another, to arrive finally at (approximately) the same findings and a whole new understanding of what it means to do ``reproducible research'' in computational fluid dynamics.
 
 
-\twocolumn[ %this produces full-width text on a twocolumn document
+\begin{figure*}
+    \colorbox{lightgray}{
+     \begin{minipage}[c]{\textwidth}
+      \bigskip
+\small \sffamily{
 \subsection*{Fluid-flow solvers we used}
 {\sf \footnotesize
 \textbf{cuIBM}--- Used for our original study (Krishan et al., 2014), this code is written in C CUDA to exploit GPU hardware, but is serial on CPU. 
@@ -134,9 +138,11 @@ The core discretization scheme is a finite-volume method applied on mesh cells o
 \textbf{PetIBM}--- Our own re-implementation of \textsl{cuIBM}, but for distributed-memory parallel systems.
 It uses the PETSc library for solving sparse linear systems in parallel.
 \href{https://github.com/barbagroup/PetIBM}{https://github.com/barbagroup/PetIBM} 
+}}
+\vspace{0.5cm}
+\end{minipage}      
 }
-\vspace{1cm}
-] % close full-width text
+\end{figure*}
 
 
 
