@@ -122,7 +122,7 @@ This is the story of what happened next: three years of dedicated work that enco
 
 \begin{figure*}
     \colorbox{lightgray}{
-     \begin{minipage}[c]{\textwidth}
+     \begin{minipage}[c]{0.96\textwidth}
       \bigskip
 \small \sffamily{
 \subsection*{Fluid-flow solvers we used}
@@ -181,7 +181,8 @@ We think yes, but this is a judgement call.
 \includegraphics[width=0.7\textwidth]{./figures/openfoam/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.pdf}
 \caption{
 Vorticity field after 52 time units of flow simulation with IcoFOAM for a snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
-We created a triangular mesh (about 700k triangles) with the free software GMSH.
+We created a triangular mesh (about 700k triangles) with the free software GMSH. 
+Notice the patch of spurious vorticity at the center-bottom of the domain.
 }
 \label{figure1}
 \end{SCfigure*}
