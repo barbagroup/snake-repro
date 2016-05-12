@@ -182,8 +182,7 @@ We created a triangular mesh (about 700k triangles) with the free software GMSH.
 
 \begin{figure*}
 \centering
-\includegraphics[width=0.75\textwidth]{./figures/openfoam/openfoam_pressure52Re2000AoA35_gmshZeroGradient.png} % << not available in pdf ?
-\includegraphics[width=0.75\textwidth]{./figures/openfoam/openfoam_pressure53Re2000AoA35_gmshZeroGradient.png} % << not available in pdf ?
+\includegraphics[width=0.75\textwidth]{./figures/openfoam/openfoam_pressureRe2000AoA35_gmshZeroGradient.pdf}
 \caption{
 Pressure field after 52 (top) and 53 (bottom) time units of flow simulation with IcoFOAM for snake section with angle-of-attack 35 degrees and Reynolds number 2000.
 }
@@ -214,8 +213,7 @@ We averaged all IcoFOAM force coefficients between 32 and 64 time-units of flow-
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.48\textwidth]{./figures/openfoam/openfoam_forceCoefficientsRe2000AoA30.png} % << not available in pdf ?
-\includegraphics[width=0.48\textwidth]{./figures/openfoam/openfoam_forceCoefficientsRe2000AoA35.png} % << not available in pdf ?
+\includegraphics[width=0.48\textwidth]{./figures/openfoam/openfoam_forceCoefficientsRe2000.pdf}
 \caption{
 Instantaneous force coefficients on the snake's section with angle-of-attack 30 degrees (top) and 35 degrees (bottom) at Reynolds number 2000.
 We compare the IcoFOAM results with the cuIBM results from our previous study.
@@ -298,8 +296,7 @@ We averaged each force signal between 32 and 64 time-units of flow-simulation wi
 %![Figure 7b](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png)
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.5\textwidth]{./figures/ibamr/ibamr_forceCoefficientsRe2000AoA30.png}
-\includegraphics[width=0.5\textwidth]{./figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png}
+\includegraphics[width=0.5\textwidth]{./figures/ibamr/ibamr_forceCoefficientsRe2000.pdf}
 \caption{
 Instantaneous force coefficients at Reynolds number 2000 for the snake's section at angle-of-attack 30 degrees (top) and 35 degrees (bottom).
 Here, the no-slip condition is enforced inside the section.
@@ -447,16 +444,16 @@ In the case of unsteady fluid dynamics, the nonlinear nature of the equations co
 %![Figure 11b](./figures/cuibm/cuibm-cusp051_forceCoefficientsRe2000AoA30.png)
 %![Figure 11c](./figures/cuibm/cuibm-revision86-cusp040_forceCoefficientsRe2000AoA35.png)
 %![Figure 11d](./figures/cuibm/cuibm-current-revision86_forceCoefficientsRe2000AoA35.png)
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=0.5\textwidth]{./figures/cuibm/cuibm_forceCoefficients.pdf}
+\includegraphics[width=1.0\textwidth]{./figures/cuibm/cuibm_forceCoefficients.pdf}
 \caption{
 Instantaneous force coefficients on the snake's section at (a) Reynolds number 1000 and angle 35 degrees and (b) Reynolds number 2000 and angle 30 degrees.
 (c) Instantaneous force coefficients at Reynolds number 2000 and angle-of-attack 35 degrees running the same version of cuIBM (adapted to CUSP-0.4.0) than the one used for our previous study.
 (d) Drop of the mean force coefficients observed over the end of the simulation using two versions of cuIBM ("current" and "old") with different CUSP versions (0.4.0 and 0.5.1).
 }
 \label{figure11}
-\end{figure}
+\end{figure*}
 
 
 \begin{figure*}
