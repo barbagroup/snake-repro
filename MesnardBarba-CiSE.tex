@@ -212,7 +212,7 @@ We averaged all IcoFOAM force coefficients between 32 and 64 time-units of flow-
 \label{figure3}
 \end{figure}
 
-\begin{figure*}
+\begin{figure}[t]
 \centering
 \includegraphics[width=0.48\textwidth]{./figures/openfoam/openfoam_forceCoefficientsRe2000AoA30.png} % << not available in pdf ?
 \includegraphics[width=0.48\textwidth]{./figures/openfoam/openfoam_forceCoefficientsRe2000AoA35.png} % << not available in pdf ?
@@ -222,7 +222,7 @@ We compare the IcoFOAM results with the cuIBM results from our previous study.
 We created a 3.4 million cells (mostly hexahedra) with SnappyHexMesh, one of the OpenFOAM mesh utilities.
 }
 \label{figure4}
-\end{figure*}
+\end{figure}
 
 
 
@@ -283,25 +283,31 @@ We used a zero-gradient condition at the outlet for both the velocity and pressu
 
 
 %![Figure 6](./figures/ibamr/ibamr_forceCoefficientsVsAoA.png)
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{./figures/ibamr/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet.pdf}
+\includegraphics[width=0.5\textwidth]{./figures/ibamr/ibamr_forceCoefficientsVsAoA.pdf}
 \caption{
 Time-averaged drag (top) and lift (bottom) coefficients as function of the angle-of-attack of the snake's section for Reynolds numbers 1000 and 2000.
 We averaged each force signal between 32 and 64 time-units of flow-simulation with IBAMR to compare with the results from our previous investigation.}
-\label{figure5}
+\label{figure6}
 \end{figure}
 
-Figure 6:
 
 
 %![Figure 7a](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA30.png)
 %![Figure 7b](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png)
-
-Figure 7:
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.5\textwidth]{./figures/ibamr/ibamr_forceCoefficientsRe2000AoA30.png}
+\includegraphics[width=0.5\textwidth]{./figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png}
+\caption{
 Instantaneous force coefficients at Reynolds number 2000 for the snake's section at angle-of-attack 30 degrees (top) and 35 degrees (bottom).
 Here, the no-slip condition is enforced inside the section.
-We compare the IBAMR results with cuIBM ones from our past study.
+We compare the IBAMR results with cuIBM ones from our past study.}
+\label{figure7}
+\end{figure}
+
+
 
 \section*{Story 3: All linear algebra libraries are not created equal}
 
