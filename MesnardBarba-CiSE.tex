@@ -269,17 +269,31 @@ One of the issues may be that our community does not have a habit of communicati
 We learned from this experience that using an open research code and getting correct results with it could involve a long investigative period, potentially requiring communication with the original authors and many failed attempts. 
 If the code is not well documented and the original authors not responsive to questions, then building your own code from scratch could be more sensible!
 
-%![Figure 5](./figures/ibamr/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet.png)
-
-Figure 5:
+%![Figure 5]
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{./figures/ibamr/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet.pdf}
+\caption{
 Vorticity field after about 61 time-units of flow-simulation with IBAMR for a snake's section with angle-of-attack 35° and Reynolds number 2000.
 We used a zero-gradient condition at the outlet for both the velocity and pressure quantities.
+}
+\label{figure5}
+\end{figure}
+
+
 
 %![Figure 6](./figures/ibamr/ibamr_forceCoefficientsVsAoA.png)
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{./figures/ibamr/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet.pdf}
+\caption{
+Time-averaged drag (top) and lift (bottom) coefficients as function of the angle-of-attack of the snake's section for Reynolds numbers 1000 and 2000.
+We averaged each force signal between 32 and 64 time-units of flow-simulation with IBAMR to compare with the results from our previous investigation.}
+\label{figure5}
+\end{figure}
 
 Figure 6:
-Time-averaged drag (top) and lift (bottom) coefficients as function of the angle-of-attack of the snake's section for Reynolds numbers 1000 and 2000.
-We averaged each force signal between 32 and 64 time-units of flow-simulation with IBAMR to compare with the results from our previous investigation..
+
 
 %![Figure 7a](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA30.png)
 %![Figure 7b](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png)
