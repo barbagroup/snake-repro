@@ -6,7 +6,7 @@
 \usepackage[left=3.5cm,top=2.54cm,right=2.5cm,bottom=2.8cm,nohead]{geometry} % load first
 \usepackage{amsmath}
 \usepackage[font=sf]{caption}
-\usepackage{color}
+\usepackage{xcolor}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{lettrine}
@@ -75,7 +75,7 @@
 \textbf {Olivier Mesnard, Lorena A. Barba}\\
   Mechanical and Aerospace Engineering, George Washington University, Washington DC 20052
 
-\vspace{1cm}
+\vspace{1.8cm}
 }
 ] %close full-width text
 
@@ -448,15 +448,23 @@ In the case of unsteady fluid dynamics, the nonlinear nature of the equations co
 %![Figure 11b](./figures/cuibm/cuibm-cusp-0.5.1_forceCoefficientsRe2000AoA30.png)
 %![Figure 11c](./figures/cuibm/cuibm-revision86-cusp-0.4.0_forceCoefficientsRe2000AoA35.png)
 %![Figure 11d](./figures/cuibm/cuibm-current-revision86_forceCoefficientsRe2000AoA35.png)
-
-Figure 11:
+\begin{figure}[t]
+\centering
+%\includegraphics[width=0.5\textwidth]{ }
+\caption{
 Instantaneous force coefficients on the snake's section at (a) Reynolds number 1000 and angle 35 degrees and (b) Reynolds number 2000 and angle 30 degrees.
 (c) Instantaneous force coefficients at Reynolds number 2000 and angle-of-attack 35 degrees running the same version of cuIBM (adapted to CUSP-0.4.0) than the one used for our previous study.
 (d) Drop of the mean force coefficients observed over the end of the simulation using two versions of cuIBM ("current" and "old") with different CUSP versions (0.4.0 and 0.5.1).
+}
+\label{figure11}
+\end{figure}
 
---
 
- \section*{Definition of reproducible research}
+\begin{figure*}
+    \colorbox{white}{
+     \begin{minipage}[c]{\textwidth}
+      \subsection*{Definition of reproducible research: }
+\small \sffamily{
  The literature is rife with confused and sometimes contradictory meanings for reproducible research, reproducibility, replicability, repetition, etc. 
  It is thus worth clarifying what we mean by these terms and why we've chosen this meaning. 
  The term "reproducible research" in reference to computational studies that can be reproduced by other scientists was introduced by geophysics professor Jon Claerbout in the 1990s. 
@@ -465,13 +473,18 @@ Instantaneous force coefficients on the snake's section at (a) Reynolds number 1
  This ability requires open data and open-source software, and for this reason the \textit{reproducibility} movement is closely linked with the \textit{open science} movement. 
  In following years, the term \textit{replication} was distinctly adopted to refer to an independent study, re-running experiments to generate new data that, when analyzed, leads to the same findings. 
  We follow this convention, clarified more recently in an article in Science.\textsuperscript{7} 
+ \medskip
  
- **Reproducible research**--- Authors of a study provide their code and data, allowing readers to inspect and re-run the analysis to recreate the figures in the paper.  
- **Replication**--- An independent study that generates new data, using similar or different methods, and analyzes it to arrive at the same findings as the original study.
+ \textbf{Reproducible research}--- Authors of a study provide their code and data, allowing readers to inspect and re-run the analysis to recreate the figures in the paper.  
  
+ \textbf{Replication}--- An independent study that generates new data, using similar or different methods, and analyzes it to arrive at the same findings as the original study.
+ 
+ \medskip
  CiSE has dedicated two theme issues to reproducibility: January/ February 2009 and July/August 2012.
+      }
+     \end{minipage}}
+\end{figure*}
 
---
 
 \section*{Lessons learned}
 
@@ -525,18 +538,18 @@ And now, we face the clash between the academic incentive system and the fact th
 This campaign to replicate our previous results taught us many lessons on how to improve our reproducibility practices, and we are committed to maintain this high standard. 
 We will continue to share our experiences.
 
---
+
 
  \subsection*{Supplementary materials}
  The GitHub repository for this paper contains the following supplementary materials:
  
- * all input files to generate the runs reported in the paper
- * summary of the mesh details in a separate markdown file
- * additional Jupyter notebooks with simulation results
- 
- 
+\begin{description}
+ \item[ --]   all input files to generate the runs reported in the paper
+ \item[ --] summary of the mesh details in a separate markdown file
+ \item[ --] additional Jupyter notebooks with simulation results
+\end{description}
 
---
+ 
 
 \section*{References}
 {\footnotesize
@@ -561,14 +574,14 @@ We will continue to share our experiences.
 
 \vspace{2cm}
 
-Our codes are available for unrestricted use, under the MIT license; to obtain the codes and run the tests in this paper, the reader may follow instructions on ...
+Our codes are available for unrestricted use, under the MIT license; to obtain the codes and run the tests in this paper, the reader may follow instructions on \url{https://github.com/barbagroup/snake-repro}.
 
 
 
 \section*{Acknowledgements}
 \vspace{\up}
 
-{\sf \emph{We're grateful for the support from the US National Science Foundation and the Office of Naval Research. Recent grant numbers are NSF OCI-0946441, and ONR award \#N00014-11-1-0356.}
+{\sf \emph{We're grateful for the support from the US National Science Foundation for grant number are NSF OCI-0946441 and to NVIDIA Corp. for equipment donations under the CUDA Fellows Program.}
 
 \bigskip
 
@@ -583,7 +596,7 @@ Our codes are available for unrestricted use, under the MIT license; to obtain t
 {\sf 
 
 
-\noindent \textbf{Olivier Mesnard} bio
+\noindent \textbf{Olivier Mesnard} is a doctoral student at the George Washington University. He has a Bachelor's degree from Ecole Sup{\'e}rieur de M{\'e}canique (SUPMECA) in Paris, and a Master's degree from Universit{\'e} Pierre et Marie Curie, also in Paris.
 \bigskip
 
 \noindent\textbf{Lorena A. Barba} is Associate Professor of Mechanical and Aerospace Engineering at the George Washington University.
