@@ -11,7 +11,7 @@ INFILE3="cuibm-revision86-cusp040_forceCoefficientsRe2000AoA35.pdf"
 INFILE4="cuibm-current-revision86_forceCoefficientsRe2000AoA35.pdf"
 OUTFILE="cuibm_forceCoefficients.pdf"
 
-pdfjam $INFILE1 $INFILE2 $INFILE3 $INFILE4 --nup 2x2 --outfile $OUTFILE
+pdfjam $INFILE1 $INFILE2 $INFILE3 $INFILE4 --nup 2x2 --landscape --outfile $OUTFILE
 
 rm -f $INFILE1 $INFILE2 $INFILE3 $INFILE4
 
