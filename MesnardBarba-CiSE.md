@@ -162,7 +162,7 @@ We used a zero-gradient condition at the outlet for both the velocity and pressu
 
 Figure 6:
 Time-averaged drag (top) and lift (bottom) coefficients as function of the angle-of-attack of the snake's section for Reynolds numbers 1000 and 2000.
-We averaged each force signal between 32 and 64 time-units of flow-simulation with IBAMR to compare with the results from our previous investigation..
+We averaged each force signal between 32 and 64 time-units of flow-simulation with IBAMR to compare with the results from our previous investigation.
 
 ![Figure 7a](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA30.png)
 ![Figure 7b](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png)
@@ -243,7 +243,7 @@ Figure 10:
 Vorticity field after 19, 52, 53, and 64 time-units of flow-simulation with PetIBM for a snake's section at angle-of-attack 35 degrees and Reynolds number 2000.
 The vortex-merging event is responsible for the change in the wake signature and the drop in the mean lift coefficient.
 
-### Story 4: Different versions of your code, the external libraries or even compilers may challenge reproducibility
+### Story 4: Different versions of your code, external libraries or even compilers may challenge reproducibility
 
 In the span of about three years, we ran more than 100 simulations with OpenFOAM, IBAMR, and PetIBM, encountering about a dozen things that can go wrong. 
 We replicated our previous scientific finding (enhanced lift at 35 degrees angle-of-attack for sufficiently large Reynolds number) in two out of three campaigns. 
@@ -387,7 +387,7 @@ We will continue to share our experiences.
 1. Barba, L. A. (2012), "Reproducibility PI Manifesto," figshare, <https://dx.doi.org/10.6084/m9.figshare.104539.v1>, ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), https://icerm.brown.edu/tw12-5-rcem/ 
 2. Krishnan, A., Socha, J. J., Vlachos, P. P., Barba, L. A. (2014). Lift and wakes of flying snakes. Physics of Fluids, 26(3), 031901, <http://dx.doi.org/10.1063/1.4866444>
 3. Krishnan, Anush; J. Socha, John; P. Vlachos, Pavlos; Barba, L. A. (2013): Lift and drag coefficient versus angle of attack for a flying snake cross-section. figshare. <https://dx.doi.org/10.6084/m9.figshare.705883.v2>
-4. Taira, K., Colonius, T. (2007). The immersed boundary method: A projecion approach. Journal of Computational Physics, 225, 2118–2137.
+4. Taira, K., Colonius, T. (2007). The immersed boundary method: A projection approach. Journal of Computational Physics, 225, 2118–2137.
 5. Bhalla, A. P. S., Bale, R., Griffith, B. E., Patankar, N. A. (2013). A unified mathematical framework and an adaptive numerical method for fluid–structure interaction with rigid, deforming, and elastic bodies. Journal of Computational Physics, 250, 446-476.
 6. Schwab, M., Karrenbach, N., Claerbout, J. (2000) Making scientific computations reproducible, Computing in Science and Engineering 2(6):61–67 <http://dx.doi.org/10.1109/5992.881708>
 7. Peng, R. (2011), Reproducible Research in Computational Science, Science 334(6060):1226–1227 <http://dx.doi.org/10.1126/science.1213847>
