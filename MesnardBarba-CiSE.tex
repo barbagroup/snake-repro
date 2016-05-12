@@ -1,4 +1,4 @@
-\documentclass[10pt,twocolumn,twoside]{article}
+\documentclass[9pt,twocolumn,twoside]{article}
 
 \usepackage{palatino}  % use 10pt size with Palatino.
 \usepackage[T1]{fontenc}
@@ -169,15 +169,6 @@ Are these the same solutions?
 Is it acceptable as a replication study? 
 We think yes, but this is a judgement call.
 
-\subsection*{Postmortem.} 
-OpenFOAM solves the fluid equations using a finite-volume method in an unstructured grid, while our published study used an immersed boundary method in a stretched Cartesian grid. 
-Comparing results obtained under such different conditions is a delicate operation. 
-We made our best attempt at creating a fluid mesh for OpenFOAM that was of similar resolution near the body as we had used before. 
-But unstructured grids are complex geometrical objects. 
-Two unstructured meshes built with the same parameters will not be exactly the same, even. 
-The mesh-generation procedures are not necessarily deterministic, and regularly produce bad triangles that need to be repaired. 
-The complications of building a \textit{good quality} mesh is one of the reasons some prefer immersed boundary methods!
-
 
 \begin{figure*}
 \centering
@@ -198,6 +189,18 @@ Pressure field after 52 (top) and 53 (bottom) time units of flow simulation with
 }
 \label{figure2}
 \end{figure*}
+
+\subsection*{Postmortem.} 
+OpenFOAM solves the fluid equations using a finite-volume method in an unstructured grid, while our published study used an immersed boundary method in a stretched Cartesian grid. 
+Comparing results obtained under such different conditions is a delicate operation. 
+We made our best attempt at creating a fluid mesh for OpenFOAM that was of similar resolution near the body as we had used before. 
+But unstructured grids are complex geometrical objects. 
+Two unstructured meshes built with the same parameters will not be exactly the same, even. 
+The mesh-generation procedures are not necessarily deterministic, and regularly produce bad triangles that need to be repaired. 
+The complications of building a \textit{good quality} mesh is one of the reasons some prefer immersed boundary methods!
+
+
+
 
 \begin{figure}
 \centering
@@ -258,7 +261,7 @@ But at 35 degrees, the time signatures drift apart after about 40 time units (mo
 There is a marked drop in the (time varying) lift coefficient (Figure 7(b)), but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
 Like in the previous case, using OpenFOAM, we make a judgement call that this result does indeed pass muster as a replication of our previous study. 
  
-**Postmortem**. 
+\subsection*{Postmortem.} 
 Even a well-documented open-source research code can have unexpected tricks of the trade that only the original authors may know about. 
 In the end, we don't know \textit{why} IBAMR required interior body points to be constrained. 
 The published record is incomplete in this regard: we could find no explanation for it in any paper using IBAMR. 
@@ -326,7 +329,7 @@ Visualizations of the wake vortices (Figure 10) show that a vortex-merging event
 The previously aligned positive and negative vortices are replaced by a wider wake with a single clockwise vortex on the top side and a vortex dipole on the bottom part. 
 With the change in wake pattern comes a drop in the lift force. 
 
-**Postmortem**. 
+\subsection*{Postmortem.} 
 Although PetIBM implements the same immersed-boundary method and was developed by the same research group, we were not able to fully replicate the previous findings. 
 The aerodynamic lift on a snake section at 35 degrees angle-of-attack is a consequence of the near-wake vortices providing extra suction on the upper side of the body. 
 When a vortex merger event changes the wake pattern, lift drops. 
@@ -357,7 +360,7 @@ Figure 10:
 Vorticity field after 19, 52, 53, and 64 time-units of flow-simulation with PetIBM for a snake's section at angle-of-attack 35 degrees and Reynolds number 2000.
 The vortex-merging event is responsible for the change in the wake signature and the drop in the mean lift coefficient.
 
-\section*{Story 4: Different versions of your code, the external libraries or even compilers may challenge reproducibility}
+\section*{Story 4: Different versions of your code, external libraries or even compilers may challenge reproducibility}
 
 In the span of about three years, we ran more than 100 simulations with OpenFOAM, IBAMR, and PetIBM, encountering about a dozen things that can go wrong. 
 We replicated our previous scientific finding (enhanced lift at 35 degrees angle-of-attack for sufficiently large Reynolds number) in two out of three campaigns. 
@@ -396,7 +399,7 @@ The hardware was also different (a K20 GPU versus a C2070 in our older study), a
 In an iterative linear solver, any of these things could be related to lack of floating-point reproducibility. 
 And in unsteady fluid dynamics, small floating-point differences can add over thousands of time steps to eventually trigger a flow instability (like vortex merging).
 
-**Postmortem**. 
+\subsection*{Postmortem.} 
 Making research codes open-source is not enough for reproducibility: we must be meticulous in documenting every dependency and the versions used. 
 Unfortunately, some of those dependencies will get stale over time, and might cease to be available or usable. 
 Your application code may give the same answer with a different version of an external library, or it may not. 
@@ -497,14 +500,24 @@ We will continue to share our experiences.
 --
 
 \section*{References}
+{\footnotesize
+\begin{enumerate}
+\item Barba, L. A. (2012), "Reproducibility PI Manifesto," figshare, \url{https://dx.doi.org/10.6084/m9.figshare.104539.v1}, ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), \url{https://icerm.brown.edu/tw12-5-rcem/} 
 
-1. Barba, L. A. (2012), "Reproducibility PI Manifesto," figshare, <https://dx.doi.org/10.6084/m9.figshare.104539.v1>, ICERM Workshop on Reproducibility in Computational and Experimental Mathematics (December 10-14, 2012), https://icerm.brown.edu/tw12-5-rcem/ 
-2. Krishnan, A., Socha, J. J., Vlachos, P. P., Barba, L. A. (2014). Lift and wakes of flying snakes. Physics of Fluids, 26(3), 031901, <http://dx.doi.org/10.1063/1.4866444>
-3. Krishnan, Anush; J. Socha, John; P. Vlachos, Pavlos; Barba, L. A. (2013): Lift and drag coefficient versus angle of attack for a flying snake cross-section. figshare. <https://dx.doi.org/10.6084/m9.figshare.705883.v2>
-4. Taira, K., Colonius, T. (2007). The immersed boundary method: A projecion approach. Journal of Computational Physics, 225, 2118?2137.
-5. Bhalla, A. P. S., Bale, R., Griffith, B. E., Patankar, N. A. (2013). A unified mathematical framework and an adaptive numerical method for fluid?structure interaction with rigid, deforming, and elastic bodies. Journal of Computational Physics, 250, 446-476.
-6. Schwab, M., Karrenbach, N., Claerbout, J. (2000) Making scientific computations reproducible, Computing in Science and Engineering 2(6):61?67 <http://dx.doi.org/10.1109/5992.881708>
-7. Peng, R. (2011), Reproducible Research in Computational Science, Science 334(6060):1226?1227 <http://dx.doi.org/10.1126/science.1213847>
+\item Krishnan, A., Socha, J. J., Vlachos, P. P., Barba, L. A. (2014). Lift and wakes of flying snakes. Physics of Fluids, 26(3), 031901, \url{http://dx.doi.org/10.1063/1.4866444}
+
+\item Krishnan, Anush; J. Socha, John; P. Vlachos, Pavlos; Barba, L. A. (2013): Lift and drag coefficient versus angle of attack for a flying snake cross-section. figshare. \url{https://dx.doi.org/10.6084/m9.figshare.705883.v2}
+
+\item Taira, K., Colonius, T. (2007). The immersed boundary method: A projection approach. Journal of Computational Physics, 225, 2118?2137.
+
+\item Bhalla, A. P. S., Bale, R., Griffith, B. E., Patankar, N. A. (2013). A unified mathematical framework and an adaptive numerical method for fluid?structure interaction with rigid, deforming, and elastic bodies. Journal of Computational Physics, 250, 446-476.
+
+\item Schwab, M., Karrenbach, N., Claerbout, J. (2000) Making scientific computations reproducible, Computing in Science and Engineering 2(6):61?67 \url{http://dx.doi.org/10.1109/5992.881708}
+
+\item Peng, R. (2011), Reproducible Research in Computational Science, Science 334(6060):1226?1227 \url{http://dx.doi.org/10.1126/science.1213847}
+
+\end{enumerate}
+}
 
 
 \vspace{2cm}
