@@ -162,7 +162,7 @@ We used a zero-gradient condition at the outlet for both the velocity and pressu
 
 Figure 6:
 Time-averaged drag (top) and lift (bottom) coefficients as function of the angle-of-attack of the snake's section for Reynolds numbers 1000 and 2000.
-We averaged each force signal between 32 and 64 time-units of flow-simulation with IBAMR to compare with the results from our previous investigation.
+We averaged each force signal between 32 and 64 time-units of flow-simulation with IBAMR to compare with our previous results.
 
 ![Figure 7a](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA30.png)
 ![Figure 7b](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png)
