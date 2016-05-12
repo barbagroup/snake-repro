@@ -220,24 +220,24 @@ Vortex merging is a fundamentally two-dimensional instability, so we expect that
 But it is surprising that small changes---within the bounds of truncation error, roundoff error and algebraic errors---can trigger this instability, changing the flow appreciably. 
 Even when the only difference between two equivalent simulations is the linear algebra library used, there can be challenges to reproducibility.
 
-![Figure 8](./figures/petibm/petibm-0.1.1_forceCoefficientsVsAoA.png)
+![Figure 8](./figures/petibm/petibm011_forceCoefficientsVsAoA.png)
 
 Figure 8:
 Time-averaged drag (top) and lift (bottom) coefficients as function of the snake's angle-of-attack and for Reynolds numbers 1000 and 2000 using the same Eulerian mesh as in our past cuIBM simulations.
 We show PetIBM results obtained when the immersed-boundary is rotated around: (1) its center of mass (green and orange symbols) and (2) the reference origin (solo red marker).
 
-![Figure 9a](./figures/petibm/petibm-0.1.1_forceCoefficientsRe2000AoA35.png)
-![Figure 9b](./figures/petibm/petibm-0.1.1_forceCoefficientsRe2000AoA35CompareMarkers.png)
+![Figure 9a](./figures/petibm/petibm011_forceCoefficientsRe2000AoA35.png)
+![Figure 9b](./figures/petibm/petibm011_forceCoefficientsRe2000AoA35CompareMarkers.png)
 
 Figure 9: 
 Instantaneous force coefficients for the snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
 The figure on top compares the PetIBM results with those reported in our previous study.
 The second figure compares results with the immersed-boundary being rotated around its center of mass (slightly shifted compared to our previous study) and around the reference origin (identical set of markers to our previous study).
 
-![Figure 10a](./figures/petibm/petibm-0.1.1_vorticity47500Re2000AoA35.png)
-![Figure 10b](./figures/petibm/petibm-0.1.1_vorticity130000Re2000AoA35.png)
-![Figure 10c](./figures/petibm/petibm-0.1.1_vorticity132500Re2000AoA35.png)
-![Figure 10d](./figures/petibm/petibm-0.1.1_vorticity160000Re2000AoA35.png)
+![Figure 10a](./figures/petibm/petibm011_vorticity47500Re2000AoA35.png)
+![Figure 10b](./figures/petibm/petibm011_vorticity130000Re2000AoA35.png)
+![Figure 10c](./figures/petibm/petibm011_vorticity132500Re2000AoA35.png)
+![Figure 10d](./figures/petibm/petibm011_vorticity160000Re2000AoA35.png)
 
 Figure 10:
 Vorticity field after 19, 52, 53, and 64 time-units of flow-simulation with PetIBM for a snake's section at angle-of-attack 35 degrees and Reynolds number 2000.
@@ -288,9 +288,9 @@ Unfortunately, some of those dependencies will get stale over time, and might ce
 Your application code may give the same answer with a different version of an external library, or it may not. 
 In the case of unsteady fluid dynamics, the nonlinear nature of the equations combined with numerical non-reproducibility of iterative linear solvers (in parallel!) can change the results. 
 
-![Figure 11a](./figures/cuibm/cuibm-cusp-0.5.1_forceCoefficientsRe1000AoA35.png)
-![Figure 11b](./figures/cuibm/cuibm-cusp-0.5.1_forceCoefficientsRe2000AoA30.png)
-![Figure 11c](./figures/cuibm/cuibm-revision86-cusp-0.4.0_forceCoefficientsRe2000AoA35.png)
+![Figure 11a](./figures/cuibm/cuibm-cusp051_forceCoefficientsRe1000AoA35.png)
+![Figure 11b](./figures/cuibm/cuibm-cusp051_forceCoefficientsRe2000AoA30.png)
+![Figure 11c](./figures/cuibm/cuibm-revision86-cusp040_forceCoefficientsRe2000AoA35.png)
 ![Figure 11d](./figures/cuibm/cuibm-current-revision86_forceCoefficientsRe2000AoA35.png)
 
 Figure 11:
