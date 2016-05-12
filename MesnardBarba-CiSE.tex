@@ -14,7 +14,7 @@
 \usepackage{pifont}
 \usepackage{sectsty}
 \usepackage{setspace}
-\usepackage{sidecap}  % allows side captions for figures
+\usepackage[outercaption]{sidecap}  % allows side captions for figures
 \usepackage{subfig}
 \usepackage{wrapfig}
 
@@ -170,24 +170,25 @@ Is it acceptable as a replication study?
 We think yes, but this is a judgement call.
 
 
-\begin{figure*}
+\begin{SCfigure*}
 \centering
-\includegraphics[width=0.75\textwidth]{./figures/openfoam/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.pdf}
+\includegraphics[width=0.7\textwidth]{./figures/openfoam/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.pdf}
 \caption{
 Vorticity field after 52 time units of flow simulation with IcoFOAM for a snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
 We created a triangular mesh (about 700k triangles) with the free software GMSH.
 }
 \label{figure1}
-\end{figure*}
+\end{SCfigure*}
 
-\begin{figure*}
+\begin{SCfigure*}
 \centering
-\includegraphics[width=0.75\textwidth]{./figures/openfoam/openfoam_pressureRe2000AoA35_gmshZeroGradient.pdf}
+\includegraphics[width=0.7\textwidth]{./figures/openfoam/openfoam_pressureRe2000AoA35_gmshZeroGradient.pdf}
 \caption{
 Pressure field after 52 (top) and 53 (bottom) time units of flow simulation with IcoFOAM for snake section with angle-of-attack 35 degrees and Reynolds number 2000.
 }
 \label{figure2}
-\end{figure*}
+\end{SCfigure*}
+
 
 \subsection*{Postmortem.} 
 OpenFOAM solves the fluid equations using a finite-volume method in an unstructured grid, while our published study used an immersed boundary method in a stretched Cartesian grid. 
@@ -461,7 +462,7 @@ Instantaneous force coefficients on the snake's section at (a) Reynolds number 1
      \begin{minipage}[c]{\textwidth}
       \bigskip
       \subsection*{Definition of reproducible research: }
-\small \sffamily{
+\footnotesize \sffamily{
  The literature is rife with confused and sometimes contradictory meanings for reproducible research, reproducibility, replicability, repetition, etc. 
  It is thus worth clarifying what we mean by these terms and why we've chosen this meaning. 
  The term "reproducible research" in reference to computational studies that can be reproduced by other scientists was introduced by geophysics professor Jon Claerbout in the 1990s. 
