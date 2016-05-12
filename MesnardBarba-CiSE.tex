@@ -358,10 +358,16 @@ But it is surprising that small changes---within the bounds of truncation error,
 Even when the only difference between two equivalent simulations is the linear algebra library used, there can be challenges to reproducibility.
 
 %![Figure 8](./figures/petibm/petibm-0.1.1_forceCoefficientsVsAoA.png)
-
-Figure 8:
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.5\textwidth]{./figures/petibm/petibm-011_forceCoefficientsVsAoA.pdf}
+\caption{
 Time-averaged drag (top) and lift (bottom) coefficients as function of the snake's angle-of-attack and for Reynolds numbers 1000 and 2000 using the same Eulerian mesh than the one in our past cuIBM simulations.
-We show PetIBM results obtained when the immersed-boundary is rotated around: (1) its center of mass (green and orange symbols) and (2) the reference origin (solo red marker).
+We show PetIBM results obtained when the immersed-boundary is rotated around: (1) its center of mass (green and orange symbols) and (2) the reference origin (solo red marker).}
+\label{figure8}
+\end{figure}
+
+
 
 %![Figure 9a](./figures/petibm/petibm-0.1.1_forceCoefficientsRe2000AoA35.png)
 %![Figure 9b](./figures/petibm/petibm-0.1.1_forceCoefficientsRe2000AoA35CompareMarkers.png)
