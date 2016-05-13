@@ -128,7 +128,7 @@ We already know that boundary conditions at the outlet of the computational doma
 This is no different with immersed boundary methods. 
 Our first attempt with IBAMR used a zero-gradient velocity boundary condition at the outlet. 
 This resulted in a spurious blockage of the wake vortices when they reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain (Figure 5). 
-Of course, this is unphysical and the result unacceptable. 
+Of course, this is unphysical and the result is unacceptable. 
 
 After a long search in the literature and in the documentation, it was through a conversation with the main developers on the online forum that we discovered the solution: using a "stabilized outlet" boundary condition, which adds a forcing to push the vortices out.
 (IBAMR does not provide a convective/advective boundary condition.) 
