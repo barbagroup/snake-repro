@@ -1,0 +1,268 @@
+[warning] could not import ipywidgets
+[info] parsing the command-line ... done
+VisIt version: 2.10.2
+
+[info] legend settings:
+active = 1
+managePosition = 0
+position = (0.1, 0.1)
+xScale = 1.5
+yScale = 0.5
+textColor = (0, 0, 0, 255)
+useForegroundForTextColor = 1
+drawBoundingBox = 0
+boundingBoxColor = (0, 0, 0, 50)
+numberFormat = "%# -9.2g"
+fontFamily = Courier  # Arial, Courier, Times
+fontBold = 1
+fontItalic = 0
+fontShadow = 0
+fontHeight = 0.1
+drawLabels = Values # None, Values, Labels, Both
+drawTitle = 0
+drawMinMax = 0
+orientation = HorizontalBottom  # VerticalRight, VerticalLeft, HorizontalTop, HorizontalBottom
+controlTicks = 1
+numTicks = 5
+minMaxInclusive = 1
+suppliedValues = ()
+suppliedLabels = ()
+
+[info] view settings:
+windowCoords = (-2, 15, -5, 5)
+viewportCoords = (0, 1, 0, 1)
+fullFrameActivationMode = Auto  # On, Off, Auto
+fullFrameAutoThreshold = 100
+xScale = LINEAR  # LINEAR, LOG
+yScale = LINEAR  # LINEAR, LOG
+windowValid = 1
+
+[info] annotation settings:
+axes2D.visible = 1
+axes2D.autoSetTicks = 1
+axes2D.autoSetScaling = 1
+axes2D.lineWidth = 0
+axes2D.tickLocation = axes2D.Inside  # Inside, Outside, Both
+axes2D.tickAxes = axes2D.BottomLeft  # Off, Bottom, Left, BottomLeft, All
+axes2D.xAxis.title.visible = 0
+axes2D.xAxis.title.font.font = axes2D.xAxis.title.font.Courier  # Arial, Courier, Times
+axes2D.xAxis.title.font.scale = 1
+axes2D.xAxis.title.font.useForegroundColor = 1
+axes2D.xAxis.title.font.color = (0, 0, 0, 255)
+axes2D.xAxis.title.font.bold = 1
+axes2D.xAxis.title.font.italic = 1
+axes2D.xAxis.title.userTitle = 0
+axes2D.xAxis.title.userUnits = 0
+axes2D.xAxis.title.title = "X-Axis"
+axes2D.xAxis.title.units = ""
+axes2D.xAxis.label.visible = 0
+axes2D.xAxis.label.font.font = axes2D.xAxis.label.font.Courier  # Arial, Courier, Times
+axes2D.xAxis.label.font.scale = 1
+axes2D.xAxis.label.font.useForegroundColor = 1
+axes2D.xAxis.label.font.color = (0, 0, 0, 255)
+axes2D.xAxis.label.font.bold = 1
+axes2D.xAxis.label.font.italic = 1
+axes2D.xAxis.label.scaling = 0
+axes2D.xAxis.tickMarks.visible = 0
+axes2D.xAxis.tickMarks.majorMinimum = 0
+axes2D.xAxis.tickMarks.majorMaximum = 1
+axes2D.xAxis.tickMarks.minorSpacing = 0.02
+axes2D.xAxis.tickMarks.majorSpacing = 0.2
+axes2D.xAxis.grid = 0
+axes2D.yAxis.title.visible = 0
+axes2D.yAxis.title.font.font = axes2D.yAxis.title.font.Courier  # Arial, Courier, Times
+axes2D.yAxis.title.font.scale = 1
+axes2D.yAxis.title.font.useForegroundColor = 1
+axes2D.yAxis.title.font.color = (0, 0, 0, 255)
+axes2D.yAxis.title.font.bold = 1
+axes2D.yAxis.title.font.italic = 1
+axes2D.yAxis.title.userTitle = 0
+axes2D.yAxis.title.userUnits = 0
+axes2D.yAxis.title.title = "Y-Axis"
+axes2D.yAxis.title.units = ""
+axes2D.yAxis.label.visible = 0
+axes2D.yAxis.label.font.font = axes2D.yAxis.label.font.Courier  # Arial, Courier, Times
+axes2D.yAxis.label.font.scale = 1
+axes2D.yAxis.label.font.useForegroundColor = 1
+axes2D.yAxis.label.font.color = (0, 0, 0, 255)
+axes2D.yAxis.label.font.bold = 1
+axes2D.yAxis.label.font.italic = 1
+axes2D.yAxis.label.scaling = 0
+axes2D.yAxis.tickMarks.visible = 0
+axes2D.yAxis.tickMarks.majorMinimum = 0
+axes2D.yAxis.tickMarks.majorMaximum = 1
+axes2D.yAxis.tickMarks.minorSpacing = 0.02
+axes2D.yAxis.tickMarks.majorSpacing = 0.2
+axes2D.yAxis.grid = 0
+axes3D.visible = 1
+axes3D.autoSetTicks = 1
+axes3D.autoSetScaling = 1
+axes3D.lineWidth = 0
+axes3D.tickLocation = axes3D.Inside  # Inside, Outside, Both
+axes3D.axesType = axes3D.ClosestTriad  # ClosestTriad, FurthestTriad, OutsideEdges, StaticTriad, StaticEdges
+axes3D.triadFlag = 1
+axes3D.bboxFlag = 1
+axes3D.xAxis.title.visible = 1
+axes3D.xAxis.title.font.font = axes3D.xAxis.title.font.Arial  # Arial, Courier, Times
+axes3D.xAxis.title.font.scale = 1
+axes3D.xAxis.title.font.useForegroundColor = 1
+axes3D.xAxis.title.font.color = (0, 0, 0, 255)
+axes3D.xAxis.title.font.bold = 0
+axes3D.xAxis.title.font.italic = 0
+axes3D.xAxis.title.userTitle = 0
+axes3D.xAxis.title.userUnits = 0
+axes3D.xAxis.title.title = "X-Axis"
+axes3D.xAxis.title.units = ""
+axes3D.xAxis.label.visible = 1
+axes3D.xAxis.label.font.font = axes3D.xAxis.label.font.Arial  # Arial, Courier, Times
+axes3D.xAxis.label.font.scale = 1
+axes3D.xAxis.label.font.useForegroundColor = 1
+axes3D.xAxis.label.font.color = (0, 0, 0, 255)
+axes3D.xAxis.label.font.bold = 0
+axes3D.xAxis.label.font.italic = 0
+axes3D.xAxis.label.scaling = 0
+axes3D.xAxis.tickMarks.visible = 1
+axes3D.xAxis.tickMarks.majorMinimum = 0
+axes3D.xAxis.tickMarks.majorMaximum = 1
+axes3D.xAxis.tickMarks.minorSpacing = 0.02
+axes3D.xAxis.tickMarks.majorSpacing = 0.2
+axes3D.xAxis.grid = 0
+axes3D.yAxis.title.visible = 1
+axes3D.yAxis.title.font.font = axes3D.yAxis.title.font.Arial  # Arial, Courier, Times
+axes3D.yAxis.title.font.scale = 1
+axes3D.yAxis.title.font.useForegroundColor = 1
+axes3D.yAxis.title.font.color = (0, 0, 0, 255)
+axes3D.yAxis.title.font.bold = 0
+axes3D.yAxis.title.font.italic = 0
+axes3D.yAxis.title.userTitle = 0
+axes3D.yAxis.title.userUnits = 0
+axes3D.yAxis.title.title = "Y-Axis"
+axes3D.yAxis.title.units = ""
+axes3D.yAxis.label.visible = 1
+axes3D.yAxis.label.font.font = axes3D.yAxis.label.font.Arial  # Arial, Courier, Times
+axes3D.yAxis.label.font.scale = 1
+axes3D.yAxis.label.font.useForegroundColor = 1
+axes3D.yAxis.label.font.color = (0, 0, 0, 255)
+axes3D.yAxis.label.font.bold = 0
+axes3D.yAxis.label.font.italic = 0
+axes3D.yAxis.label.scaling = 0
+axes3D.yAxis.tickMarks.visible = 1
+axes3D.yAxis.tickMarks.majorMinimum = 0
+axes3D.yAxis.tickMarks.majorMaximum = 1
+axes3D.yAxis.tickMarks.minorSpacing = 0.02
+axes3D.yAxis.tickMarks.majorSpacing = 0.2
+axes3D.yAxis.grid = 0
+axes3D.zAxis.title.visible = 1
+axes3D.zAxis.title.font.font = axes3D.zAxis.title.font.Arial  # Arial, Courier, Times
+axes3D.zAxis.title.font.scale = 1
+axes3D.zAxis.title.font.useForegroundColor = 1
+axes3D.zAxis.title.font.color = (0, 0, 0, 255)
+axes3D.zAxis.title.font.bold = 0
+axes3D.zAxis.title.font.italic = 0
+axes3D.zAxis.title.userTitle = 0
+axes3D.zAxis.title.userUnits = 0
+axes3D.zAxis.title.title = "Z-Axis"
+axes3D.zAxis.title.units = ""
+axes3D.zAxis.label.visible = 1
+axes3D.zAxis.label.font.font = axes3D.zAxis.label.font.Arial  # Arial, Courier, Times
+axes3D.zAxis.label.font.scale = 1
+axes3D.zAxis.label.font.useForegroundColor = 1
+axes3D.zAxis.label.font.color = (0, 0, 0, 255)
+axes3D.zAxis.label.font.bold = 0
+axes3D.zAxis.label.font.italic = 0
+axes3D.zAxis.label.scaling = 0
+axes3D.zAxis.tickMarks.visible = 1
+axes3D.zAxis.tickMarks.majorMinimum = 0
+axes3D.zAxis.tickMarks.majorMaximum = 1
+axes3D.zAxis.tickMarks.minorSpacing = 0.02
+axes3D.zAxis.tickMarks.majorSpacing = 0.2
+axes3D.zAxis.grid = 0
+axes3D.setBBoxLocation = 0
+axes3D.bboxLocation = (0, 1, 0, 1, 0, 1)
+userInfoFlag = 0
+userInfoFont.font = userInfoFont.Arial  # Arial, Courier, Times
+userInfoFont.scale = 1
+userInfoFont.useForegroundColor = 1
+userInfoFont.color = (0, 0, 0, 255)
+userInfoFont.bold = 0
+userInfoFont.italic = 0
+databaseInfoFlag = 0
+timeInfoFlag = 0
+databaseInfoFont.font = databaseInfoFont.Arial  # Arial, Courier, Times
+databaseInfoFont.scale = 1
+databaseInfoFont.useForegroundColor = 1
+databaseInfoFont.color = (0, 0, 0, 255)
+databaseInfoFont.bold = 0
+databaseInfoFont.italic = 0
+databaseInfoExpansionMode = File  # File, Directory, Full, Smart, SmartDirectory
+databaseInfoTimeScale = 1
+databaseInfoTimeOffset = 0
+legendInfoFlag = 1
+backgroundColor = (255, 255, 255, 255)
+foregroundColor = (0, 0, 0, 255)
+gradientBackgroundStyle = Radial  # TopToBottom, BottomToTop, LeftToRight, RightToLeft, Radial
+gradientColor1 = (0, 0, 255, 255)
+gradientColor2 = (0, 0, 0, 255)
+backgroundMode = Solid  # Solid, Gradient, Image, ImageSphere
+backgroundImage = ""
+imageRepeatX = 1
+imageRepeatY = 1
+axesArray.visible = 0
+axesArray.ticksVisible = 1
+axesArray.autoSetTicks = 1
+axesArray.autoSetScaling = 1
+axesArray.lineWidth = 0
+axesArray.axes.title.visible = 1
+axesArray.axes.title.font.font = axesArray.axes.title.font.Arial  # Arial, Courier, Times
+axesArray.axes.title.font.scale = 1
+axesArray.axes.title.font.useForegroundColor = 1
+axesArray.axes.title.font.color = (0, 0, 0, 255)
+axesArray.axes.title.font.bold = 0
+axesArray.axes.title.font.italic = 0
+axesArray.axes.title.userTitle = 0
+axesArray.axes.title.userUnits = 0
+axesArray.axes.title.title = ""
+axesArray.axes.title.units = ""
+axesArray.axes.label.visible = 1
+axesArray.axes.label.font.font = axesArray.axes.label.font.Arial  # Arial, Courier, Times
+axesArray.axes.label.font.scale = 1
+axesArray.axes.label.font.useForegroundColor = 1
+axesArray.axes.label.font.color = (0, 0, 0, 255)
+axesArray.axes.label.font.bold = 0
+axesArray.axes.label.font.italic = 0
+axesArray.axes.label.scaling = 0
+axesArray.axes.tickMarks.visible = 1
+axesArray.axes.tickMarks.majorMinimum = 0
+axesArray.axes.tickMarks.majorMaximum = 1
+axesArray.axes.tickMarks.minorSpacing = 0.02
+axesArray.axes.tickMarks.majorSpacing = 0.2
+axesArray.axes.grid = 0
+
+[info] time-annotation:
+visible = 1
+active = 1
+position = (0.05, 0.9)
+height = 0.05
+textColor = (0, 0, 0, 255)
+useForegroundForTextColor = 1
+text = "2D text annotation"
+fontFamily = Courier  # Arial, Courier, Times
+fontBold = 0
+fontItalic = 0
+fontShadow = 0
+
+
+[state 56] time: 60.921 - creating and saving the field ...
+
+Python version:
+2.7.11 |Anaconda 2.5.0 (64-bit)| (default, Dec  6 2015, 18:08:32) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]
+
+snake version: 0.1
+
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/zeroGradientOutlet/Re2000AoA35
+

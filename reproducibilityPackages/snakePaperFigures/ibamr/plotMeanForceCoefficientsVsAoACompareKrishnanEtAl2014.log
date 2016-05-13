@@ -1,0 +1,175 @@
+
+Python version:
+2.7.11 |Anaconda 2.5.0 (64-bit)| (default, Dec  6 2015, 18:08:32) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]
+
+snake version: 0.1
+
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re1000AoA25
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re1000AoA25/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re1000AoA30
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re1000AoA30/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re1000AoA35
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re1000AoA35/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re1000AoA40
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re1000AoA40/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re2000AoA25
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re2000AoA25/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re2000AoA30
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re2000AoA30/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re2000AoA35
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re2000AoA35/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re2000AoA40
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/surfaceMarkers/Re2000AoA40/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re1000AoA25
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re1000AoA25/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re1000AoA30
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re1000AoA30/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re1000AoA35
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re1000AoA35/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re1000AoA40
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re1000AoA40/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA25
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA25/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA30
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA30/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA35
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA35/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA40
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA40/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: None
+	- software: cuibm
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA25
+
+[info] reading forces ...
+
+[info] registering simulation ...
+	- description: None
+	- software: cuibm
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA30
+
+[info] reading forces ...
+
+[info] registering simulation ...
+	- description: None
+	- software: cuibm
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA35
+
+[info] reading forces ...
+
+[info] registering simulation ...
+	- description: None
+	- software: cuibm
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe1000AoA40
+
+[info] reading forces ...
+
+[info] registering simulation ...
+	- description: None
+	- software: cuibm
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA25
+
+[info] reading forces ...
+
+[info] registering simulation ...
+	- description: None
+	- software: cuibm
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA30
+
+[info] reading forces ...
+
+[info] registering simulation ...
+	- description: None
+	- software: cuibm
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA35
+
+[info] reading forces ...
+
+[info] registering simulation ...
+	- description: None
+	- software: cuibm
+	- directory: /home/mesnardo/git/mesnardo/snake/resources/flyingSnake2d_cuibm_anush/flyingSnake2dRe2000AoA40
+
+[info] reading forces ...
