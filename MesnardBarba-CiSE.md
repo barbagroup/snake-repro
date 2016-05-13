@@ -133,7 +133,7 @@ Of course, this is unphysical and the result unacceptable.
 After a long search in the literature and in the documentation, it was through a conversation with the main developers on the online forum that we discovered the solution: using a "stabilized outlet" boundary condition, which adds a forcing to push the vortices out.
 (IBAMR does not provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study (Figure 6). 
-Another deep dive in the literature led us to notice that a benchmark example defined in a paper describing extensions to IBAMR^(5) was set up in an unexpected way: 
+Another deep dive in the literature led us to notice that a benchmark example described in a paper reporting on extensions to IBAMR^(5) was set up in an unexpected way: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
 Other papers using immersed boundary methods apply the constraint only on boundary points.
@@ -259,7 +259,7 @@ which includes:
 (3) data and figures for the main results of the paper are open; 
 (4) pre-print is available on arXiv; 
 (5) code was released under MIT License; 
-(6) a Reproducibility statement included in the paper. 
+(6) a Reproducibility statement in the paper. 
 Of course we expect to be able to reproduce our own results!
 
 The first hurdle we faced is that, three years after we completed our previous study, we have updated our lab computers: 
