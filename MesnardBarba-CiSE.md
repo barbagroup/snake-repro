@@ -231,8 +231,8 @@ We show PetIBM results obtained when the immersed-boundary is rotated around: (1
 
 Figure 9: 
 Instantaneous force coefficients for the snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
-The figure on top compares the PetIBM results with those reported in our previous study.
-The second figure compares results with the immersed-boundary being rotated around its center of mass (slightly shifted compared to our previous study) and around the reference origin (identical set of markers to our previous study).
+The top plot compares the PetIBM results with those reported in our previous study.
+The bottom plot shows results with the immersed-boundary being rotated around the reference origin or  around its center of mass (the latter is slightly shifted compared to our previous study).
 
 ![Figure 10a](./figures/petibm/petibm011_vorticity47500Re2000AoA35.png)
 ![Figure 10b](./figures/petibm/petibm011_vorticity130000Re2000AoA35.png)
