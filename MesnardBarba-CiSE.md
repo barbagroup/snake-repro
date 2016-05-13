@@ -255,11 +255,11 @@ As we mentioned in the opening of this article, we adopted a set of practices ye
 The study published as "Lift and wakes of flying snakes" followed the guidance of the "Reproducibility PI Manifesto," 
 which includes: 
 (1) code developed under version control; 
-(2) completed validation and verification, report published on Figshare; 
-(3) data and figures for the main results of the paper are open; 
-(4) pre-print is available on arXiv; 
-(5) code was released under MIT License; 
-(6) a Reproducibility statement in the paper. 
+(2) completed validation and verification, with report published on Figshare; 
+(3) open data and figures for the main results of the paper on Figshare; 
+(4) pre-print made available on arXiv; 
+(5) code released under MIT License; 
+(6) a Reproducibility statement in the paper.
 Of course we expect to be able to reproduce our own results!
 
 The first hurdle we faced is that, three years after we completed our previous study, we have updated our lab computers: 
@@ -283,7 +283,7 @@ In an iterative linear solver, any of these things could be related to lack of f
 And in unsteady fluid dynamics, small floating-point differences can add up over thousands of time steps to eventually trigger a flow instability (like vortex merging).
 
 **Postmortem**. 
-Making research codes open-source is not enough for reproducibility: we must be meticulous in documenting every dependency and the versions used. 
+Making research codes open source is not enough for reproducibility: we must be meticulous in documenting every dependency and the versions used. 
 Unfortunately, some of those dependencies will get stale over time, and might cease to be available or usable. 
 Your application code may give the same answer with a different version of an external library, or it may not. 
 In the case of unsteady fluid dynamics, the nonlinear nature of the equations combined with numerical non-reproducibility of iterative linear solvers (in parallel!) can change the results. 
