@@ -128,7 +128,7 @@ We already know that boundary conditions at the outlet of the computational doma
 This is no different with immersed boundary methods. 
 Our first attempt with IBAMR used a zero-gradient velocity boundary condition at the outlet. 
 This resulted in a spurious blockage of the wake vortices when they reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain (Figure 5). 
-Of course, this is unphysical and the result unacceptable. 
+Of course, this is unphysical and the result is unacceptable. 
 
 After a long search in the literature and in the documentation, it was through a conversation with the main developers on the online forum that we discovered the solution: using a "stabilized outlet" boundary condition, which adds a forcing to push the vortices out.
 (IBAMR does not provide a convective/advective boundary condition.) 
@@ -255,11 +255,11 @@ As we mentioned in the opening of this article, we adopted a set of practices ye
 The study published as "Lift and wakes of flying snakes" followed the guidance of the "Reproducibility PI Manifesto," 
 which includes: 
 (1) code developed under version control; 
-(2) completed validation and verification, report published on Figshare; 
-(3) data and figures for the main results of the paper are open; 
-(4) pre-print is available on arXiv; 
-(5) code was released under MIT License; 
-(6) a Reproducibility statement in the paper. 
+(2) completed validation and verification, with report published on Figshare; 
+(3) open data and figures for the main results of the paper on Figshare; 
+(4) pre-print made available on arXiv; 
+(5) code released under MIT License; 
+(6) a Reproducibility statement in the paper.
 Of course we expect to be able to reproduce our own results!
 
 The first hurdle we faced is that, three years after we completed our previous study, we have updated our lab computers: 
@@ -283,7 +283,7 @@ In an iterative linear solver, any of these things could be related to lack of f
 And in unsteady fluid dynamics, small floating-point differences can add up over thousands of time steps to eventually trigger a flow instability (like vortex merging).
 
 **Postmortem**. 
-Making research codes open-source is not enough for reproducibility: we must be meticulous in documenting every dependency and the versions used. 
+Making research codes open source is not enough for reproducibility: we must be meticulous in documenting every dependency and the versions used. 
 Unfortunately, some of those dependencies will get stale over time, and might cease to be available or usable. 
 Your application code may give the same answer with a different version of an external library, or it may not. 
 In the case of unsteady fluid dynamics, the nonlinear nature of the equations combined with numerical non-reproducibility of iterative linear solvers (in parallel!) can change the results. 
@@ -373,12 +373,12 @@ We will continue to share our experiences.
 --
 
 > ### Supplementary materials
-> The GitHub repository for this paper contains the following supplementary materials:
-> 
-> * all input files to generate the runs reported in the paper
-> * summary of the mesh details in a separate markdown file
-> * additional Jupyter notebooks with simulation results
-> 
+>We provide supplementary materials in the GitHub repository for this paper, including: 
+>(1) all input files to generate the runs reported in the paper; 
+>(2) Jupyter notebooks for all the simulations, detailing every condition (dependencies, compilation, mesh, boundary conditions, solver parameters, command-line options); 
+>(3) Python codes and bash scripts needed to recreate all the figures included in the paper.
+>
+> Our codes are available for unrestricted use, under the MIT license; to obtain the codes and run the tests in this paper, the reader may follow instructions on <https://github.com/barbagroup/snake-repro>. 
 > 
 
 --
