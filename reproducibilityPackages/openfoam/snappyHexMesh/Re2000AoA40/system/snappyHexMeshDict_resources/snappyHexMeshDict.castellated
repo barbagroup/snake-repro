@@ -22,7 +22,7 @@ addLayers       false; // add surface layers?
 
 geometry
 {
-  snakeAoA40.obj
+  snake.obj
   {
     type triSurfaceMesh;
     name snake;
