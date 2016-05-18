@@ -2,7 +2,7 @@
 
 (c) Olivier Mesnard, Lorena A. Barba, 2016.
 
-Article submitted on 13 May 2016. Preprint on [arXiv:1605.04339]((http://arxiv.org/abs/1605.04339))
+Article submitted on 13 May 2016. Preprint on [arXiv:1605.04339]((http://arxiv.org/abs/1605.04339)
 
 This repository contains the manuscript source files, and supplementary materials including input files, geometry files, running scripts and Jupyter notebooks for all runs. 
 
