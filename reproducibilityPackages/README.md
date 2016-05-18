@@ -27,6 +27,7 @@ We used a total of four CFD solvers in this study:
 
 In our manuscript, [*"Reproducible and replicable CFD: it's harder than you think"*](http://arxiv.org/abs/1605.04339), we report the numerical solution from 40 simulations.
 
+### [Table of Contents](https://github.com/barbagroup/snake-repro/blob/master/reproducibilityPackages/tableOfContents.ipynb)
 
 The article reports on the numerical solution from 40 simulations. We prepared detailed *"Reproducibility packages"* for each one of these simulations, which are found in the `/reproducibilityPackages` directory. 
 Each simulation folder contains a Jupyter Notebook, named `report`, with all the information about the case, the command-lines input to run the simulation, and the Python codes to pre- and post-process the simulation.
