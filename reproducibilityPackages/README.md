@@ -6,7 +6,8 @@ For the article:
 
 Olivier Mesnard, Lorena A. Barba
 
-Article submitted on 13 May 2016. Preprint on [arXiv:1605.04339]((http://arxiv.org/abs/1605.04339))
+Article submitted on 13 May 2016. Preprint on [arXiv:1605.04339](http://arxiv.org/abs/1605.04339)
+
 ---
 
 We used a total of four CFD solvers in this study:
