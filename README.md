@@ -1,6 +1,4 @@
-# Reproducibility packages
-
-### *"Reproducible and replicable CFD: it's harder than you think"*
+## *"Reproducible and replicable CFD: it's harder than you think"*
 
 (c) Olivier Mesnard, Lorena A. Barba, 2016.
 
