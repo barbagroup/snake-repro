@@ -1,0 +1,28 @@
+
+Python version:
+2.7.11 |Anaconda 2.5.0 (64-bit)| (default, Dec  6 2015, 18:08:32) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]
+
+snake version: 0.1
+
+
+[info] registering simulation ...
+	- description: PetIBM
+	- software: petibm
+	- directory: /home/mesnardo/snakeReproducibilityPackages/petibm/shiftedMarkers/Re2000AoA35
+
+[info] reading forces ... done
+
+[info] registering simulation ...
+	- description: Krishnan et al. (2014)
+	- software: cuibm
+	- directory: /home/mesnardo/git/barbagroup/snake-repro/reproducibilityPackages/snakePaperFigures/petibm
+
+[info] reading forces ...
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 9 periods of the lift curve between 34.4296 and 61.7472 time-units.
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 11 periods of the lift curve between 34.496 and 62.676 time-units.
+                          <Cd>    <Cl>    <St>
+PetIBM                  1.1709  1.8671  0.3324
+Krishnan et al. (2014)  1.3162  2.1471  0.3904

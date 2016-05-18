@@ -1,0 +1,28 @@
+
+Python version:
+2.7.11 |Anaconda 2.5.0 (64-bit)| (default, Dec  6 2015, 18:08:32) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]
+
+snake version: 0.1
+
+
+[info] registering simulation ...
+	- description: IBAMR
+	- software: ibamr
+	- directory: /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA35
+
+[info] reading forces from /home/mesnardo/snakeReproducibilityPackages/ibamr/bodyMarkers/Re2000AoA35/dataIB/ib_Drag_force_struct_no_0 ... done
+
+[info] registering simulation ...
+	- description: Krishnan et al. (2014)
+	- software: cuibm
+	- directory: /home/mesnardo/git/barbagroup/snake-repro/reproducibilityPackages/snakePaperFigures/ibamr
+
+[info] reading forces ...
+[info] instantaneous signals are averaged between 32.0001 and 63.9998 time-units.
+[info] Strouhal number is averaged over the 19 periods of the lift curve between 33.1418 and 62.8697 time-units.
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 11 periods of the lift curve between 34.496 and 62.676 time-units.
+                          <Cd>    <Cl>    <St>
+IBAMR                   1.2558  2.0580  1.2501
+Krishnan et al. (2014)  1.3162  2.1471  0.3904

@@ -1,0 +1,22 @@
+[warning] could not import ipywidgets
+[info] parsing command-line... done
+Paraview: 
+['/opt/OpenFOAM/ThirdParty-2.3.1/platforms/linux64Gcc/ParaView-4.1.0/lib/paraview-4.1/site-packages/paraview']
+
+[info] plotting pressure field ...
+[info] .png files will be saved in: /home/mesnardo/snakeReproducibilityPackages/openfoam/gmsh/Re2000AoA35/images/pressure_-2.00_-3.00_15.00_3.00
+[info] creating view at 52.0 time-units ...
+[info] creating view at 53.0 time-units ...
+
+Python version:
+2.7.11 |Anaconda 2.5.0 (64-bit)| (default, Dec  6 2015, 18:08:32) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]
+
+snake version: 0.1
+
+
+[info] registering simulation ...
+	- description: None
+	- software: openfoam
+	- directory: /home/mesnardo/snakeReproducibilityPackages/openfoam/gmsh/Re2000AoA35
+

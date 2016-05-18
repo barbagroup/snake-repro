@@ -1,0 +1,28 @@
+
+Python version:
+2.7.11 |Anaconda 2.5.0 (64-bit)| (default, Dec  6 2015, 18:08:32) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)]
+
+snake version: 0.1
+
+
+[info] registering simulation ...
+	- description: cuIBM (current) - cusp-0.5.1
+	- software: cuibm
+	- directory: /home/mesnardo/snakeReproducibilityPackages/cuibm/current/cusp051/Re2000AoA30
+
+[info] reading forces ...
+
+[info] registering simulation ...
+	- description: Krishnan et al. (2014)
+	- software: cuibm
+	- directory: /home/mesnardo/git/barbagroup/snake-repro/reproducibilityPackages/snakePaperFigures/cuibm
+
+[info] reading forces ...
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 10 periods of the lift curve between 33.9348 and 63.6272 time-units.
+[info] instantaneous signals are averaged between 32.0 and 64.0 time-units.
+[info] Strouhal number is averaged over the 10 periods of the lift curve between 33.8672 and 63.4752 time-units.
+                                <Cd>    <Cl>    <St>
+cuIBM (current) - cusp-0.5.1  0.9673  1.5342  0.3368
+Krishnan et al. (2014)        0.9674  1.5324  0.3378
