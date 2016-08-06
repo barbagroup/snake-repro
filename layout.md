@@ -2,3 +2,4 @@ untitled.md
 Fluid_flow_solvers_we_used__.md
 Story_1_Meshing_and_boundary__.md
 Postmortem_IcoFOAM_solves_the_fluid__.md
+figures/openfoam_vorticity52Re2000AoA35_gmshZeroGradient/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.png
