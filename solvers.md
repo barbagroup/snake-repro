@@ -1,4 +1,5 @@
 > **Fluid-flow solvers we used**
+
 > **cuIBM**--- Used for our original study (Krishan et al., 2014), this code is written in C CUDA to exploit GPU hardware, but is serial on CPU. 
 > It uses the NVIDIA *Cusp* library for solving sparse linear systems on GPU. 
 > <https://github.com/barbagroup/cuIBM>  
