@@ -6,3 +6,12 @@ figures/openfoam_vorticity52Re2000AoA35_gmshZeroGradient/openfoam_vorticity52Re2
 figures/openfoam_pressure53Re2000AoA35_gmshZeroGradient/openfoam_pressureRe2000AoA35_gmshZeroGradient.png
 figures/openfoam_forceCoefficientsVsAoA/openfoam_forceCoefficientsVsAoA.png
 figures/openfoam_forceCoefficientsRe2000AoA35/openfoam_forceCoefficientsRe2000.png
+story2.md
+postmortem2.md
+story3.md
+postmortem3.md
+story4.md
+postmortem4.md
+definitionreproducibility.md
+lessons.md
+suppmat.md
