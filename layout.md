@@ -22,3 +22,4 @@ figures/cuibm_forceCoefficients/cuibm_forceCoefficients.png
 definitionreproducible.md
 lessons.md
 suppmat.md
+acknowledgements.md
