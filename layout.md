@@ -9,6 +9,7 @@ figures/openfoam_forceCoefficientsRe2000AoA35/openfoam_forceCoefficientsRe2000.p
 story2.md
 postmortem2.md
 figures/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet.png
+figures/ibamr_forceCoefficientsVsAoA/ibamr_forceCoefficientsVsAoA.png
 story3.md
 postmortem3.md
 story4.md
