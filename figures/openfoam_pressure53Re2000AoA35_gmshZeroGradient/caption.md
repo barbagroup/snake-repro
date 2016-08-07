@@ -1,0 +1,1 @@
+Pressure field after 52 (top) and 53 (bottom) time-units of flow-simulation with IcoFOAM for snake section with angle-of-attack 35 degrees and Reynolds number 2000. The simulation crashed after about 62 time-units because of the back pressure at the outlet boundary.
