@@ -1,7 +1,7 @@
-untitled.md
-Fluid_flow_solvers_we_used__.md
-Story_1_Meshing_and_boundary__.md
-Postmortem_IcoFOAM_solves_the_fluid__.md
+introduction.md
+solvers.md
+story1.md
+postmortem1.md
 figures/openfoam_vorticity52Re2000AoA35_gmshZeroGradient/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.png
 figures/openfoam_pressure53Re2000AoA35_gmshZeroGradient/openfoam_pressureRe2000AoA35_gmshZeroGradient.png
 figures/openfoam_forceCoefficientsVsAoA/openfoam_forceCoefficientsVsAoA.png
