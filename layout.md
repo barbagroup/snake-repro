@@ -18,6 +18,7 @@ figures/petibm011_forceCoefficientsRe2000AoA35/petibm011_forceCoefficientsRe2000
 figures/petibm011_vorticityRe2000AoA35/petibm011_vorticityRe2000AoA35.png
 story4.md
 postmortem4.md
+figures/cuibm_forceCoefficients/cuibm_forceCoefficients.png
 definitionreproducible.md
 lessons.md
 suppmat.md
