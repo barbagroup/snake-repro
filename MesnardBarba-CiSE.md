@@ -82,26 +82,26 @@ Two unstructured meshes built with the same parameters will not be exactly the s
 The mesh-generation procedures are not necessarily deterministic, and regularly produce bad triangles that need to be repaired. 
 The complications of building a _good quality_ mesh is one of the reasons some prefer immersed boundary methods!
 
-![Figure 1](./figures/openfoam/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.png)
+![Figure 1](./reproducibilityPackages/figures/openfoam/openfoam_vorticity52Re2000AoA35_gmshZeroGradient.png)
 
 Figure 1: 
 Vorticity field after 52 time-units of flow-simulation with IcoFOAM for a snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
 We created a triangular mesh (about 700k triangles) with the free software GMSH.
 
-![Figure 2a](./figures/openfoam/openfoam_pressure52Re2000AoA35_gmshZeroGradient.png)
-![Figure 2b](./figures/openfoam/openfoam_pressure53Re2000AoA35_gmshZeroGradient.png)
+![Figure 2a](./reproducibilityPackages/figures/openfoam/openfoam_pressure52Re2000AoA35_gmshZeroGradient.png)
+![Figure 2b](./reproducibilityPackages/figures/openfoam/openfoam_pressure53Re2000AoA35_gmshZeroGradient.png)
 
 Figure 2:
 Pressure field after 52 (top) and 53 (bottom) time-units of flow-simulation with IcoFOAM for snake section with angle-of-attack 35 degrees and Reynolds number 2000. The simulation crashed after about 62 time-units because of the back pressure at the outlet boundary.
 
-![Figure 3](./figures/openfoam/openfoam_forceCoefficientsVsAoA.png)
+![Figure 3](./reproducibilityPackages/figures/openfoam/openfoam_forceCoefficientsVsAoA.png)
 
 Figure 3:
 Time-averaged drag (top) and lift (bottom) coefficients as function of the snake's angle-of-attack for Reynolds numbers 1000 and 2000.
 We averaged all IcoFOAM force coefficients between 32 and 64 time-units of flow-simulation as we have done in our previous study.
 
-![Figure 4a](./figures/openfoam/openfoam_forceCoefficientsRe2000AoA30.png)
-![Figure 4b](./figures/openfoam/openfoam_forceCoefficientsRe2000AoA35.png)
+![Figure 4a](./reproducibilityPackages/figures/openfoam/openfoam_forceCoefficientsRe2000AoA30.png)
+![Figure 4b](./reproducibilityPackages/figures/openfoam/openfoam_forceCoefficientsRe2000AoA35.png)
 
 Figure 4:
 Instantaneous force coefficients on the snake's section with angle-of-attack 30 degrees (top) and 35 degrees (bottom) at Reynolds number 2000.
@@ -152,20 +152,20 @@ One of the issues may be that our community does not have a habit of communicati
 We learned from this experience that using an open research code and getting correct results with it could involve a long investigative period, potentially requiring communication with the original authors and many failed attempts. 
 If the code is not well documented and the original authors not responsive to questions, then building your own code from scratch could be more sensible!
 
-![Figure 5](./figures/ibamr/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet.png)
+![Figure 5](./reproducibilityPackages/figures/ibamr/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet.png)
 
 Figure 5:
 Vorticity field after about 61 time-units of flow-simulation with IBAMR for a snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
 We used a zero-gradient condition at the outlet for both the velocity and pressure quantities.
 
-![Figure 6](./figures/ibamr/ibamr_forceCoefficientsVsAoA.png)
+![Figure 6](./reproducibilityPackages/figures/ibamr/ibamr_forceCoefficientsVsAoA.png)
 
 Figure 6:
 Time-averaged drag (top) and lift (bottom) coefficients as function of the angle-of-attack of the snake's section for Reynolds numbers 1000 and 2000.
 We averaged each force signal between 32 and 64 time-units of flow-simulation with IBAMR to compare with our previous results.
 
-![Figure 7a](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA30.png)
-![Figure 7b](./figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png)
+![Figure 7a](./reproducibilityPackages/figures/ibamr/ibamr_forceCoefficientsRe2000AoA30.png)
+![Figure 7b](./reproducibilityPackages/figures/ibamr/ibamr_forceCoefficientsRe2000AoA35.png)
 
 Figure 7:
 Instantaneous force coefficients at Reynolds number 2000 for the snake's section at angle-of-attack 30 (top) and 35 (bottom) degrees.
@@ -220,24 +220,24 @@ Vortex merging is a fundamentally two-dimensional instability, so we expect that
 But it is surprising that small changes---within the bounds of truncation error, roundoff error and algebraic errors---can trigger this instability, changing the flow appreciably. 
 Even when the only difference between two equivalent simulations is the linear algebra library used, there can be challenges to reproducibility.
 
-![Figure 8](./figures/petibm/petibm011_forceCoefficientsVsAoA.png)
+![Figure 8](./reproducibilityPackages/figures/petibm/petibm011_forceCoefficientsVsAoA.png)
 
 Figure 8:
 Time-averaged drag (top) and lift (bottom) coefficients as function of the snake's angle-of-attack and for Reynolds numbers 1000 and 2000 using the same Eulerian mesh as in our past cuIBM simulations.
 We show PetIBM results obtained when the immersed-boundary is rotated around: (1) its center of mass (green and orange symbols) and (2) the reference origin (solo red marker).
 
-![Figure 9a](./figures/petibm/petibm011_forceCoefficientsRe2000AoA35.png)
-![Figure 9b](./figures/petibm/petibm011_forceCoefficientsRe2000AoA35CompareMarkers.png)
+![Figure 9a](./reproducibilityPackages/figures/petibm/petibm011_forceCoefficientsRe2000AoA35.png)
+![Figure 9b](./reproducibilityPackages/figures/petibm/petibm011_forceCoefficientsRe2000AoA35CompareMarkers.png)
 
 Figure 9: 
 Instantaneous force coefficients for the snake's section with angle-of-attack 35 degrees and Reynolds number 2000.
 The top plot compares the PetIBM results with those reported in our previous study.
 The bottom plot shows results with the immersed-boundary being rotated around the reference origin or  around its center of mass (the latter is slightly shifted compared to our previous study).
 
-![Figure 10a](./figures/petibm/petibm011_vorticity47500Re2000AoA35.png)
-![Figure 10b](./figures/petibm/petibm011_vorticity130000Re2000AoA35.png)
-![Figure 10c](./figures/petibm/petibm011_vorticity132500Re2000AoA35.png)
-![Figure 10d](./figures/petibm/petibm011_vorticity160000Re2000AoA35.png)
+![Figure 10a](./reproducibilityPackages/figures/petibm/petibm011_vorticity47500Re2000AoA35.png)
+![Figure 10b](./reproducibilityPackages/figures/petibm/petibm011_vorticity130000Re2000AoA35.png)
+![Figure 10c](./reproducibilityPackages/figures/petibm/petibm011_vorticity132500Re2000AoA35.png)
+![Figure 10d](./reproducibilityPackages/figures/petibm/petibm011_vorticity160000Re2000AoA35.png)
 
 Figure 10:
 Vorticity field after 19, 52, 53, and 64 time-units of flow-simulation with PetIBM for a snake's section at angle-of-attack 35 degrees and Reynolds number 2000.
@@ -288,10 +288,10 @@ Unfortunately, some of those dependencies will get stale over time, and might ce
 Your application code may give the same answer with a different version of an external library, or it may not. 
 In the case of unsteady fluid dynamics, the nonlinear nature of the equations combined with numerical non-reproducibility of iterative linear solvers (in parallel!) can change the results. 
 
-![Figure 11a](./figures/cuibm/cuibm-cusp051_forceCoefficientsRe1000AoA35.png)
-![Figure 11b](./figures/cuibm/cuibm-cusp051_forceCoefficientsRe2000AoA30.png)
-![Figure 11c](./figures/cuibm/cuibm-revision86-cusp040_forceCoefficientsRe2000AoA35.png)
-![Figure 11d](./figures/cuibm/cuibm-current-revision86_forceCoefficientsRe2000AoA35.png)
+![Figure 11a](./reproducibilityPackages/figures/cuibm/cuibm-cusp051_forceCoefficientsRe1000AoA35.png)
+![Figure 11b](./reproducibilityPackages/figures/cuibm/cuibm-cusp051_forceCoefficientsRe2000AoA30.png)
+![Figure 11c](./reproducibilityPackages/figures/cuibm/cuibm-revision86-cusp040_forceCoefficientsRe2000AoA35.png)
+![Figure 11d](./reproducibilityPackages/figures/cuibm/cuibm-current-revision86_forceCoefficientsRe2000AoA35.png)
 
 Figure 11:
 Instantaneous force coefficients on the snake's section at (a) Reynolds number 1000 and angle 35 degrees and (b) Reynolds number 2000 and angle 30 degrees.
