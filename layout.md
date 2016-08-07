@@ -10,6 +10,7 @@ story2.md
 postmortem2.md
 figures/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet/ibamr_vorticity56Re2000AoA35_zeroGradientOutlet.png
 figures/ibamr_forceCoefficientsVsAoA/ibamr_forceCoefficientsVsAoA.png
+figures/ibamr_forceCoefficientsRe2000/ibamr_forceCoefficientsRe2000.png
 story3.md
 postmortem3.md
 story4.md
