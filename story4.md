@@ -1,4 +1,4 @@
-### Story 4: Different versions of your code, external libraries or even compilers may challenge reproducibility
+## Story 4: Different versions of your code, external libraries or even compilers may challenge reproducibility
 
 In the span of about three years, we ran more than 100 simulations with OpenFOAM, IBAMR, and PetIBM, encountering about a dozen things that can go wrong. 
 We replicated our previous scientific finding (enhanced lift at 35 degrees angle-of-attack for sufficiently large Reynolds number) in two out of three campaigns. 
