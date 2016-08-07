@@ -1,4 +1,4 @@
-### Story 3: All linear algebra libraries are not created equal
+## Story 3: All linear algebra libraries are not created equal
 
 Our previous study used cuIBM, running on a single GPU device. 
 The largest problem that we can fit in the memory of a high-end GPU has just a few million mesh points, which is not enough to solve three-dimensional flows. 
