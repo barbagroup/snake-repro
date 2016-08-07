@@ -13,6 +13,7 @@ figures/ibamr_forceCoefficientsVsAoA/ibamr_forceCoefficientsVsAoA.png
 figures/ibamr_forceCoefficientsRe2000/ibamr_forceCoefficientsRe2000.png
 story3.md
 postmortem3.md
+figures/petibm011_forceCoefficientsVsAoA/petibm011_forceCoefficientsVsAoA.png
 story4.md
 postmortem4.md
 definitionreproducible.md
