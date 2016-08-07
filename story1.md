@@ -1,4 +1,4 @@
-\section*{Story 1: Meshing and boundary conditions can ruin everything}
+##Story 1: Meshing and boundary conditions can ruin everything
 
 Generating good discretization meshes is probably the most vexing chore of computational fluid dynamics. 
 And stipulating boundary conditions on the edge of a discretization mesh takes some nerve, too. 
