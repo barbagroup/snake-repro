@@ -1,4 +1,5 @@
 introduction.md
+Completing_a_full_replication_study__.md
 solvers.md
 story1.md
 postmortem1.md
