@@ -1,4 +1,5 @@
-> ### Definition of reproducible research
+> **Definition of reproducible research**
+
 > The literature is rife with confused and sometimes contradictory meanings for reproducible research, reproducibility, replicability, repetition, etc. 
 > It is thus worth clarifying what we mean by these terms. 
 > The phrase "reproducible research" in reference to computational studies that can be reproduced by other scientists was introduced by geophysics professor Jon Claerbout in the 1990s. 
