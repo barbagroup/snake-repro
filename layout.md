@@ -12,6 +12,6 @@ story3.md
 postmortem3.md
 story4.md
 postmortem4.md
-definitionreproducibility.md
+definitionreproducible.md
 lessons.md
 suppmat.md
