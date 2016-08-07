@@ -1,4 +1,4 @@
-Completing_a_full_replication_study__.md
+Summary.md
 introduction.md
 solvers.md
 story1.md
