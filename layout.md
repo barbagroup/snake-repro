@@ -15,6 +15,7 @@ story3.md
 postmortem3.md
 figures/petibm011_forceCoefficientsVsAoA/petibm011_forceCoefficientsVsAoA.png
 figures/petibm011_forceCoefficientsRe2000AoA35/petibm011_forceCoefficientsRe2000AoA35.png
+figures/petibm011_vorticityRe2000AoA35/petibm011_vorticityRe2000AoA35.png
 story4.md
 postmortem4.md
 definitionreproducible.md
