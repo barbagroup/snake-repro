@@ -30,7 +30,7 @@ We used a total of four CFD solvers in the study:
 
 The article reports on the numerical solution from 40 simulations. We prepared detailed *"Reproducibility packages"* for each one of these simulations, which are found in the `/reproducibilityPackages` directory. 
 Each simulation folder contains a Jupyter Notebook, named `report`, with all the information about the case, the command-line inputs to run the simulation, and the Python codes to pre- and post-process the simulation.
-The notebook `tableOfContents` lists the simulations with a link to their respective `report` notebook.
+The notebook [`tableOfContents`](https://github.com/barbagroup/snake-repro/blob/master/reproducibilityPackages/tableOfContents.ipynb) lists the simulations with a link to their respective `report` notebook.
 
 The folder `snakePaperFigures` contains the Python and bash scripts we used to generate the figures in the manuscript.
 
