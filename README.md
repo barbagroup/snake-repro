@@ -49,3 +49,9 @@ We used a total of four CFD solvers in the study:
 ---
 
 LICENSE -- Not all content in this repository is open source. The Python code only is shared under an MIT License. The written content in the Jupyter Notebooks is shared under a Creative Commons Attribution (CC-BY) license. But *please note that the manuscript text is not open source*; we reserve rights to the article content, which is currently submitted for publication in a journal. Only fair use applies in this case.
+
+## References
+
+* Krishnan, Anush, John J. Socha, Pavlos P. Vlachos, L. A. Barba (2014), Lift and wakes of flying snakes. _Physics of Fluids_ *26*, 031901, [doi:10.1063/1.4866444](http://dx.doi.org/10.1063/1.4866444)
+* Krishnan, Anush,  John J. Socha, Pavlos P. Vlachos, L. A. Barba (2013), Body cross-section of the flying snake Chrysopelea paradisi. figshare.
+[doi:10.6084/m9.figshare.705877.v1](https://dx.doi.org/10.6084/m9.figshare.705877.v1)
