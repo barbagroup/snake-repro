@@ -10,17 +10,22 @@ Decision 25 July 2016: Accept with minor revisions, _Computing in Science and En
 
 This repository contains the manuscript source files, and supplementary materials including input files, geometry files, running scripts and Jupyter notebooks for all runs reported on in the paper. 
 
+The notebook [`tableOfContents`](https://github.com/barbagroup/snake-repro/blob/master/reproducibilityPackages/tableOfContents.ipynb) lists the simulations reported in the paper, with a link to their respective `report` notebook.
+
 In each notebook, we include information about the dependencies needed by each code, the mesh information, the boundary conditions, the parameters for each linear solver, the command-line input to run the simulation and finally the Python post-processing scripts to generate the figures.
 
 ---
 
-The article presents the full replication study of our previously published findings on bluff-body aerodynamics of flying snakes ([Krishnan et al., 2014](http://scitation.aip.org/content/aip/journal/pof2/26/3/10.1063/1.4866444)).
+The article reports on a full replication study of our previously published findings on bluff-body aerodynamics of flying snakes ([Krishnan et al., 2014](http://scitation.aip.org/content/aip/journal/pof2/26/3/10.1063/1.4866444)).
 
-The article reports on the numerical solution from 40 simulations. We prepared detailed *"Reproducibility packages"* for each one of these simulations, which are found in the `/reproducibilityPackages` directory. 
-Each simulation folder contains a Jupyter Notebook, named `report`, with all the information about the case, the command-line inputs to run the simulation, and the Python codes to pre- and post-process the simulation.
-The notebook [`tableOfContents`](https://github.com/barbagroup/snake-repro/blob/master/reproducibilityPackages/tableOfContents.ipynb) lists the simulations with a link to their respective `report` notebook.
+Over the span of about three years, we ran hundreds of simulations of the flow around a 2D snake geometry, using four different flow solvers. 
+The paper reports on 40 of these runs, telling the story of our mistakes and challenges to complete the replication of our previous findings. 
 
-The folder `snakePaperFigures` contains the Python and bash scripts we used to generate the figures in the manuscript.
+We prepared detailed *"Reproducibility packages"* for each one of the simulations reported in the paper; they are in the `/reproducibilityPackages` directory. 
+Each simulation folder contains a Jupyter Notebook, named `report`, with all the information about the case, and all the data needed to reproduce the calculation. 
+
+The folder `figures` contains all the plots and flow visualizations included in the paper. 
+The Python and bash scripts we used to generate the figures are in the folder `reproducibilityPackages/figures`.
 
 To postprocess and compare the numerical solution from the 4 different codes, we developed a Python package called [`snake`](https://github.com/mesnardo/snake), hosted on GitHub under the MIT License.
 
