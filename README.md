@@ -4,6 +4,8 @@
 
 Article submitted on 13 May 2016. Preprint on [arXiv:1605.04339](http://arxiv.org/abs/1605.04339)
 
+Decision 25 July 2016: Accept with minor revisions, _Computing in Science and Engineering_.
+
 This repository contains the manuscript source files, and supplementary materials including input files, geometry files, running scripts and Jupyter notebooks for all runs. 
 
 In each notebook, we include information about the dependencies needed by each code, the mesh information, the boundary conditions, the parameters for each linear solver, the command-line input to run the simulation and finally the Python post-processing scripts to generate the figures.
