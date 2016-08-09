@@ -1,4 +1,4 @@
-Summary.md
+summary.md
 introduction.md
 solvers.md
 story1.md
