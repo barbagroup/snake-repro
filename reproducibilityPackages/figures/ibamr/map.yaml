@@ -1,0 +1,32 @@
+ibamr_vorticityRe2000AoA35:
+  tractionFreeOutlet: ../../ibamr/tractionFreeOutlet/Re2000AoA35
+  stabilizedOutlet: ../../ibamr/surfaceMarkers/Re2000AoA35
+
+ibamr_forceCoefficientsRe2000:
+  AoA30: ../../ibamr/bodyMarkers/Re2000AoA30
+  AoA35: ../../ibamr/bodyMarkers/Re2000AoA35
+
+ibamr_forceCoefficientsVsAoA:
+  surfaceMarkers:
+    Re1000:
+      AoA25: ../../ibamr/surfaceMarkers/Re1000AoA25
+      AoA30: ../../ibamr/surfaceMarkers/Re1000AoA30
+      AoA35: ../../ibamr/surfaceMarkers/Re1000AoA35
+      AoA40: ../../ibamr/surfaceMarkers/Re1000AoA40
+    Re2000:
+      AoA25: ../../ibamr/surfaceMarkers/Re2000AoA25
+      AoA30: ../../ibamr/surfaceMarkers/Re2000AoA30
+      AoA35: ../../ibamr/surfaceMarkers/Re2000AoA35
+      AoA40: ../../ibamr/surfaceMarkers/Re2000AoA40
+  bodyMarkers:
+    Re1000:
+      AoA25: ../../ibamr/bodyMarkers/Re1000AoA25
+      AoA30: ../../ibamr/bodyMarkers/Re1000AoA30
+      AoA35: ../../ibamr/bodyMarkers/Re1000AoA35
+      AoA40: ../../ibamr/bodyMarkers/Re1000AoA40
+    Re2000:
+      AoA25: ../../ibamr/bodyMarkers/Re2000AoA25
+      AoA30: ../../ibamr/bodyMarkers/Re2000AoA30
+      AoA35: ../../ibamr/bodyMarkers/Re2000AoA35
+      AoA40: ../../ibamr/bodyMarkers/Re2000AoA40
+      AoA35CFL0.1: ../../ibamr/bodyMarkers/Re2000AoA35CFL0.1
