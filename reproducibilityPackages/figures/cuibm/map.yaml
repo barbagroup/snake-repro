@@ -1,0 +1,10 @@
+cuibm-current-cusp051:
+  Re1000AoA35: ../../cuibm/current/cusp051/Re1000AoA35
+  Re2000AoA30: ../../cuibm/current/cusp051/Re2000AoA30
+  Re2000AoA35: ../../cuibm/current/cusp051/Re2000AoA35
+
+cuibm-current-cusp040:
+  Re2000AoA35: ../../cuibm/current/cusp040/Re2000AoA35
+
+cuibm-revision86-cusp040:
+  Re2000AoA35: ../../cuibm/revision86/Re2000AoA35
