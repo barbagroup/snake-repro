@@ -6,14 +6,13 @@ IBAMR is a solid piece of software, the code is documented, and you can even get
 The developers don't provide a user's manual, but they have plenty of examples within the code repository. 
 Still, mastering other researchers' code is challenging and we hit a couple of snags that complicated the journey. 
 
-The numerical approach in IBAMR belongs to the same family as that used in our published work on wakes of flying snakes: an immersed boundary method. 
-The essence of the approach is that the fluid is represented by a structured mesh, while the immersed body is represented by its own, separate mesh that moves with the body. 
+IBAMR is described as "an adaptive and distributed-memory parallel implementation of the immersed boundary method."
+The essence of the immersed boundary method is that the fluid is represented by a structured mesh, while the solid boundary is represented by its own, separate mesh that moves with the body. 
 We speak of an Eulerian mesh for the fluid, and a Lagrangian mesh for the solid. 
 The forces exerted by the fluid on the body, and vice versa, appear as an additional integral equation and interpolation schemes between the two meshes. 
-The role of these is to make the fluid "stick" to the wall (no-slip boundary condition) and allow the body to feel aerodynamic forces (lift and drag).
-IBAMR implements a subclass of the immersed-boundary method called the direct-forcing method suitable for rigid bodies.
+The role of these is to make the fluid "stick" to the wall (no-slip boundary condition) and allow the body to feel aerodynamic forces (lift and drag). 
 Our cuIBM code uses a variant called the immersed-boundary projection method \citep{taira2007}.
-Despite the variations, the essence is the same, and it is reasonable to assume they would work similarly.
+IBAMR is a library that provides different methods, but despite the variations, we assumed it would work similarly.
 
 We already know that boundary conditions at the outlet of the computational domain can be problematic. 
 This is no different with immersed boundary methods. 
