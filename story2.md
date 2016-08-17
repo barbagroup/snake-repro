@@ -16,13 +16,13 @@ IBAMR is a library that provides different methods \citep{bhalla2013}, but despi
 
 We already know that boundary conditions at the outlet of the computational domain can be problematic. 
 This is no different with immersed boundary methods. 
-Our first attempt with IBAMR used a zero-gradient velocity boundary condition at the outlet. 
-This resulted in a spurious blockage of the wake vortices when they reach the domain boundary: strong vorticity rebounds from the artificial boundary and propagates back to the domain (Figure 5). 
+Our first attempt with IBAMR used a boundary condition at the outlet following their example for flow around a circular cylinder (this turned out to be a traction-free boundary condition). 
+Unfortunately, it resulted in a spurious blockage of the wake vortices when they reach the domain boundary: strong vorticity rebounded from the artificial boundary and propagated back to the domain (Figure 5, top). 
 Of course, this is unphysical and the result is unacceptable. 
 
-After a long search in the literature and in the documentation, it was through a conversation with the main developers on the online forum that we discovered the solution: using a "stabilized outlet" boundary condition, which adds a forcing to push the vortices out.
-(IBAMR does not provide a convective/advective boundary condition.) 
-With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study (Figure 6). 
+In a conversation with the main developers on the online forum, they suggested a work-around: using "boundary stabilization," which adds a forcing to push the vortices out.
+(IBAMR does not yet provide a convective/advective boundary condition.) 
+With this new configuration, the simulations of the snake profile resulted in a wake that looked physical (Figure 5, bottom), but a computed lift coefficient that was considerably different from our published study (Figure 6). 
 Another dive in the literature led us to notice that a benchmark example described in a paper reporting on extensions to IBAMR was set up in a way unexpected to us: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
