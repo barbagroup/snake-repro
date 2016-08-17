@@ -16,7 +16,7 @@ The free shear layer can experience 2D Kelvin-Helmholtz instability, while the w
 Such flows are particularly challenging for computational fluid dynamics (CFD).
 
 When a computational research group produces this kind of study with an in-house code, it can take one, two or even three years to write a full research software from scratch, and complete verification and validation. 
-Often, one gets the question: why not use a commercial CFD package?  
+Often, one gets the question: why not use a commercial CFD package? 
 Why not use another research group’s open-source code? 
 Doesn't it take much longer to write yet another CFD solver than to use existing code? 
 Beyond reasons that have to do with inventing new methods, it’s a good question. 
