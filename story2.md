@@ -1,4 +1,4 @@
-## Story 2: Other researchers' open-source codes come with traps
+## Story 2: You can hit snags with other researchers' codes
 
 Open-source research software can often be poorly documented and unsupported, and on occasion it can even be an unreadable mess. 
 But in this case, we are in luck.
