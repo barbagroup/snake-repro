@@ -12,7 +12,7 @@ We speak of an Eulerian mesh for the fluid, and a Lagrangian mesh for the solid.
 The forces exerted by the fluid on the body, and vice versa, appear as an additional integral equation and interpolation schemes between the two meshes. 
 The role of these is to make the fluid "stick" to the wall (no-slip boundary condition) and allow the body to feel aerodynamic forces (lift and drag). 
 Our cuIBM code uses a variant called the immersed-boundary projection method \citep{taira2007}.
-IBAMR is a library that provides different methods, but despite the variations, we assumed it would work similarly.
+IBAMR is a library that provides different methods \citep{bhalla2013}, but despite the variations, we assumed it would work similarly.
 
 We already know that boundary conditions at the outlet of the computational domain can be problematic. 
 This is no different with immersed boundary methods. 
@@ -23,7 +23,7 @@ Of course, this is unphysical and the result is unacceptable.
 After a long search in the literature and in the documentation, it was through a conversation with the main developers on the online forum that we discovered the solution: using a "stabilized outlet" boundary condition, which adds a forcing to push the vortices out.
 (IBAMR does not provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study (Figure 6). 
-Another dive in the literature led us to notice that a benchmark example described in a paper reporting on extensions to IBAMR \citep{bhalla2013} was set up in a way unexpected to us: 
+Another dive in the literature led us to notice that a benchmark example described in a paper reporting on extensions to IBAMR was set up in a way unexpected to us: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
 Other papers using immersed boundary methods apply the constraint only on boundary points.
