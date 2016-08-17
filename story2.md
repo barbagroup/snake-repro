@@ -2,8 +2,9 @@
 
 Open-source research software can often be poorly documented and unsupported, and on occasion it can even be an unreadable mess. 
 But in this case, we are in luck.
-IBAMR is a solid piece of software, well documented, and you can even get swift response from the authors via the topical online forum.
-Still, we ran against an obscure trick of the trade that changed our results completely. 
+IBAMR is a solid piece of software, the code is documented, and you can even get swift response from the authors via the topical online forum. 
+The developers don't provide a user's manual, but they have plenty of examples within the code repository. 
+Still, mastering other researchers' code is challenging and we hit a couple of snags that complicated the journey. 
 
 The numerical approach in IBAMR belongs to the same family as that used in our published work on wakes of flying snakes: an immersed boundary method. 
 The essence of the approach is that the fluid is represented by a structured mesh, while the immersed body is represented by its own, separate mesh that moves with the body. 
@@ -23,7 +24,7 @@ Of course, this is unphysical and the result is unacceptable.
 After a long search in the literature and in the documentation, it was through a conversation with the main developers on the online forum that we discovered the solution: using a "stabilized outlet" boundary condition, which adds a forcing to push the vortices out.
 (IBAMR does not provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical, but a computed lift coefficient that was considerably different from our published study (Figure 6). 
-Another deep dive in the literature led us to notice that a benchmark example described in a paper reporting on extensions to IBAMR \citep{bhalla2013} was set up in an unexpected way: 
+Another dive in the literature led us to notice that a benchmark example described in a paper reporting on extensions to IBAMR \citep{bhalla2013} was set up in a way unexpected to us: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 As far as we could find, the publications using IBAMR are the only cases where interior points are constrained. 
 Other papers using immersed boundary methods apply the constraint only on boundary points.
