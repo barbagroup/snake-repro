@@ -9,8 +9,8 @@ But what data are necessary?
 We found that open-source code and open data sets are a minimal requirement. 
 Exhaustive documentation during the process of computational research is key. 
 This includes documenting all failures. 
-Current publication custom is biased towards positive results---this is why we had to spend so much time to discover that IBAMR gave correct results with Lagrangian points inside the body. 
-The negative results with points only on the boundary are not published. 
+Current publication custom is biased towards positive results \citep{Ioannidis_2005}. 
+In the case of IBAMR, negative results with points only on the boundary are not among the examples provided: the situation may be obvious to the authors, but not to the users. 
 We learned how important the computational mesh and the boundary conditions can be. 
 A reproducible computational paper should include the actual meshes used in the study (or a deterministic mesh-generation code) and careful reporting of boundary conditions. 
 This is rarely (if ever!) the case. 
