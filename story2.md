@@ -27,8 +27,9 @@ Another dive into \citet{bhalla2013} led us to notice that the benchmark example
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 Immersed boundary methods normally apply the no-slip constraint on boundary points only. 
 When we followed their examples, our simulations with IBAMR were able to replicate the lift enhancement at 35 degrees angle-of-attack, although with a slightly different value of average lift (<5% off). 
-The successful result comes with a caveat, though. 
 If we look at the time signature of the lift and drag coefficients, there is excellent agreement with our previous results for 30 degrees angle-of-attack (Re=2000). 
 But at 35 degrees, the time signatures drift apart after about 40 time units (more than 150 thousand time steps). 
-There is a marked drop in the (time varying) lift coefficient (Figure 7(b)), but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
-Like in the previous case, using OpenFOAM, we make a judgement call that this result does indeed pass muster as a replication of our previous study. 
+There is a marked drop in the (time varying) lift coefficient (Figure 7), but because the average is calculated over a time range between 32 and 64 time units (a reasonable but arbitrary choice), the final numeric result is not far off our published study. 
+Reducing the time increment improved this result. 
+In Figure 7, we show the time-varying lift coefficients obtained with the parameter CFL set to 0.3 and 0.1—the CFL, or Courant-Friedrichs-Lewy number, constrains the ratio of time increment to grid spacing.
+Like in the previous case, using OpenFOAM, we make a judgement call that our result with IBAMR does indeed pass muster as a replication of our previous study. 
