@@ -5,6 +5,7 @@ ibamr_vorticityRe2000AoA35:
 ibamr_forceCoefficientsRe2000:
   AoA30: ../../ibamr/bodyMarkers/Re2000AoA30
   AoA35: ../../ibamr/bodyMarkers/Re2000AoA35
+  AoA35CFL0.1: ../../ibamr/bodyMarkers/Re2000AoA35CFL0.1
 
 ibamr_forceCoefficientsVsAoA:
   surfaceMarkers:
