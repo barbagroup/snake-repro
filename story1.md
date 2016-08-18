@@ -10,7 +10,7 @@ One popular mesh generator is called GMSH: it produces triangles that are as fin
 Already, we encounter a problem: how to create a mesh of triangles that gives a comparable resolution to that obtained with our original structured Cartesian mesh? 
 After dedicated effort, we produced the best mesh we could that matches our previous study in the finest cell width near the body. 
 But when using this mesh to solve the fluid flow around the snake geometry, we got spurious specks of high vorticity in places where there shouldn’t be any (Figure 1). 
-Despite the fact that the mesh passed the quality checks of OpenFOAM, these unphysical vortices appeared for any flow Reynolds number or body angle of attack we tried—although they were not responsible for the simulations to blow up.
+Even though the meshes passed the OpenFOAM quality checks, these unphysical vortices appeared for any flow Reynolds number or body angle of attack we tried—although they were not responsible for the simulations to blow up (fail due to rapid error growth).
 Finally, we gave up with the (popular) GMSH and tried another mesh generator: SnappyHexMesh (details and plots of the meshes are included in the supplementary materials). 
 Success! 
 No unphysical patches in the vorticity field this time. 
