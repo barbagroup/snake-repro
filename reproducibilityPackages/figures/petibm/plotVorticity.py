@@ -13,7 +13,7 @@ import snake
 from snake.petibm.simulation import PetIBMSimulation
 
 
-if snake.__version__ != '0.1.1':
+if snake.__version__ != '0.1.2':
   warnings.warn('The figures were originally created with snake-0.1.1, '+
                 'you are using snake-{}'.format(snake.__version__))
 
