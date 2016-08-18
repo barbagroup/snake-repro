@@ -1,6 +1,6 @@
 ##Story 1: Meshing and boundary conditions can ruin everything
 
-Generating good discretization meshes is probably the most vexing chore of computational fluid dynamics. 
+Generating good meshes for discretization  is probably the most vexing chore of computational fluid dynamics. 
 And stipulating boundary conditions on the edge of a discretization mesh takes some nerve, too. 
 Our first attempts at a full replication study of the 2D snake aerodynamics with IcoFOAM, the incompressible laminar Navier-Stokes solver of OpenFOAM, showed us just how vexing and unnerving this can be.
 
