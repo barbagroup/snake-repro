@@ -7,6 +7,7 @@ import os
 import yaml
 import shutil
 import argparse
+import warnings
 
 from matplotlib import pyplot
 
@@ -14,7 +15,7 @@ import snake
 from snake.openfoam.simulation import OpenFOAMSimulation
 
 
-if snake.__version__ != '0.1.1':
+if snake.__version__ != '0.1.2':
   warnings.warn('The figures were originally created with snake-0.1.1, '+
                 'you are using snake-{}'.format(snake.__version__))
 
