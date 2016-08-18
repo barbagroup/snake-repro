@@ -4,7 +4,6 @@ as a .pdf file named `petibm011_vorticityRe2000AoA35.pdf`.
 """
 
 import os
-import shutil
 import yaml
 import argparse
 import warnings
@@ -41,7 +40,7 @@ simulation = PetIBMSimulation(directory=simulation_directory)
 simulation.read_grid(file_path=os.path.join(simulation.directory, 'grid.txt'))
 
 time_steps = [47500, 130000, 132500, 160000]
-inputs = []
+file_paths_in = []
 for time_step in time_steps:
   simulation.read_fields('vorticity', time_step)
   simulation.plot_contour('vorticity',
@@ -53,20 +52,16 @@ for time_step in time_steps:
                           width=6.0,
                           dpi=300,
                           style='snakeReproducibility')
-  # copy .png file here
-  file_path_source = os.path.join(simulation.directory,
-                                  'images',
-                                  'vorticity_-1.00_-2.00_8.00_2.00',
-                                  'vorticity{:0>7}.png'.format(time_step))
-  file_path_destination = os.path.join(args.save_directory,
-                                       'petibm011_vorticity{}Re2000AoA35.png'
-                                       .format(time_step))
-  shutil.copy(file_path_source, file_path_destination)
-  inputs.append(file_path_destination)
+  file_paths_in.append(os.path.join(simulation.directory,
+                                    'images',
+                                    'vorticity_-1.00_-2.00_8.00_2.00',
+                                    'vorticity{:0>7}.png'.format(time_step)))
 
-# create single .pdf page with pdfjam
+# convert the four .png files into one
 file_path_out = os.path.join(args.save_directory,
-                             'petibm011_vorticityRe2000AoA35.pdf')
-os.system('pdfjam {} --nup 1x{} --outfile {}'.format(' '.join(inputs),
-                                                     len(inputs),
-                                                     file_path_out))
+                             'petibm011_vorticityRe2000AoA35.png')
+os.system('convert -append {} {}'.format(' '.join(file_paths_in),
+                                         file_path_out))
+# convert the four .png files into a single .pdf
+os.system('convert -append {} {}'.format(' '.join(file_paths_in),
+                                         file_path_out.replace('.png', '.pdf')))

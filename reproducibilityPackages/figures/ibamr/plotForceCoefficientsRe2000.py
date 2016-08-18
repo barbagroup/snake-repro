@@ -100,12 +100,8 @@ ax.plot(krishnan.forces[1].times, 2.0*krishnan.forces[1].values,
 ax.axis([20.0, 80.0, 0.5, 3.0])
 ax.legend(ncol=2, loc='upper right')
 file_path_in_1 = os.path.join(args.save_directory, 
-                              'ibamr_forceCoefficientsRe2000AoA30.pdf')
+                              'ibamr_forceCoefficientsRe2000AoA30.png')
 pyplot.savefig(file_path_in_1,
-               bbox_inches='tight',
-               format='pdf',
-               dpi=300)
-pyplot.savefig(file_path_in_1.replace('.pdf', '.png'),
                bbox_inches='tight',
                format='png',
                dpi=300)
@@ -195,21 +191,20 @@ ax.plot(krishnan.forces[1].times, 2.0*krishnan.forces[1].values,
 ax.axis([20.0, 80.0, 0.75, 3.5])
 ax.legend(ncol=2, loc='upper right')
 file_path_in_2 = os.path.join(args.save_directory, 
-                              'ibamr_forceCoefficientsRe2000AoA35.pdf')
+                              'ibamr_forceCoefficientsRe2000AoA35.png')
 pyplot.savefig(file_path_in_2,
-               bbox_inches='tight',
-               format='pdf',
-               dpi=300)
-pyplot.savefig(file_path_in_2.replace('.pdf', '.png'),
                bbox_inches='tight',
                format='png',
                dpi=300)
 
 
-# merge two .pdf files into one in a 1x2 formation
+# convert the two .png files into one
 file_path_out = os.path.join(args.save_directory, 
-                             'ibamr_forceCoefficientsRe2000.pdf')
-os.system('pdfjam {} {} --nup 1x2 --outfile {}'
-          .format(file_path_in_1, file_path_in_2, file_path_out))
-os.remove(file_path_in_1)
-os.remove(file_path_in_2)
+                             'ibamr_forceCoefficientsRe2000.png')
+os.system('convert -append {} {} {}'.format(file_path_in_1,
+                                            file_path_in_2,
+                                            file_path_out))
+# convert the two .png files into a single .pdf
+os.system('convert -append {} {} {}'.format(file_path_in_1,
+                                            file_path_in_2,
+                                            file_path_out.replace('.png', '.pdf')))

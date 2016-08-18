@@ -163,7 +163,7 @@ ax.plot(krishnan.forces[1].times, 2.0*krishnan.forces[1].values,
         linestyle=':',
         linewidth=2,
         zorder=11)
-ax.axis([40.0, 80.0, 0.75, 3.5])
+ax.axis([40.0, 80.0, 0.5, 3.0])
 ax.legend(ncol=2, loc='upper right')
 file_path_in_2 = os.path.join(args.save_directory, 
                       'cuibm-current-cusp051_forceCoefficientsRe2000AoA30.png')
@@ -317,13 +317,22 @@ pyplot.savefig(file_path_in_4,
                format='png',
                dpi=300)
 
-
-# Merges the 4.png files created above into a single .pdf file
+# convert two .png into a single one (side by side)
+os.system('convert +append {} {} top.png'.format(file_path_in_1,
+                                                 file_path_in_2))
+os.system('convert +append {} {} bottom.png'.format(file_path_in_3,
+                                                    file_path_in_4))
+# concatenate the two new .png files into one .png (one after one)
 file_path_out = os.path.join(args.save_directory,
-                             'cuibm_forceCoefficients.pdf')
-os.system('pdfjam {} {} {} {} --nup 2x2 --landscape --outfile {}'
-          .format(file_path_in_1,
-                  file_path_in_2,
-                  file_path_in_3,
-                  file_path_in_4,
-                  file_path_out))
+                             'cuibm_forceCoefficients.png')
+os.system('convert -append top.png bottom.png {}'.format(file_path_out))
+# concatenate the two new .png files into one .pdf
+os.system('convert -append top.png bottom.png {}'.format(file_path_out.replace('.png', '.pdf')))
+
+# remove temporary files
+os.remove(file_path_in_1)
+os.remove(file_path_in_2)
+os.remove(file_path_in_3)
+os.remove(file_path_in_4)
+os.remove('top.png')
+os.remove('bottom.png')

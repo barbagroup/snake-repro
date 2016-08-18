@@ -46,17 +46,10 @@ simulation.plot_field_contours_visit('vorticity', (-5.0, 5.0),
                                      view=(-2.0, -5.0, 15.0, 5.0),
                                      width=1000,
                                      states=(56, 57, 1))
-file_path_source = os.path.join(simulation.directory, 
+file_path_in_1 = os.path.join(simulation.directory, 
                                'images', 
                                'vorticity_-2.00_-5.00_15.00_5.00',
                                'vorticity0000056.png')
-file_name_1 = 'ibamr_vorticityRe2000AoA35_tractionFreeOutlet.png'
-file_path_destination = os.path.join(args.save_directory, file_name_1)
-# copy .png file here
-shutil.copy(file_path_source, file_path_destination)
-# convert as pdf
-os.system('convert {} {}'.format(file_path_destination, 
-                                 file_path_destination.replace('.png', '.pdf')))
 
 # plot vorticity field at state 52 (about 61 time-units)
 # of the simulation using a traction-free outlet condition
@@ -69,25 +62,17 @@ simulation.plot_field_contours_visit('vorticity', (-5.0, 5.0),
                                      view=(-2.0, -5.0, 15.0, 5.0),
                                      width=1000,
                                      states=(52, 53, 1))
-file_path_source = os.path.join(simulation.directory, 
+file_path_in_2 = os.path.join(simulation.directory, 
                                'images', 
                                'vorticity_-2.00_-5.00_15.00_5.00',
                                'vorticity0000052.png')
-file_name_2 = 'ibamr_vorticityRe2000AoA35_stabilizedOutlet.png'
-file_path_destination = os.path.join(args.save_directory, file_name_2)
-# copy .png file here
-shutil.copy(file_path_source, file_path_destination)
-# convert as pdf
-os.system('convert {} {}'.format(file_path_destination, 
-                                 file_path_destination.replace('.png', '.pdf')))
 
-# merge two .pdf files into one in a 1x2 formation
-file_path_in_1 = os.path.join(args.save_directory, 
-                              file_name_1.replace('.png', '.pdf'))
-file_path_in_2 = os.path.join(args.save_directory, 
-                              file_name_2.replace('.png', '.pdf'))
-file_path_out = os.path.join(args.save_directory, 'ibamr_vorticityRe2000AoA35.pdf')
-os.system('pdfjam {} {} --nup 1x2 --outfile {}'
-          .format(file_path_in_1, file_path_in_2, file_path_out))
-os.remove(file_path_in_1)
-os.remove(file_path_in_2)
+# convert the two .png files into one
+file_path_out = os.path.join(args.save_directory, 'ibamr_vorticityRe2000AoA35.png')
+os.system('convert -append {} {} {}'.format(file_path_in_1,
+                                            file_path_in_2,
+                                            file_path_out))
+# convert the two .png files into a single .pdf
+os.system('convert -append {} {} {}'.format(file_path_in_1,
+                                            file_path_in_2,
+                                            file_path_out.replace('.png', '.pdf')))
