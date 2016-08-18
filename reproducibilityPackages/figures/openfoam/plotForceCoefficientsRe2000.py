@@ -173,9 +173,16 @@ pyplot.savefig(file_path_in_2,
                format='png',
                dpi=300)
 
-# Merges the two .png files into a 1x2 assembly .pdf file.
+# concatenate the two .png files into one
 file_path_out = os.path.join(args.save_directory,
-                             'openfoam_forceCoefficientsRe2000.pdf')
-os.system('pdfjam {} {} --nup 1x2 --outfile {}'.format(file_path_in_1,
-                                                       file_path_in_2,
-                                                       file_path_out))
+                             'openfoam_forceCoefficientsRe2000.png')
+os.system('convert -append {} {} {}'.format(file_path_in_1,
+                                            file_path_in_2,
+                                            file_path_out))
+# convert the .png file into a .pdf
+os.system('convert -append {} {} {}'.format(file_path_in_1,
+                                            file_path_in_2,
+                                            file_path_out.replace('.png', '.pdf')))
+# remove the two initial .png files
+os.remove(file_path_in_1)
+os.remove(file_path_in_2)
