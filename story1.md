@@ -16,7 +16,8 @@ No unphysical patches in the vorticity field this time.
 But another problem persisted: after the wake vortices hit the edge of the computational domain in the downstream side, a nasty back pressure appeared there and started propagating to the inside of the domain (Figure 2). 
 This situation is also unphysical, and we were certain there was a problem with the chosen outflow boundary condition in OpenFOAM, but did not find any way to stipulate another, more appropriate boundary condition. 
 We used a zero-gradient condition for the pressure at the outlet (and tried several other possibilities), which we found was a widespread choice in the examples and documentation of OpenFOAM. 
-After months, one typing mistake when launching a run from the command line made OpenFOAM print out the set of available boundary conditions, and we found that an _advective_ condition was available that could solve our problem (all this time, we were looking for a _convective_ condition, which is just another name for the same thing). 
+After months, one typing mistake when launching a run from the command line made OpenFOAM print out the set of available boundary conditions, and we found that an _advective_ condition was available that could solve our problem. 
+All this time, we were looking for a _convective_ condition, which is just another name for the same thing: satisfying a linear convection equation at the boundary points. 
 Finally, simulations with OpenFOAM were looking correct—and happily, the main feature of the aerodynamics was replicated: an enhanced lift coefficient at 35º angle-of-attack (Figure 3). 
 But not all is perfect. 
 The time signatures of lift and drag coefficient do show differences between our IcoFOAM calculation and the original published ones (Figure 4). 
