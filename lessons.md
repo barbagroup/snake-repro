@@ -43,7 +43,7 @@ The situation is aggravated by parallel execution.
 Global operations on distributed vectors and matrices are subject to rounding errors that can accumulate to introduce uncertainty in the results. 
 
 We are recommending more rigorous standards of evidence for computational science and engineering, but the reality is that most CFD papers are not even accompanied by a release of code and data. 
-The reasons for this are varied: historical, commercial interests, academic incentives, time efficiency, etc. 
+The reasons for this are varied: historical, commercial interests, academic incentives, time efficiency, export controls, etc. 
 The origins of CFD in the Los Alamos Laboratory in the 1940s was secret research, and when computer code was stored in large boxes of punched cards, there was hardly a way to "share" it \citep{metropolis1982}. 
 The 1970s saw the birth of commercial CFD, when university professors and their students founded companies funded under the US government's SBIR program. 
 It’s not unreasonable to speculate that the potential for commercial exploitation was a deterrent for open-source release of CFD codes for a long time. 
