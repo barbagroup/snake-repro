@@ -4,7 +4,7 @@ Our research group prides itself for having adopted Reproducible Research practi
 In 2014, we published a study on Physics of Fluids titled *"Lift and wakes of flying snakes"* \citep{krishnan2014}. 
 It is a study that uses our in-house code for solving the equations of fluid motion in two dimensions (2D), with a solution approach called the “immersed boundary method.” 
 The key of such a method for solving the equations is that it exchanges complexity in the mesh generation step for complexity in the application of boundary conditions. 
-It makes it possible to use a simple discretization mesh (structured Cartesian), but at the cost of an elaborate process that interpolates values of fluid velocity at the boundary points to ensure the no-slip boundary condition (that fluid sticks to a wall). 
+It makes it possible to use a simple mesh for discretization (structured Cartesian), but at the cost of an elaborate process that interpolates values of fluid velocity at the boundary points to ensure the no-slip boundary condition (that fluid sticks to a wall). 
 The main finding of our study on wakes of flying snakes was that the 2D section with anatomically correct geometry for the snake’s body experiences lift enhancement at a given angle of attack.
 A previous experimental study had already shown that the lift coefficient of a snake cross section in a wind tunnel gets an extra oomph of lift at 35 degrees angle-of-attack. 
 Our simulations showed the same feature in the plot of lift coefficient \citep{krishnan2013}. 
