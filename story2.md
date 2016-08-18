@@ -23,7 +23,7 @@ Of course, this is unphysical and the result is unacceptable.
 In a conversation with the main developers on the online forum, they suggested a work-around: using "boundary stabilization," which adds a forcing to push the vortices out.
 (IBAMR does not yet provide a convective/advective boundary condition.) 
 With this new configuration, the simulations of the snake profile resulted in a wake that looked physical (Figure 5, bottom), but a computed lift coefficient that was considerably different from our published study (Figure 6). 
-Another dive into \cite{bhalla2013} led us to notice that the benchmark examples were set up in a way unexpected to us: 
+Another dive into \citet{bhalla2013} led us to notice that the benchmark examples were set up in a way unexpected to us: 
 the no-slip condition is forced _inside_ the body, and not just on the boundary. 
 Immersed boundary methods normally apply the no-slip constraint on boundary points only. 
 When we followed their examples, our simulations with IBAMR were able to replicate the lift enhancement at 35 degrees angle-of-attack, although with a slightly different value of average lift (<5% off). 
