@@ -10,6 +10,8 @@ We found that open-source code and open data sets are a minimal requirement.
 Exhaustive documentation during the process of computational research is key. 
 This includes documenting all failures. 
 Current publication custom is biased towards positive results \citep{Ioannidis_2005}. 
+The CFD community does not have a habit of communicating negative results; 
+one rare example is the analysis of Godunov methods and its failures by \citet{quirk1997}.
 In the case of IBAMR, negative results with points only on the boundary are not among the examples provided: the situation may be obvious to the authors, but not to the users. 
 We learned how important the computational mesh and the boundary conditions can be. 
 A reproducible computational paper should include the actual meshes used in the study (or a deterministic mesh-generation code) and careful reporting of boundary conditions. 
