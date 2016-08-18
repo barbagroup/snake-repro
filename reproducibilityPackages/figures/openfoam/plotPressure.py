@@ -1,50 +1,71 @@
-# file: plotPressure.py
-# author: Olivier Mesnard (mesnardo@gwu.edu)
-# description: Plots the 2D pressure fields,
-#              copies the .png files here,
-#              and creates one .pdf page with the images.
-
+"""
+Generates Figure 2 of the manuscript 
+as a .pdf file named `openfoam_pressureRe2000AoA35_gmshZeroGradient.pdf`.
+"""
 
 import os
-import sys
+import yaml
 import shutil
+import argparse
+import warnings
+
+from matplotlib import pyplot
 
 import snake
 from snake.openfoam.simulation import OpenFOAMSimulation
 
 
-print('\nPython version:\n{}'.format(sys.version))
-print('\nsnake version: {}\n'.format(snake.__version__))
+if snake.__version__ != '0.1.2':
+  warnings.warn('The figures were originally created with snake-0.1.1, '+
+                'you are using snake-{}'.format(snake.__version__))
 
-directory = os.path.join(os.environ['HOME'],
-                         'snakeReproducibilityPackages',
-                         'openfoam',
-                         'gmsh',
-                         'Re2000AoA35')
-simulation = OpenFOAMSimulation(directory=directory)
+
+# initialization
+script_directory = os.path.dirname(os.path.realpath(__file__))
+parser = argparse.ArgumentParser()
+parser.add_argument('--map', 
+                    dest='map', 
+                    type=str, 
+                    default=os.path.join(script_directory, 'map.yaml'), 
+                    help='file containing the list of simulation directories')
+parser.add_argument('--save-dir', 
+                    dest='save_directory', 
+                    type=str, 
+                    default=script_directory, 
+                    help='directory where to save the figures')
+args = parser.parse_args()
+with open(args.map, 'r') as infile:
+  dirs = yaml.load(infile)
+
+simulation_directory = dirs['openfoam_pressureRe2000AoA35_gmshZeroGradient']['Re2000AoA35']
+simulation = OpenFOAMSimulation(directory=simulation_directory)
 simulation.plot_field_contours_paraview('pressure',
                                         field_range=(-1.0, 0.5),
                                         view=(-2.0, -3.0, 15.0, 3.0),
                                         times=(52.0, 53.0, 1.0),
-                                        width=600,
+                                        width=1000,
                                         colormap='viridis')
 
-# locate images of interest
-images_directory = os.path.join(simulation.directory, 
-                                'images', 
-                                'pressure_-2.00_-3.00_15.00_3.00')
-file_names = ['pressure052.00.png', 'pressure053.00.png']
-source_paths = [os.path.join(images_directory, name) for name in file_names]
-# copy .png files here
-destination_paths = [os.path.join(os.getcwd(), 
-                                  'openfoam_pressure52Re2000AoA35_gmshZeroGradient.png'),
-                     os.path.join(os.getcwd(), 
-                                  'openfoam_pressure53Re2000AoA35_gmshZeroGradient.png')]
-for s, d in zip(source_paths, destination_paths):
-  shutil.copy(s, d)
-# convert .png files into one .pdf page with pdfjam
-destination_path = os.path.join(os.getcwd(),
-                                'openfoam_pressureRe2000AoA35_gmshZeroGradient.pdf')
-os.system('pdfjam {} --nup 1x{} --landscape --outfile {}'.format(' '.join(source_paths),
-                                                                 len(source_paths),
-                                                                 destination_path))
+# copy the .png files
+file_path_source_1 = os.path.join(simulation.directory,
+                                  'images',
+                                  'pressure_-2.00_-3.00_15.00_3.00',
+                                  'pressure052.00.png')
+file_path_detination_1 = os.path.join(args.save_directory,
+                        'openfoam_pressure52Re2000AoA35_gmshZeroGradient.png')
+shutil.copy(file_path_source_1, file_path_detination_1)
+file_path_source_2 = os.path.join(simulation.directory,
+                                  'images',
+                                  'pressure_-2.00_-3.00_15.00_3.00',
+                                  'pressure053.00.png')
+file_path_detination_2 = os.path.join(args.save_directory,
+                        'openfoam_pressure53Re2000AoA35_gmshZeroGradient.png')
+shutil.copy(file_path_source_2, file_path_detination_2)
+
+# 1x2 assembly into a single .pdf file
+file_path_out = os.path.join(args.save_directory, 
+                           'openfoam_pressureRe2000AoA35_gmshZeroGradient.pdf')
+os.system('pdfjam {} {} --landscape --nup 1x2 --outfile {}'
+          .format(file_path_detination_1,
+                  file_path_detination_2,
+                  file_path_out))

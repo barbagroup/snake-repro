@@ -1,0 +1,21 @@
+openfoam_vorticity52Re2000AoA35_gmshZeroGradient:
+  Re2000AoA35: ../../openfoam/gmsh/Re2000AoA35
+
+openfoam_pressureRe2000AoA35_gmshZeroGradient:
+  Re2000AoA35: ../../openfoam/gmsh/Re2000AoA35
+
+openfoam_forceCoefficientsRe2000:
+  Re2000AoA30: ../../openfoam/snappyHexMesh/Re2000AoA30
+  Re2000AoA35: ../../openfoam/snappyHexMesh/Re2000AoA35
+
+openfoam_forceCoefficientsVsAoA:
+  Re1000:
+    AoA25: ../../openfoam/snappyHexMesh/Re1000AoA25
+    AoA30: ../../openfoam/snappyHexMesh/Re1000AoA30
+    AoA35: ../../openfoam/snappyHexMesh/Re1000AoA35
+    AoA40: ../../openfoam/snappyHexMesh/Re1000AoA40
+  Re2000:
+    AoA25: ../../openfoam/snappyHexMesh/Re2000AoA25
+    AoA30: ../../openfoam/snappyHexMesh/Re2000AoA30
+    AoA35: ../../openfoam/snappyHexMesh/Re2000AoA35
+    AoA40: ../../openfoam/snappyHexMesh/Re2000AoA40
