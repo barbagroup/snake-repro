@@ -1,10 +1,10 @@
 ##Story 1: Meshing and boundary conditions can ruin everything
 
 Generating good meshes for discretization  is probably the most vexing chore of computational fluid dynamics. 
-And stipulating boundary conditions on the edge of a discretization mesh takes some nerve, too. 
+And stipulating boundary conditions on the edge of a mesh takes some nerve, too. 
 Our first attempts at a full replication study of the 2D snake aerodynamics with IcoFOAM, the incompressible laminar Navier-Stokes solver of OpenFOAM, showed us just how vexing and unnerving this can be.
 
-OpenFOAM can take various types of discretization mesh as input. 
+OpenFOAM can take various types of mesh as input. 
 One popular mesh generator is called GMSH: it produces triangles that are as fine as you want them near the body, while getting coarser as the mesh points are farther away. 
 Already, we encounter a problem: how to create a mesh of triangles that gives a comparable resolution to that obtained with our original structured Cartesian mesh? 
 After dedicated effort, we produced the best mesh we could that matches our previous study in the finest cell width near the body. 
