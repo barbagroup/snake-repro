@@ -33,6 +33,6 @@ And the same is the case with the current version of cuIBM and a later version o
 The final _findings_ in these cases do not vary from our published work: there is, in fact, lift enhancement at 35 degrees angle-of-attack ... but the results match only because we calculate the average lift in a time interval between 32 and 64. 
 Yet, the flow solution was affected by changing the version of a dependent library. 
 (The revision history of _Cusp_ says that they refactored the smooth-aggregation solver between the two versions we are using.) 
-The hardware was also different (a K20 GPU versus a C2070 in our older study), and the operating system, and the compiler. 
+The hardware was also different (a K20 GPU versus a C2070 in our older study), and the operating system, and the compiler. (Note that we always run with in double precision.) 
 In an iterative linear solver, any of these things could be related to lack of floating-point reproducibility. 
 And in unsteady fluid dynamics, small floating-point differences can add up over thousands of time steps to eventually trigger a flow instability (like vortex merging).
