@@ -55,7 +55,6 @@ simulation.plot_field_contours_paraview('vorticity',
                                         display_time_text=False,
                                         display_mesh=True)
 
-# copy the .png file
 file_path_source_1 = os.path.join(simulation.directory,
                                 'images',
                                 'vorticity_-5.00_-8.00_10.00_2.00',
@@ -64,13 +63,18 @@ file_path_source_2 = os.path.join(simulation.directory,
                                   'images',
                                   'vorticity_2.20_-7.30_2.80_-6.70',
                                   'vorticity052.00.png')
+os.system('convert {} -bordercolor black -border 1%x1% {}'
+          .format(file_path_source_2, 'tmp.png'))
 file_path_detination = os.path.join(args.save_directory,
                         'openfoam_vorticity52Re2000AoA35_gmshZeroGradient.png')
 # overlap file 2 on file 1 (bottom right location)
-os.system('convert {} {} -bordercolor black -border 1%x1% -geometry +700+360 '
+os.system('convert {} {} -geometry +690+360 '
           '-composite {}'.format(file_path_source_1, 
-                                 file_path_source_2, 
+                                 'tmp.png', 
                                  file_path_detination))
 # convert into .pdf file
 os.system('convert {} {}'.format(file_path_detination,
                                  file_path_detination.replace('.png', '.pdf')))
+
+# remove temporary file
+os.remove('tmp.png')
