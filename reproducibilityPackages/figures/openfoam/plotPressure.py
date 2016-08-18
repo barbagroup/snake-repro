@@ -46,26 +46,22 @@ simulation.plot_field_contours_paraview('pressure',
                                         width=1000,
                                         colormap='viridis')
 
-# copy the .png files
+# concatenate the two .png files
 file_path_source_1 = os.path.join(simulation.directory,
                                   'images',
                                   'pressure_-2.00_-3.00_15.00_3.00',
                                   'pressure052.00.png')
-file_path_detination_1 = os.path.join(args.save_directory,
-                        'openfoam_pressure52Re2000AoA35_gmshZeroGradient.png')
-shutil.copy(file_path_source_1, file_path_detination_1)
 file_path_source_2 = os.path.join(simulation.directory,
                                   'images',
                                   'pressure_-2.00_-3.00_15.00_3.00',
                                   'pressure053.00.png')
-file_path_detination_2 = os.path.join(args.save_directory,
-                        'openfoam_pressure53Re2000AoA35_gmshZeroGradient.png')
-shutil.copy(file_path_source_2, file_path_detination_2)
-
-# 1x2 assembly into a single .pdf file
-file_path_out = os.path.join(args.save_directory, 
-                           'openfoam_pressureRe2000AoA35_gmshZeroGradient.pdf')
-os.system('pdfjam {} {} --landscape --nup 1x2 --outfile {}'
-          .format(file_path_detination_1,
-                  file_path_detination_2,
-                  file_path_out))
+file_path_destination = os.path.join(args.save_directory,
+                            'openfoam_pressureRe2000AoA35_gmshZeroGradient.png')
+# into a .png
+os.system('convert -append {} {} {}'.format(file_path_source_1,
+                                            file_path_source_2,
+                                            file_path_destination))
+# into a .pdf
+os.system('convert -append {} {} {}'.format(file_path_source_1,
+                                            file_path_source_2,
+                                            file_path_destination.replace('.png', '.pdf')))
