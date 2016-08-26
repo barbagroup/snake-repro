@@ -9,6 +9,7 @@ The main finding of our study on wakes of flying snakes was that the 2D section 
 A previous experimental study \citep{HoldenEtAl2014} had already shown that the lift coefficient of a snake cross section in a wind tunnel gets an extra oomph of lift at 35 degrees angle-of-attack. 
 Our simulations showed the same feature in the plot of lift coefficient \citep{krishnan2013}. 
 Many detailed observations of the wake (visualized from the fluid-flow solution in terms of the vorticity field in space and time) allowed us to give an explanation of the mechanism providing extra lift.
+It arises from a vortex on the dorsal side of the body remaining closer to the surface under the effects of interactions with secondary vorticity.
 The flow around the snake's body cross section adopts a pattern known as a von Karman vortex street. 
 It is a particularly complex flow, because it involves three shear layers: the boundary layer, a separating free shear layer, and the wake \citep{Williamson_1996}. 
 Physically, each of these shear layers is subject to instabilities. 
