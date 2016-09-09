@@ -4,8 +4,8 @@ Reproducibility and replication of studies are essential for the progress of sci
 We use computer simulations to create new knowledge. 
 How can we certify that this new knowledge is justified, that there is enough evidence to support it? 
 The truth is computational science and engineering lacks an accepted standard of evidence. 
-Some previous efforts in CFD have sought to compare results from multiple codes: \citet{Dimonte_2004} report results for Rayleigh-Taylor instability using seven different codes (from five institutions); the AIAA drag-prediction workshop has been collecting results for years using a variety of commercial and non-commercial (mostly closed) software \citep{Levy_2014}
-However, these efforts don't have a specific goal of replicating a published finding nor are concerned with reproducible workflows.
+Some previous efforts in CFD have sought to compare results from multiple codes: e.g., \citet{Dimonte_2004} report results for Rayleigh-Taylor instability using seven different codes (from five institutions), while the AIAA drag-prediction workshop \citep{Levy_2014} and the high-lift prediction workshop \citep{Rumsey_2015} have been collecting results for years using a variety of commercial and non-commercial (mostly closed) software. 
+However, these efforts don't have a specific goal of replicating a published finding nor are they concerned with reproducible workflows.
 We label computational research *reproducible* when authors provide all the necessary data and the computer code to run the analysis again, re-creating the results. 
 But what data are necessary? 
 We found that open-source code and open data sets are a minimal requirement. 
