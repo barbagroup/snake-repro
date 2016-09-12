@@ -24,6 +24,8 @@ With PETSc, the CG solver crashed because of an indefinite preconditioner (havin
 
 Could this difference in linear solvers affect our unsteady fluid-flow solution? 
 The solutions with both codes match at lower angles of attack (and lower Reynolds numbers), so what is going on? 
+Because PetIBM and cuIBM use the same method, we don't need to repeat mesh-convergence analysis. 
+But we did confirm convergence of the solution with respect to the exit criterion of the iterative solvers.
 We checked everything multiple times. 
 In the process, we did find some small discrepancies. 
 Even a small bug (or two).
