@@ -15,7 +15,8 @@ which includes:
 (4) pre-print made available on arXiv; 
 (5) code released under MIT License; 
 (6) a Reproducibility statement in the paper.
-Of course we expect to be able to reproduce our own results!
+The original work, of course, included grid-convergence analysis: \citet{krishnan2014} report differences in the average lift coefficients in the order of 2% at 35 degrees angle-of-attack and < 0.1% at 30 degrees.
+Naturally, we expected to be able to reproduce our own results!
 
 The first hurdle we faced is that, three years after we completed our previous study, we have updated our lab computers: 
 new operating systems, new GPU devices, new external libraries. 
