@@ -23,7 +23,8 @@ Finally, simulations with OpenFOAM were looking correct—and happily, the main 
 But not all is perfect. 
 The time signatures of lift and drag coefficient do show differences between our IcoFOAM calculation and the original published ones (Figure 4). 
 The key finding uses an _average_ lift coefficient, calculated with data in a time range that is reasonable but arbitrary. 
-Although the average force coefficients match (within < 3%) our previous results, the time series shows a phase difference. 
+Refining the mesh or reducing the exit criterion of the iterative solvers made a difference of less than 0.5% in this quantity.
+The average force coefficients match (within < 3%) our previous results, despite the differences seen on the time series. 
 Are these the same solutions? 
 Is it acceptable as a replication study? 
 We think yes, but this is a judgement call.
