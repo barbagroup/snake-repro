@@ -4,7 +4,7 @@ Reproducibility and replication of studies are essential for the progress of sci
 We use computer simulations to create new knowledge. 
 How can we certify that this new knowledge is justified, that there is enough evidence to support it? 
 The truth is computational science and engineering lacks an accepted standard of evidence. 
-Some previous efforts in CFD have sought to compare results from multiple codes: e.g., \citet{Dimonte_2004} report results for Rayleigh-Taylor instability using seven different codes (from five institutions), while the AIAA drag-prediction workshop \citep{Levy_2014} and the high-lift prediction workshop \citep{Rumsey_2015} have been collecting results for years using a variety of commercial and non-commercial (mostly closed) software. 
+Some previous efforts in CFD have sought to compare results from multiple codes: e.g., \citet{Dimonte_2004} report results for Rayleigh-Taylor instability using seven different codes (from five institutions), while the AIAA drag-prediction workshop \citep{Levy_2014} and the high-lift-prediction workshop \citep{Rumsey_2015} have been collecting results for years using a variety of commercial and non-commercial (mostly closed) software. 
 However, these efforts don't have a specific goal of replicating a published finding nor are they concerned with reproducible workflows.
 We label computational research *reproducible* when authors provide all the necessary data and the computer code to run the analysis again, re-creating the results. 
 But what data are necessary? 
@@ -22,7 +22,7 @@ We learned that in addition to developing our code under version control, we nee
 In practice, such careful documentation is feasible only with a fully automated workflow: 
 launching simulations via running scripts, storing command-line arguments for every run, capturing complete environment settings. 
 Post-processing and visualization ideally should also be scripted, avoiding software GUIs for manipulation of images. 
-New tools have emerged to help reproducible workflows, for example, Docker containers to capture the full state of the operating system, application software, and dependencies.
+New tools have emerged to help reproducible workflows; for example, Docker containers to capture the full state of the operating system, application software, and dependencies.
 
 We learned that highly unsteady fluid dynamics is a particularly tough application for reproducibility. 
 The Navier-Stokes equations are nonlinear and can exhibit chaotic behavior under certain conditions (e.g., geometry, Reynolds number, external forcing). 
@@ -46,7 +46,7 @@ Global operations on distributed vectors and matrices are subject to rounding er
 
 We are recommending more rigorous standards of evidence for computational science and engineering, but the reality is that most CFD papers are not even accompanied by a release of code and data. 
 The reasons for this are varied: historical, commercial interests, academic incentives, time efficiency, export controls, etc. 
-The origins of CFD in the Los Alamos Laboratory in the 1940s was secret research, and when computer code was stored in large boxes of punched cards, there was hardly a way to "share" it \citep{metropolis1982}. 
+The origins of CFD in the Los Alamos Laboratory in the 1940s was secret research, and when computer code was stored in large boxes of punched cards or big rolls of magnetic tape, there was hardly a way to "share" it \citep{metropolis1982}. 
 The 1970s saw the birth of commercial CFD, when university professors and their students founded companies funded under the US government's SBIR program. 
 It’s not unreasonable to speculate that the potential for commercial exploitation was a deterrent for open-source release of CFD codes for a long time. 
 It is only in the last 15 years or so that open-source CFD codes have become available. 
