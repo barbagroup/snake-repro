@@ -163,7 +163,7 @@ We replaced the term "discretization meshes" by "mesh for discretization" during
 
 > 11- The outflow boundary conditions issues were explored at length in the 1990’s by Phil Gresho and other researchers and documented in the Int. J Num. Meth. Fluids. It would seem to be a rather obvious source for gleaning greater insight on what is happening in this study.
 
-In the revised version of the manuscript, we cite the report from Sani and Gresho (1994) to reflect on how choosing adequate outflow boundary conditions can be a frustrating exercise (see [change](https://www.authorea.com/users/99991/articles/121035/commits/fadc4f3e37a6a26046499483a62096c710bf53c2)).
+In the revised version of the manuscript, we cite the report from Sani and Gresho (1994) to highlight how choosing adequate outflow boundary conditions can be a frustrating exercise (see [change](https://www.authorea.com/users/99991/articles/121035/commits/fadc4f3e37a6a26046499483a62096c710bf53c2)).
 _"We have made some attempts at shedding more light on the difficult and unresolved area of seeking good OBCs for incompressible flow simulations. It has been an exercise in frustration and we are not thrilled with the results obtained, even though they may still be useful to some researchers; thus we pass the baton."_ (Sani and Gresho, 1994)
 
 _References:_
@@ -173,21 +173,15 @@ _References:_
 
 > 13- The whole episode with the libraries seems to indicate that the problem you are solving is itself unstable. This is another place where the lack of convergence testing and fundamental UQ may have a serious impact on the story. What level of fundamental physically reasonable variability can be expected in this problem? I suspect the degree of variability is actually quite large and therefore the problem may not lend itself to strict reproducibility. Instead there is a probabilistic framework for reproducibility that may make far more sense in the long run. The thing to reproduce may be statistical properties of the solution rather than a well-posed and unique initial value problem.
 
-We think it would have been too long to reproduce statistical properties.
-To have enough data to compute the time-averaged for coefficients, we computed the solution up to 80 non-dimensional time-units.
-The simulations reported in the manuscript last between one and three days (using one GPU with cuIBM and up to 32 CPU cores with the other software).
+In this study, we have computed 80 non-dimensional time-units for each simulation.
+Depending on the software used, the each computation lasted between one and three days—we used a single GPU with cuIBM and 16 or 32 CPU cores with the other software.
+Thus, we think it would have too long to reproduce statistical properties.
 
 > 14- Computations actually began in the 1940’s in Los Alamos (during WWII). The first punched cards were used for the data flow of the calculation long before the code itself was on cards (details can be found on the LANL web site). Tape actually preceded cards for the written program, and the earlier machines were programmed by rewiring the computer itself with cable plugs (a couple of Los Alamos reports from the late-1940’s contain wiring diagrams).
 
 In the first version of the manuscript, we mentioned that the origins of CFD in the Los Alamos Laboratory took place in the 1950's.
 As pointed out by the reviewer, the origins of CFD date back to the 1940's.
 The pleasant-to-read and informative paper by Metropolis and Nelson (1982) relates the transition from hand-computing to punched-card computation, and then electronic computing.
-The Los Alamos laboratory ordered its first punched-card machines from IBM. 
-During war-time, the research conducted was so sensitive that IBM was not allowed to send a crew to install the machines at the laboratory:
-_"Through our army connections, we asked IBM for the name of its best maintenance man drafted into the U.S. Army; that man, John Johnston, was requisitioned."_
-At the beginning, the boxes of punched cards were difficult to "share" not only because of their largeness, but also because everything was kept secret.
-Note that the punched-card machines were used for implosion simulation that required integrating a two-dimensional partial differential equation.
-
 In the revised version of the manuscript, we corrected the timing in the sentence related to the beginning of CFD at the Los Alamos Laboratory and added a reference to Metropolis and Nelson (1982) (see [change](https://www.authorea.com/users/99991/articles/121035/history/488aae197712bf88428e91bf91b9d834b41211ff)).
 
 _References:_
@@ -199,10 +193,13 @@ We added several citations to our manuscript, based on the suggestions from the 
 
 > 16- The discussion around the failings of the published literature is quite good. It might be buoyed by some examples where the publication of negative results have had a disproportionately positive impact on the community. A couple of good examples are the paper by Quirk or Ioannidis included below.
 
-Quirk (1997) would be an excellent citation in our manuscript concerning the publication of negative results. Quirk addresses some issues related to current (at that time) Godunov-type methods implemented in Riemann solvers. The author offers a "catalogue" of possible failures encountered with Godunov schemes, one of them being unreported prior this publication. In addition, Quirk proposes a remedy to fix those failings.
+Quirk (1997) would be an excellent citation in our manuscript concerning the publication of negative results. 
+Quirk addresses some issues related to current (at that time) Godunov-type methods implemented in Riemann solvers. 
+The author offers a "catalogue" of possible failures encountered with Godunov schemes, one of them being unreported prior this publication. 
+In addition, Quirk proposes a remedy to fix those failings.
 We now cite Quirk (1997) in the revised manuscript (see [change](https://www.authorea.com/users/99991/articles/121035/commits/8439be341f34dbaff4a56c3b289bb9f529d85ec5)).
 
-In addition to that, we added a reference to Ioannidis (2005) when talking about current publication are biased towards positive results (see [change](https://www.authorea.com/users/99991/articles/121035/history/a5c40a319e68a9f457825c39cbe9e264f86ecbcd)).
+In addition to that, we added a reference to Ioannidis (2005) when talking about how current publications are biased towards positive results (see [change](https://www.authorea.com/users/99991/articles/121035/history/a5c40a319e68a9f457825c39cbe9e264f86ecbcd)).
 
 _References:_
 * Quirk, J. J. (1997). A contribution to the great Riemann solver debate. In Upwind and High-Resolution Schemes (pp. 550-569). Springer Berlin Heidelberg.
@@ -269,7 +266,7 @@ Flow situations that present no challenge—e.g., laminar, steady, simple geomet
 
 Even for steady flow, if the Reynolds number is high, the replication challenge is steep. 
 For example, the AIAA Drag Prediction Workshop has been ongoing since 2001, demonstrating wide differences between results with different (yet trusted) codes. 
-(We added to the manuscript a mention and citation for the AIAA effort.)
+(We added to the manuscript a mention and citation for the AIAA effort in the "Lessons learned" section.)
 
 We have added more discussion about the physical flow situation, mentioning that it is subject to various instabilities. 
 Numerous flow situations of interest have these instabilities, and we agree with the referee that they add extra challenges to replication. 
@@ -331,14 +328,13 @@ The message of the paper is that replication and reproducibility in CFD can be h
 > flying snake) should be discussed, instead of just referencing the
 > paper of the study
 
-We added some text about the physics involved in the type of flow studied here (see [change](https://www.authorea.com/users/99991/articles/121035/history/2789c0cfc477d3aad0a21af71d86cfe26e9160bf) in the manuscript).
-
 Findings of the previous study (Krishnan et al., 2014) are discussed briefly in the introduction. 
-(Sentence beginning _"The main finding of our study on wakes of flying snakes was ... "_). 
-We added a citation to the experimental study that revealed the enhanced lift (see [change](https://www.authorea.com/users/99991/articles/121035/history/b2dfc8fe64c62752bd5e9444f814cfca10fef468)) and a sentence about the mechanism behind it (see [change](https://www.authorea.com/users/99991/articles/121035/history/3f7f7a255204ef6f7b8a1ff4873bf6d42cad0b15)).
-
+(Sentence beginning _"The main finding of our study on wakes of flying snakes was ... "_).
 The manuscript is already past the maximum word limit, and so we must count on the interested reader consulting the original study for details of the simulation methodology and the explanation of the lift-enhancement mechanism.
 We think that the main points of this paper can be followed without more details about the previous study.
+
+However, we added a citation to the experimental study that revealed the enhanced lift (see [change](https://www.authorea.com/users/99991/articles/121035/history/b2dfc8fe64c62752bd5e9444f814cfca10fef468)) and a sentence about the mechanism behind it (see [change](https://www.authorea.com/users/99991/articles/121035/history/3f7f7a255204ef6f7b8a1ff4873bf6d42cad0b15)).
+In addition, we added some notes about the physics involved in the type of flow studied here (see [change](https://www.authorea.com/users/99991/articles/121035/history/2789c0cfc477d3aad0a21af71d86cfe26e9160bf)).
 
 > 2- There should be some discussion about other efforts to compare
 > different codes on the same problem. Some of the ones that come to
@@ -357,7 +353,9 @@ We think that the main points of this paper can be followed without more details
 >     alpha group), they share the level of differences and in-depth
 >     knowledge of the code needed as reported in this paper.
 
-We added some comments about previous efforts to compare multiple CFD codes (see [change 1](https://www.authorea.com/users/99991/articles/121035/commits/26cdea37a0d473be4e828dfdeca8b3e1b653ca95), [change 2](https://www.authorea.com/users/99991/articles/121035/commits/38320719c93af03ec1c5b31fd3b92ab3433e3850), and [change 3](https://www.authorea.com/users/99991/articles/121035/commits/c7e19b78e0aabb65a6376a01b53aff50eb92883a) in the manuscript).
+The three references pointed out by the reviewer represent interesting efforts to compare multiple codes on the same problem.
+The second reference reports the numerical solution from seven different software on the turbulent Rayleigh-Taylor instability, a problem that appears to be closer related to ours (compared to those investigated in the two other references).
+During the revision process, we added some comments about previous efforts in comparing solutions from different codes, citing the work from the Alpha Group Collaboration, and most recent reports from the Drag Prediction Workshop and the High Lift Prediction Workshop (see [change 1](https://www.authorea.com/users/99991/articles/121035/commits/26cdea37a0d473be4e828dfdeca8b3e1b653ca95), [change 2](https://www.authorea.com/users/99991/articles/121035/commits/38320719c93af03ec1c5b31fd3b92ab3433e3850), and [change 3](https://www.authorea.com/users/99991/articles/121035/commits/c7e19b78e0aabb65a6376a01b53aff50eb92883a) in the manuscript).
 
 > 3- In "Story 1", the authors use the term "blow up" -- this should be
 > clarified
@@ -373,6 +371,8 @@ We added plots of the mesh generated with GMSH and SnappyHexMesh in the suppleme
 Details about the mesh generation are also available in the supplementary materials.
 We changed the text in the manuscript to guide the reader to the supplementary materials to look at the meshes (see [change](https://www.authorea.com/users/99991/articles/121035/history/5e745d011aecfa6d8a891439439350ffc8ea5077) in the manuscript).
 
+Furthermore, we modified the Figure 1 of the manuscript to add a zoom of the degeneration of the vorticity field (as well as the underlying triangular mesh).
+
 > 5- "advective" boundary conditions should be defined -- what is the
 > mathematical definition of this?
 
@@ -385,7 +385,7 @@ We added an explanation of an advective boundary condition in the manuscript (se
 
 Krishnan et al. (2014) used a NVidia Tesla C2070 GPU to compute the numerical solution with cuIBM while we used a NVidia Tesla K20 in the present work.
 Both GPUs were used with double precision floating point.
-We added a note about it in the manuscript (see [change](https://www.authorea.com/users/99991/articles/121035/history/22a5643db83c6d844163991286092b3a8f89540d)).
+We specified it in the manuscript (see [change](https://www.authorea.com/users/99991/articles/121035/history/22a5643db83c6d844163991286092b3a8f89540d)).
  
 > 7- In the final paragraph, the authors advocate for continued release
 > of CFD codes, and list some reason for not sharing. An important
