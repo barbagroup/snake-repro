@@ -1,0 +1,21 @@
+- type: simulation
+  dt: 0.0002
+  scaleCV: 5.0
+  nt: 400000
+  nsave: 2500
+  startStep: 0
+  timeScheme: [ADAMS_BASHFORTH_2, CRANK_NICOLSON]
+  ibmScheme: TAIRA_COLONIUS
+  linearSolvers:
+    - system: velocity
+      solver: BICGSTAB
+      preconditioner: DIAGONAL
+      relTolerance: 0.0
+      absTolerance: 1.0E-16
+      maxIterations: 10000
+    - system: Poisson
+      solver: CG
+      preconditioner: SMOOTHED_AGGREGATION
+      relTolerance: 0.0
+      absTolerance: 1.0E-08
+      maxIterations: 20000
