@@ -9,12 +9,12 @@
   ibmScheme: TAIRA_COLONIUS
   linearSolvers:
     - system: velocity
-      solver: CG
+      solver: BICGSTAB
       preconditioner: DIAGONAL
-      tolerance: 1e-5
+      tolerance: 1.0E-05
       maxIterations: 10000
     - system: Poisson
       solver: CG
       preconditioner: SMOOTHED_AGGREGATION
-      tolerance: 1e-5
+      tolerance: 1.0E-05
       maxIterations: 20000

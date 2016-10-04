@@ -15,7 +15,7 @@ which includes:
 (4) pre-print made available on arXiv; 
 (5) code released under MIT License; 
 (6) a Reproducibility statement in the paper.
-The original work, of course, included grid-convergence analysis: \citet{krishnan2014} report differences in the average lift coefficients in the order of 2% at 35 degrees angle-of-attack and < 0.1% at 30 degrees.
+The original work, of course, confirmed grid independence of the solution: \citet{krishnan2014} report differences in the average lift coefficients in the order of 2% at 35 degrees angle-of-attack and < 0.1% at 30 degrees.
 Naturally, we expected to be able to reproduce our own results!
 
 The first hurdle we faced is that, three years after we completed our previous study, we have updated our lab computers: 
@@ -34,6 +34,6 @@ And the same is the case with the current version of cuIBM and a later version o
 The final _findings_ in these cases do not vary from our published work: there is, in fact, lift enhancement at 35 degrees angle-of-attack ... but the results match only because we calculate the average lift in a time interval between 32 and 64. 
 Yet, the flow solution was affected by changing the version of a dependent library. 
 (The revision history of _Cusp_ says that they refactored the smooth-aggregation solver between the two versions we are using.) 
-The hardware was also different (a K20 GPU versus a C2070 in our older study), and the operating system, and the compiler. (Note that we always run with in double precision.) 
+The hardware was also different (a K20 GPU versus a C2070 in our older study), and the operating system, and the compiler. (Note that we always run in double precision.) 
 In an iterative linear solver, any of these things could be related to lack of floating-point reproducibility. 
 And in unsteady fluid dynamics, small floating-point differences can add up over thousands of time steps to eventually trigger a flow instability (like vortex merging).
