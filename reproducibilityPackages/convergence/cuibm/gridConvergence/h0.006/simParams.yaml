@@ -17,5 +17,5 @@
       solver: CG
       preconditioner: SMOOTHED_AGGREGATION
       relTolerance: 0.0
-      absTolerance: 1.0E-08
+      absTolerance: 1.0E-06
       maxIterations: 20000

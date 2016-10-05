@@ -3,7 +3,7 @@
   scaleCV: 5.0
   nt: 400000
   nsave: 2500
-  startStep: 30000
+  startStep: 0
   timeScheme: [ADAMS_BASHFORTH_2, CRANK_NICOLSON]
   ibmScheme: TAIRA_COLONIUS
   linearSolvers:
@@ -16,6 +16,6 @@
     - system: Poisson
       solver: CG
       preconditioner: SMOOTHED_AGGREGATION
-      absTolerance: 1.0E-08
+      absTolerance: 1.0E-06
       relTolerance: 0.0
       maxIterations: 20000

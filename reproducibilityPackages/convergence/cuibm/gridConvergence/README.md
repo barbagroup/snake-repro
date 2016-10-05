@@ -9,7 +9,7 @@ The coarse grid has a grid-spacing of `h=0.006` in the uniform region; outside t
 The medium and fine grids have a grid-spacing of `h=0.004` and `h=0.006`, respectively, in the uniform region; the same stretching ratio of `1.01` is used.
 We end up with a refinement ratio of `1.5 (=0.006/0.004=0.004/0.00267)`.
 
-We choose a time-increment of `0.0002` and set the exit criterion for the velocity and Poisson solvers with an absolute tolerance of `1.0E-16` and `1.0E-08`, respectively.
+We choose a time-increment of `0.0002` and set the exit criterion for the velocity and Poisson solvers with an absolute tolerance of `1.0E-16` and `1.0E-06`, respectively.
 
 To run the simulations:
 
