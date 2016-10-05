@@ -29,7 +29,7 @@ simulation.read_forces()
 simulation.get_mean_forces(limits=[32.0, 64.0])
 
 directory = os.path.join(os.path.dirname(__file__), 'h0.006')
-loose = PetIBMSimulation(description='h0.006',
+loose = PetIBMSimulation(description='h=0.006',
                          directory=directory)
 loose.read_forces()
 loose.get_mean_forces(limits=[32.0, 64.0])
