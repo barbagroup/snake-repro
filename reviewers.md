@@ -163,19 +163,25 @@ We replaced the term "discretization meshes" by "mesh for discretization" during
 
 > 11- The outflow boundary conditions issues were explored at length in the 1990’s by Phil Gresho and other researchers and documented in the Int. J Num. Meth. Fluids. It would seem to be a rather obvious source for gleaning greater insight on what is happening in this study.
 
-In the revised version of the manuscript, we cite the report from Sani and Gresho (1994) to highlight how choosing adequate outflow boundary conditions can be a frustrating exercise (see [change](https://www.authorea.com/users/99991/articles/121035/commits/fadc4f3e37a6a26046499483a62096c710bf53c2)).
-_"We have made some attempts at shedding more light on the difficult and unresolved area of seeking good OBCs for incompressible flow simulations. It has been an exercise in frustration and we are not thrilled with the results obtained, even though they may still be useful to some researchers; thus we pass the baton."_ (Sani and Gresho, 1994)
+We looked into the work by Gresho and Sani (1994), and found that they don't give us more insight. In fact, they reported that they were unhappy with the results from the workshop on open boundary conditions. They call the problem of choosing the best outflow boundary conditions "difficult and unresolved" and "an exercise in frustration."
+
+In the revised version of the manuscript, we cite the report from Sani and Gresho (1994) to highlight how choosing adequate outflow boundary conditions can be frustrating (see [change](https://www.authorea.com/users/99991/articles/121035/commits/fadc4f3e37a6a26046499483a62096c710bf53c2)).
 
 _References:_
 * Sani, R. L., & Gresho, P. M. (1994). Résumé and remarks on the open boundary condition minisymposium. International Journal for Numerical Methods in Fluids, 18(10), 983-1008.
 
 > 12- The linear algebra episode is a bit troubling and would seem to indicate some rather fundamental issues with the solver discretization. There may be a discrete violation of the Fredholm integral that renders the CG solver problematic. This might be a side effect of the discrete system being corrupted rather than a shortcoming of the solver itself. For properly formed symmetric systems, CG is vastly more robust and cost effective than BiCGstab!
 
+When we looked into this problem, we sought help on the PETSc mailing-list. Barry Smith [reported](http://lists.mcs.anl.gov/pipermail/petsc-users/2014-November/023654.html) they have heard of this problem before: the GAMG algorithm may generate a preconditioner with both positive and negative eigenvalues. We do not yet fully understand this problem (we have an open [issue](https://github.com/barbagroup/PetIBM/issues/53) in the PetIBM repository about this).
+We ended up following Barry Smith's [advice](http://lists.mcs.anl.gov/pipermail/petsc-users/2014-November/023661.html) to switch to biCGStab.
+
 > 13- The whole episode with the libraries seems to indicate that the problem you are solving is itself unstable. This is another place where the lack of convergence testing and fundamental UQ may have a serious impact on the story. What level of fundamental physically reasonable variability can be expected in this problem? I suspect the degree of variability is actually quite large and therefore the problem may not lend itself to strict reproducibility. Instead there is a probabilistic framework for reproducibility that may make far more sense in the long run. The thing to reproduce may be statistical properties of the solution rather than a well-posed and unique initial value problem.
 
-In this study, we have computed 80 non-dimensional time-units for each simulation.
-Depending on the software used, the each computation lasted between one and three days—we used a single GPU with cuIBM and 16 or 32 CPU cores with the other software.
-Thus, we think it would have too long to reproduce statistical properties.
+We have addressed in several places that the flow problem is subject to instabilities.
+We have also addressed confirming grid independence with the various codes.
+(Admittedly, this is not systematic grid-convergence analysis.)
+Quantifying the physical variability in this problem would entail a campaign of experiments, with the appropriate statistical strength. Then, comparing with this experiment would mean running fully 3D simulations, which is what we are aiming for. The 2D simulations already take about 2 days each (on one GPU or on 32 CPU cores). A statistical approach to reproducibility, in this case, sounds computationally very expensive.
+Also, despite all the problems we encountered, we do in fact replicate the previous findings, in most cases.
 
 > 14- Computations actually began in the 1940’s in Los Alamos (during WWII). The first punched cards were used for the data flow of the calculation long before the code itself was on cards (details can be found on the LANL web site). Tape actually preceded cards for the written program, and the earlier machines were programmed by rewiring the computer itself with cable plugs (a couple of Los Alamos reports from the late-1940’s contain wiring diagrams).
 
