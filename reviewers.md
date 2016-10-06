@@ -38,45 +38,23 @@ We are grateful for the detailed feedback provided by the reviewers and the pati
 > _5) What do you see as the weakest aspect of this manuscript?:_
 > 
 > 1- Perhaps the biggest issue to more completely address in the paper is the fundamental nature of the physical problem being solved. How well-posed is the problem, what sort of natural variability may be expected, and how reproducible are results intrinsically? One might look at a complementary study of vortex shedding off of a cylinder where the behavior is well-known. Are the results reproducible at very low Reynolds number? And do they cease being so as the Reynolds number increases, and if so at what value do the problems seen in the paper begin?
+ 
+It's true that bluff-body wakes are particularly complex flows—they involve three shear layers: the boundary layer, separating free shear layer, and the wake (Williamson, 1996). 
+During the revision of the manuscript, we added some notes about the shear layer instabilities involved in the problem (see the [change](https://www.authorea.com/users/99991/articles/121035/history/2789c0cfc477d3aad0a21af71d86cfe26e9160bf) online).
 
-I read over Williamson (1996) again, looking for clues to frame the reply to this comment. 
-It's true that bluff-body wakes are particularly complex flows—they involve three shear layers: the boundary layer, separating free shear layer, and the wake. 
-During the revision of the manuscript, we added some notes about the shear layer instabilities involved in the problem investigated (see [change](https://www.authorea.com/users/99991/articles/121035/history/2789c0cfc477d3aad0a21af71d86cfe26e9160bf)).
-Physically, we can talk about instabilities in all of these. 
-The free shear layer, for example, is subject to Kelvin-Helmholtz instability (principally a 2D mechanism). 
-In the case of the wake, von Karman showed in 1912 that vortex streets are unstable (although assuming infinite vortices and no body).
-
-There are three vortex-shedding regimes: a "stable" periodic one for Re=40–150; a transition at Re=150–300, and an "irregular" regime at Re=300–10,000. We are squarely in the "irregular" regime.
-
-Finally, Williamson cites work by Karniadakis and Triantafyllou (1992) suggesting that as Re increases "the wake velocity fluctuations indicate a cascade of period-doubling bifurcations, which create a chaotic state in the flow at around Re=500."
-
-Yet, I don't think any of this is pertinent to the message of our paper. 
+Yet, we don't think this changes the message of our paper. 
 Yes our flow situation is complex. 
 But you don't need a highly unsteady complex flow to be faced with challenges to reproducibility.
-
-Take a simple saddle point in an ideal 2D flow. 
-The dynamical system is linear and you can write down an analytical solution easily. 
-But if you try to solve it numerically, it's going to be very sensitive to small errors. 
-One initial condition right next to the stable manifold will come very close to the critical point, then go to infinity. 
-Another initial condition very, very close, but on the other side of the manifold, will end up in minus infinity.
-
-Any time you have exponential growth in the model, there will be huge challenges to numerical reproducibility. 
-This is not a feature of complex vortical flows, in particular.
-
-We can have long discussions about these issues, but it seems (to me) beyond the scope of our paper.
 
 We already say that "highly unsteady fluid dynamics is a particularly tough application for reproducibility [...] In any application that has sufficient complexity, we should repeat simulations checking how robust they are to small variations." (p. 9).
 
 "how reproducible are results intrinsically?" 
-Well, there is no randomness in the model: the 2D Navier-Stokes equation should give deterministic results with sufficiently fine discretization, no?
-WE DO, in fact, replicate the results (with OpenFOAM and IBAMR) eventually, so I think we've shown that there is no such intrinsic lack of reproducibility. It's just hard!
+We do, in fact, replicate the results (with OpenFOAM and IBAMR) eventually, so I think we've shown that there is no such intrinsic lack of reproducibility. It's just hard!
 
 "at what value do the problems seen in the paper begin?" 
 We computed with two different values of Re: 1000, and 2000. 
-The difficulties appear at the higher value of Re. We're not going to repeat this painful process with values of Re in between! ... we already made hundreds of simulations, and this is not the point of the paper, right? 
+The difficulties appear at the higher value of Re. 
 We're trying to replicate a previously published finding at Re=1000 and 2000.
-
-In summary, I think we can only stress the points we already make in the paper.
 
 Regarding well-posedness—to be well posed, the initial-boundary value problem must have a unique solution and depend continuously on the data. 
 With appropriate boundary conditions on pressure at infinity, the Navier-Stokes equations are well posed. 
@@ -85,28 +63,26 @@ With appropriate boundary conditions on pressure at infinity, the Navier-Stokes 
 It sounds like the referee may be hinting at a sudden change in behavior at a given Reynolds number. 
 The part where a well-posed problem depends continuously on the data also means that "small" changes in the parameters cannot result in "large" changes in the solution.
 
-But I still think it is not in the scope of this paper to engage in a discussion about this. 
+We think it is not in the scope of this paper to engage in a discussion about this. 
 We computed the solutions at two values of Re: 1000 and 2000. 
 We can't speculate about a bifurcation at a value of Re, nor embark on hundreds more simulations to look at intermediate Reynolds numbers. 
 The goal was to replicate previous results, and we did.
 
 _References:_
 * Williamson, Charles HK. "Vortex dynamics in the cylinder wake." Annual review of fluid mechanics 28.1 (1996): 477-539 DOI: 10.1146/annurev.fl.28.010196.002401.
-* Karniadakis, G. E., & Triantafyllou, G. S. (1992). Three-dimensional dynamics and transition to turbulence in the wake of bluff objects. Journal of Fluid Mechanics, 238, 1-30.
 * Nordström, J., & Svärd, M. (2005). Well-Posed Boundary Conditions for the Navier--Stokes Equations. SIAM Journal on Numerical Analysis, 43(3), 1231-1255.
 
 > 2- I do not see any evidence of mesh convergence being conducted as part of the study. This seems to be a rather major and troubling shortcoming. We are given no evidence of whether any solution is remotely mesh independent or the degree of numerical error present in the solution. This is a major component of the proper practice in numerical modeling and simulation in this modern age all too often neglected in published works.
 
-In this work, we are attempting to replicate the findings of a previous CFD paper (Krishnan et al., 2014), so three points to potentially make in the response: (1) evidence of grid convergence having been done in the previous work, Krishnan et al.; (2) since this is a replication study, we use the same mesh as in the previous result, i.e., the decision to use a mesh resolution is dictated by that criterion, rather than new mesh-convergence analysis; (3) despite the previous point, a posteriori mesh convergence can help explain when there are differences in the results.
+In this work, we are attempting to replicate the findings of a previous CFD paper (Krishnan et al., 2014). The previous work reports grid independence. Since this is a replication study, we used the same mesh as in the previous result, i.e., the decision to use a mesh resolution is dictated by that criterion, rather than new mesh-convergence analysis. Despite the previous point, a posteriori mesh convergence can help explain when there are differences in the results.
 
-Answer to (1) is that Krishnan et al. report mesh convergence: differences in the average lift coefficients are in the order of 2% at 35 deg AoA, and <0.1% at 30 deg.
-We added a note about it during the revision of the manuscript (see [change](https://www.authorea.com/users/99991/articles/121035/commits/e6d3c8beb4d49cc975f1016c8fd549dd0f646bee)).
+We added a note about Krishnan et al.'s grid independence (see the [change](https://www.authorea.com/users/99991/articles/121035/commits/e6d3c8beb4d49cc975f1016c8fd549dd0f646bee) online).
 
 PetIBM is the same method exactly as cuIBM, so the same mesh is used. 
 The only algorithmic difference between the two codes is in the linear solver, so we checked that reducing the solver tolerance did not affect the solution (it did not).
-We clarified this in the revised manuscript (see [change](https://www.authorea.com/users/99991/articles/121035/commits/9cda5d9f84525ae31e5171598db4b3e1f08b2ef9)).
+We clarified this in the revised manuscript (see the [change](https://www.authorea.com/users/99991/articles/121035/commits/9cda5d9f84525ae31e5171598db4b3e1f08b2ef9) online).
 
-IBAMR, on the contrary, would require mesh convergence to be able to say that it’s meaningful to compare with the results of other codes. We refined the mesh with IBAMR, and the results are self-consistent, at least when looking at our chosen diagnostic, i.e., the average lift coefficient in a specified time range. Some differences, however, are apparent on the time signature of lift. With the mesh reported in the manuscript, we also decreased the solver tolerance, to make sure that discretization error is dominating and algebraic errors are not polluting the results. The results were also consistent when using a larger physical domain. — We’re confident saying that the simulations with IBAMR are mesh-converged and added a note about it the revised version of the paper (see [change](https://www.authorea.com/users/99991/articles/121035/commits/1d32cfe2dcb271363293b6d1ad103ed6949fa191)).
+IBAMR, on the contrary, would require mesh convergence to be able to say that it’s meaningful to compare with the results of other codes. We refined the mesh with IBAMR, and the results are self-consistent, at least when looking at our chosen diagnostic, i.e., the average lift coefficient in a specified time range. Some differences, however, are apparent on the time signature of lift. With the mesh reported in the manuscript, we also decreased the solver tolerance, to make sure that discretization error is dominating and algebraic errors are not polluting the results. The results were also consistent when using a larger physical domain. We added a note about this in the revised version of the paper (see the [change](https://www.authorea.com/users/99991/articles/121035/commits/1d32cfe2dcb271363293b6d1ad103ed6949fa191) online).
 
 Although we were able to replicate, with IBAMR, the main finding of Krishnan et al. (2014), we would like to provide an additional result concerning the flow at Reynolds number 2000 when the bluff-body adopts a 35-degree angle-of-attack.
 
@@ -128,7 +104,7 @@ Meanwhile, we also tried to use this CFL value to check the temporal convergence
 When reducing the CFL constraint (from 0.3 to 0.1), we do not observe anymore a drop in the lift coefficient (as we did with a higher CFL), getting closer to the signature obtained with cuIBM by Krishnan and co-workers.
 This new result does not modify the overall conclusions about IBAMR: we have been able to replicate the lift-enhancement reported in Krishnan et al. (2014).
 However, it is important to mention that we obtained even closer time-averaged coefficients when reducing the CFL constraint.
-During the revision stage of the manuscript: (1) we added this new IBAMR result with a lower CFL constraint in the text (see [change](https://www.authorea.com/users/99991/articles/121035/history/f5e706781966afe2ecf90e2084cfe52fbb861770)), (2) we added the time-averaged force coefficients to Figure 6, and (3) we added the lift and drag signature to Figure 7.
+During the revision stage of the manuscript: (1) we added this new IBAMR result with a lower CFL constraint in the text (see the [change](https://www.authorea.com/users/99991/articles/121035/history/f5e706781966afe2ecf90e2084cfe52fbb861770) online), (2) we added the time-averaged force coefficients to Figure 6, and (3) we added the lift and drag signature to Figure 7.
 
 _References:_
 * Bhalla, A. P. S., Bale, R., Griffith, B. E., & Patankar, N. A. (2013). A unified mathematical framework and an adaptive numerical method for fluid–structure interaction with rigid, deforming, and elastic bodies. Journal of Computational Physics, 250, 446-476.
@@ -210,7 +186,7 @@ We added several citations to our manuscript, based on the suggestions from the 
 
 > 16- The discussion around the failings of the published literature is quite good. It might be buoyed by some examples where the publication of negative results have had a disproportionately positive impact on the community. A couple of good examples are the paper by Quirk or Ioannidis included below.
 
-Quirk (1997) would be an excellent citation in our manuscript concerning the publication of negative results. 
+Quirk (1997) is an excellent citation in our manuscript concerning the publication of negative results. 
 Quirk addresses some issues related to current (at that time) Godunov-type methods implemented in Riemann solvers. 
 The author offers a "catalogue" of possible failures encountered with Godunov schemes, one of them being unreported prior this publication. 
 In addition, Quirk proposes a remedy to fix those failings.
