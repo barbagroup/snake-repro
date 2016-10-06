@@ -1,0 +1,9 @@
+# simulationParameters.yaml
+
+- dt: 2.0E-04
+  startStep: 0
+  nt: 400000
+  nsave: 5000
+  ibm: TAIRA_COLONIUS
+  convection: ADAMS_BASHFORTH_2
+  diffusion: CRANK_NICOLSON

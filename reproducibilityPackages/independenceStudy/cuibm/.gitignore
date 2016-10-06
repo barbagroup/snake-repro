@@ -1,0 +1,12 @@
+**/runCuIBMPhantom.sh
+**/runCuIBMColonialOne.sh
+**/runCuIBMTheo.sh
+**/0*
+**/forces
+**/iterations
+**/grid
+**/run.info
+**/run.log
+**/log.run
+**.out
+**.err
