@@ -1,0 +1,269 @@
+// physical parameters
+Re = 2000.0         // Reynolds number
+D = 1.0             // reference length
+U_INF = 1.0         // free-stream speed
+RHO = 1.0           // density
+MU = RHO*U_INF*D/Re // kinematic viscosity 
+
+// grid-spacing parameters
+MAX_LEVELS = 5 // maximum number of levels in locally refined grid
+REF_RATIO = 4  // refinement ratio between two consecutive levels
+NX = 30        // number of grid-cells in x-direction on coarsest level
+NY = 30        // number of grid-cells in y-direction on coarsest level
+XMIN = -15.0   // left boundary location
+XMAX = 15.0    // right boundary location
+YMIN = -15.0   // bottom boundary location
+YMAX = 15.0    // top boundary location
+NX_FINEST = (REF_RATIO^(MAX_LEVELS - 1))*NX
+DX_FINEST = (XMAX-XMIN)/NX_FINEST // minimum grid-spacing allowed
+
+// solver parameters
+DELTA_FUNCTION = "IB_4"          // discrete delta function
+SOLVER_TYPE = "STAGGERED"        // stagerred or collocated mesh
+START_TIME = 0.0                 // initial simulation time
+END_TIME = 80.0                   // final simulation time
+MAX_INTEGRATOR_STEPS = 100000000 // Max no of steps.
+GROW_DT = 1.0                    // growth factor for timesteps
+NUM_CYCLES = 1                   // number of cycles of fixed-point iteration. For cIB set 1.
+CONVECTIVE_TS_TYPE = "ADAMS_BASHFORTH" // convective time-stepping scheme
+CONVECTIVE_OP_TYPE = "STABILIZED_PPM"  // convective differencing discretization type
+CONVECTIVE_FORM = "ADVECTIVE"          // how to compute the convective terms
+NORMALIZE_PRESSURE = FALSE           // whether to explicitly force the pressure to have mean zero
+CFL_MAX = 0.1                        // maximum CFL number
+DT_MAX = CFL_MAX*DX_FINEST/U_INF     // maximum time-increment
+VORTICITY_TAGGING = TRUE             // whether to tag cells for refinement based on vorticity thresholds
+TAG_BUFFER = 2                       // size of tag buffer used by grid generation algorithm
+REGRID_CFL_INTERVAL = 0.5            // regrid whenever any material point could have moved 0.5 meshwidths since previous regrid
+
+// output
+OUTPUT_U = TRUE
+OUTPUT_P = TRUE
+OUTPUT_F = FALSE
+OUTPUT_OMEGA = TRUE
+OUTPUT_DIV_U = TRUE
+ENABLE_LOGGING = TRUE
+
+// stabilized outlet boundary condition
+BoundaryStabilization
+{
+  stabilization_type_1 = "OUTFLOW"
+  width_1 = 4.0*DX_FINEST
+}
+
+// boundary conditions for velocity in x-direction
+VelocityBcCoefs_0
+{
+  acoef_function_0 = "1.0"
+  acoef_function_1 = "0.0"
+  acoef_function_2 = "0.0"
+  acoef_function_3 = "0.0"
+
+  bcoef_function_0 = "0.0"
+  bcoef_function_1 = "1.0"
+  bcoef_function_2 = "1.0"
+  bcoef_function_3 = "1.0"
+
+  gcoef_function_0 = "1.0"
+  gcoef_function_1 = "0.0"
+  gcoef_function_2 = "0.0"
+  gcoef_function_3 = "0.0"
+}
+
+// boundary conditions for velocity in y-direction
+VelocityBcCoefs_1
+{
+  acoef_function_0 = "1.0"
+  acoef_function_1 = "0.0"
+  acoef_function_2 = "1.0"
+  acoef_function_3 = "1.0"
+
+  bcoef_function_0 = "0.0"
+  bcoef_function_1 = "1.0"
+  bcoef_function_2 = "0.0"
+  bcoef_function_3 = "0.0"
+
+  gcoef_function_0 = "0.0"
+  gcoef_function_1 = "0.0"
+  gcoef_function_2 = "0.0"
+  gcoef_function_3 = "0.0"
+}
+
+IBHierarchyIntegrator
+{
+  start_time           = START_TIME
+  end_time             = END_TIME
+  grow_dt              = GROW_DT
+  num_cycles           = NUM_CYCLES
+  regrid_cfl_interval  = REGRID_CFL_INTERVAL
+  dt_max               = DT_MAX
+  enable_logging       = ENABLE_LOGGING
+  max_integrator_steps = MAX_INTEGRATOR_STEPS
+  error_on_dt_change   = FALSE
+  warn_on_dt_change    = FALSE
+}
+
+ConstraintIBMethod
+{
+  delta_fcn                = DELTA_FUNCTION
+  enable_logging           = ENABLE_LOGGING
+  num_INS_cycles           = NUM_CYCLES
+  needs_divfree_projection = TRUE
+  rho_fluid                = RHO
+  mu_fluid                 = MU
+
+  PrintOutput
+  {
+    print_output          = TRUE        // default false
+    output_interval       = 1           // default 1
+    output_drag           = TRUE        // default false
+    output_power          = FALSE       // default false
+    output_torque         = FALSE       // default false
+    output_rig_transvel   = FALSE       // default false
+    output_rig_rotvel     = FALSE       // default false
+    output_com_coords     = FALSE       // default false
+    output_moment_inertia = FALSE       // default false
+    output_eulerian_mom   = FALSE       // default false
+    output_dirname        = "./dataIB" // default "./ConstraintIBMethodDump"
+    base_filename         = "ib"        // default "ImmersedStructure" 
+  }
+}
+
+num_structures = 1 // number of immersed boundaries
+
+ConstraintIBKinematics
+{
+  flyingSnake2dAoA35ds004
+  {
+    structure_names                  = "flyingSnake2dAoA35ds004"
+    structure_levels                 = MAX_LEVELS - 1
+    calculate_translational_momentum = 0, 0, 0
+    calculate_rotational_momentum    = 0, 0, 0
+    lag_position_update_method       = "CONSTRAINT_VELOCITY"
+    tagged_pt_identifier             = MAX_LEVELS - 1, 0  // level, relative idx of lag point
+    // velocity of immersed structure
+    kinematics_velocity_function_0   = "0.0"
+    kinematics_velocity_function_1   = "0.0"
+  }
+}
+
+IBStandardInitializer
+{
+  max_levels      = MAX_LEVELS
+  structure_names = "flyingSnake2dAoA35ds004"
+  flyingSnake2dAoA35ds004
+  {
+    level_number = MAX_LEVELS - 1
+  }   
+}
+
+INSStaggeredHierarchyIntegrator
+{
+  mu                            = MU
+  rho                           = RHO
+  start_time                    = START_TIME
+  end_time                      = END_TIME
+  grow_dt                       = GROW_DT
+  convective_time_stepping_type = CONVECTIVE_TS_TYPE
+  convective_op_type            = CONVECTIVE_OP_TYPE
+  convective_difference_form    = CONVECTIVE_FORM
+  normalize_pressure            = NORMALIZE_PRESSURE
+  cfl                           = CFL_MAX
+  dt_max                        = DT_MAX
+  using_vorticity_tagging       = VORTICITY_TAGGING
+  vorticity_abs_thresh          = 0.25 , 0.5 , 1 , 2
+  tag_buffer                    = TAG_BUFFER
+  output_U                      = OUTPUT_U
+  output_P                      = OUTPUT_P
+  output_F                      = OUTPUT_F
+  output_Omega                  = OUTPUT_OMEGA
+  output_Div_U                  = OUTPUT_DIV_U
+  enable_logging                = ENABLE_LOGGING
+
+  convective_op_db
+  {
+    // settings for STABILIZED_PPM convective operator
+    width_1 = 4.0*DX_FINEST
+  }
+}
+
+Main
+{
+  // log file parameters
+  log_file_name = "log.summary"
+  log_all_nodes = FALSE
+
+  // visualization dump parameters
+  viz_writer                  = "VisIt"
+  viz_dump_interval           = 2000                // zero to turn off
+  viz_dump_dirname            = "numericalSolution"
+  visit_number_procs_per_file = 1
+
+  // restart dump parameters
+  restart_dump_interval = 10000        // zero to turn off
+  restart_dump_dirname = "restart"
+
+  // hierarchy data dump parameters
+  data_dump_interval = 0          // zero to turn off
+  data_dump_dirname = "hier_data"
+
+  // timer dump parameters
+  timer_dump_interval = 100 // zero to turn off
+}
+
+CartesianGeometry
+{
+  domain_boxes       = [ (0 , 0), (NX - 1 , NY - 1) ]
+  x_lo               =  XMIN, YMIN  // lower end of computational domain
+  x_up               =  XMAX, YMAX  // upper end of computational domain
+  periodic_dimension = 0, 0         // 1 if periodic, 0 otherwise
+}
+
+GriddingAlgorithm
+{
+  max_levels = MAX_LEVELS // maximum number of levels in hierarchy
+  
+  ratio_to_coarser 
+  {
+    level_1 = REF_RATIO, REF_RATIO // vector refinement ratio
+    level_2 = REF_RATIO, REF_RATIO
+    level_3 = REF_RATIO, REF_RATIO
+    level_4 = REF_RATIO, REF_RATIO
+  }
+
+  largest_patch_size
+  {
+    level_0 = 512, 512 // largest patch allowed in hierarchy
+                       // all finer levels will use same values as level_0...
+   }
+
+  smallest_patch_size
+  {
+    level_0 = 8, 8 // smallest patch allowed in hierarchy
+                   // all finer levels will use same values as level_0...
+  }
+
+  allow_patches_smaller_than_minimum_size_to_prevent_overlaps = TRUE
+  efficiency_tolerance = 0.80e0 // min % of tag cells in new patch level
+  combine_efficiency   = 0.80e0 // chop box if sum of volumes of smaller
+                                // boxes < efficiency * vol of large box
+}
+
+StandardTagAndInitialize
+{
+  tagging_method = "GRADIENT_DETECTOR"
+}
+
+LoadBalancer
+{
+  bin_pack_method     = "SPATIAL"
+  max_workload_factor = 1
+}
+
+TimerManager
+{
+  print_exclusive = TRUE
+  print_total = TRUE
+  print_threshold = 0
+  print_percentage = TRUE
+  timer_list = "IBAMR::*::*", "IBTK::*::*" , "*::*::*", "*::ConstraintIBMethod::*" 
+}

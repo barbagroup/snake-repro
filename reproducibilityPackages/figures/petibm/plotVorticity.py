@@ -1,34 +1,46 @@
-# file: plotVorticity.py
-# author: Olivier Mesnard (mesnardo@gwu.edu)
-# description: Plots the 2D vorticity fields,
-#              copies each .png file here,
-#              and merges .png files into one .pdf page.
-
+"""
+Generates Figure 10 of the manuscript 
+as a .pdf file named `petibm011_vorticityRe2000AoA35.pdf`.
+"""
 
 import os
-import sys
-import shutil
-
-from matplotlib import pyplot
-pyplot.style.use(os.path.join(os.environ['SNAKE'], 'snake', 'styles',
-                              'snakeReproducibility.mplstyle'))
+import yaml
+import argparse
+import warnings
 
 import snake
 from snake.petibm.simulation import PetIBMSimulation
 
 
-print('\nPython version:\n{}'.format(sys.version))
-print('\nsnake version: {}\n'.format(snake.__version__))
+if snake.__version__ != '0.1.2':
+  warnings.warn('The figures were originally created with snake-0.1.1, '+
+                'you are using snake-{}'.format(snake.__version__))
 
-simulation = PetIBMSimulation(directory=os.path.join(os.environ['HOME'],
-                                                     'snakeReproducibilityPackages',
-                                                     'petibm',
-                                                     'exactMarkers',
-                                                     'Re2000AoA35'))
-simulation.read_grid()
+
+# initialization
+script_directory = os.path.dirname(os.path.realpath(__file__))
+parser = argparse.ArgumentParser()
+parser.add_argument('--map', 
+                    dest='map', 
+                    type=str, 
+                    default=os.path.join(script_directory, 'map.yaml'), 
+                    help='file containing the list of simulation directories')
+parser.add_argument('--save-dir', 
+                    dest='save_directory', 
+                    type=str, 
+                    default=script_directory, 
+                    help='directory where to save the figures')
+args = parser.parse_args()
+with open(args.map, 'r') as infile:
+  dirs = yaml.load(infile)
+
+
+simulation_directory = dirs['petibm011_vorticity']['Re2000AoA35']
+simulation = PetIBMSimulation(directory=simulation_directory)
+simulation.read_grid(file_path=os.path.join(simulation.directory, 'grid.txt'))
 
 time_steps = [47500, 130000, 132500, 160000]
-source_paths = []
+file_paths_in = []
 for time_step in time_steps:
   simulation.read_fields('vorticity', time_step)
   simulation.plot_contour('vorticity',
@@ -38,18 +50,18 @@ for time_step in time_steps:
                           colorbar=(True if time_step == time_steps[-1] 
                                     else False),
                           width=6.0,
-                          dpi=300)
-  source_paths.append(os.path.join(simulation.directory,
-                                   'images',
-                                   'vorticity_-1.00_-2.00_8.00_2.00',
-                                   'vorticity{:0>7}.png'.format(time_step)))
-  # copy .png file here
-  shutil.copy(source_paths[-1], 
-              'petibm011_vorticity{}Re2000AoA35.png'.format(time_step))
+                          dpi=300,
+                          style='snakeReproducibility')
+  file_paths_in.append(os.path.join(simulation.directory,
+                                    'images',
+                                    'vorticity_-1.00_-2.00_8.00_2.00',
+                                    'vorticity{:0>7}.png'.format(time_step)))
 
-# create single .pdf page with pdfjam
-destination_path = os.path.join(os.getcwd(),
-                                'petibm011_vorticityRe2000AoA35.pdf')
-os.system('pdfjam {} --nup 1x{} --outfile {}'.format(' '.join(source_paths),
-                                                     len(source_paths),
-                                                     destination_path))
+# convert the four .png files into one
+file_path_out = os.path.join(args.save_directory,
+                             'petibm011_vorticityRe2000AoA35.png')
+os.system('convert -append {} {}'.format(' '.join(file_paths_in),
+                                         file_path_out))
+# convert the four .png files into a single .pdf
+os.system('convert -append {} {}'.format(' '.join(file_paths_in),
+                                         file_path_out.replace('.png', '.pdf')))

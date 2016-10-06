@@ -1,0 +1,35 @@
+
+* Drag force:
+Value and relative difference with the reference value (smallest dt)
+	dt=5.0E-05: 0.731954695933
+	dt=1.0E-04: 0.731922984559 (-0.00433242304222%)
+	dt=2.0E-04: 0.731859492565 (-0.013006729631%)
+Observed order of convergence: 1.0015743127
+
+* Lift force:
+Value and relative difference with the reference value (smallest dt)
+	dt=5.0E-05: 0.856144673048
+	dt=1.0E-04: 0.856103782052 (-0.00477617835346%)
+	dt=2.0E-04: 0.85602173432 (-0.0143595740492%)
+Observed order of convergence: 1.0046802272
+
+* Pressure field:
+L2-norm of the difference with the reference field (smallest dt)
+normalized by the L2-norm of the reference field
+	dt=1.0E-04: 0.0016378431644
+	dt=2.0E-04: 0.00485593713885
+Observed order of convergence: 0.974409721659
+
+* Fluxes in the x-direction:
+L2-norm of the difference with the reference field (smallest dt)
+normalized by the L2-norm of the reference field
+	dt=1.0E-04: 4.25470350102e-07
+	dt=2.0E-04: 1.27492019436e-06
+Observed order of convergence: 0.997682285416
+
+* Fluxes in the y-direction:
+L2-norm of the difference with the reference field (smallest dt)
+normalized by the L2-norm of the reference field
+	dt=1.0E-04: 5.74545941633e-05
+	dt=2.0E-04: 0.000172042614874
+Observed order of convergence: 0.996196847989

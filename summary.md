@@ -1,0 +1,1 @@
+> Completing a full replication study of our previously published findings on bluff-body aerodynamics was harder than we thought. Despite the fact that we have good reproducible-research practices, sharing our code and data openly. Here's what we learned from three years, four CFD codes and hundreds of runs.

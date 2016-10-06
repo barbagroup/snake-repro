@@ -8,7 +8,7 @@
   ibmScheme: TAIRA_COLONIUS
   linearSolvers:
     - system: velocity
-      solver: CG
+      solver: BICGSTAB
       preconditioner: DIAGONAL
       relTolerance: 1.0E-05
       maxIterations: 10000

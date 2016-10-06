@@ -1,0 +1,61 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.2                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+  version  2.0;
+  format   ascii;
+  class    dictionary;
+  location "system";
+  object   fvSchemes;
+}
+
+//****************************************************************************//
+
+ddtSchemes
+{
+  default Euler; // first order bounded implicit
+}
+
+gradSchemes
+{
+  default none;
+  grad(p) Gauss linear; // second-order Gaussian integration linear interpolation (central diff)
+  grad(U) Gauss linear;
+  curl(U) Gauss linear;
+}
+
+divSchemes
+{
+  default    none;
+  div(phi,U) Gauss linear; // phi=rho*U second-order unbounded
+}
+
+laplacianSchemes
+{
+  default               none;
+  laplacian(nu,U)       Gauss linear corrected; // unbounded second-order conservative
+  laplacian((1|A(U)),p) Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+  default linear; // central differencing
+}
+
+snGradSchemes
+{
+  default corrected; // explicit non-orthogonal correction
+}
+
+fluxRequired
+{
+  default no;
+  p; // flux is generated after solving pressure equation
+}
+
+//****************************************************************************//
