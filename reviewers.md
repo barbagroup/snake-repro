@@ -2,20 +2,10 @@
 
 >The reviewers have made a number of useful comments that I feel will overall improve the manuscript. In particular, I direct the authors attention to comments about the stability of the problem, and there are some specific suggestions that the reviewers make that could improve clarity of language. Otherwise, I too agree with the reviewers that this paper is very important, and I look forward to seeing its impact on the field.
 
-Some of the language in the section reporting our experience with IBAMR can be read as direct criticism towards the team that developed this library. 
-We've heard from the IBAMR team that they object to our description.
+We have worked hard to address all the referees' comments to improve the manuscript.
+Below is a summary of that work, but more details of the revision process are shared publicly on the [issue tracker](https://github.com/barbagroup/snake-repro/issues) of the GitHub repository for the paper.
 
-In particular, the sentence "The published record is incomplete in this regard: we could find no explanation for it [the use of a solid body discretization instead of a boundary discretization] in any paper using IBAMR" was interpreted as an accusation that the papers deliberately leave out important details. 
-This was not our intention in writing the text. 
-We simply want to report our experience trying to learn how to use this code, and our mistakes in the process.
-
-We modified the title of Story 2 to remove the word "trap" (see [change](https://www.authorea.com/users/99991/articles/121035/history/67b9906f2be1b199b8c5a8b338dd032447a3826d)) and polished our language in the section (see [change 1](https://www.authorea.com/users/99991/articles/121035/history/03d75aa05c452213a81b10e3c5f96cba9488bce6), [change 2](https://www.authorea.com/users/99991/articles/121035/history/71a9aa5f5077d68f467fc51f684b8aca1a52969e), and [change 3](https://www.authorea.com/users/99991/articles/121035/history/4ef0720312214ffee0b42eeb7cbd420d8ba6ec5e)).
-We also fixed imprecisions in the description of the IBAMR library (see [change](https://www.authorea.com/users/99991/articles/121035/history/ac4cea22bc1b1c88ad22ccb86f60dbb59026668f)).
-
-We also needed to correct the description of the outflow boundary conditions, which are not zero-gradient conditions, but traction-free conditions. 
-This was our mistake in the description and we modified it during the revision (see [change](https://www.authorea.com/users/99991/articles/121035/history/84de3fed3cec9e24ef93d294de478de4e9ab099a)). 
-And as the [discussion](http://lorenabarba.com/news/reproducible-and-replicable-cfd-its-harder-than-you-think/) following the post in our group web site shows, the IBAMR team is worried that readers could misinterpret Figure 5 as "a fundamental problem with the library." 
-Thus, we edited Figure 5 of the manuscript to include a plot of the vorticity field when using a stabilized outlet boundary condition.
+We are grateful for the detailed feedback provided by the reviewers and the patience of the editors while we revised the paper.
 
 ---
 
@@ -145,9 +135,15 @@ _References:_
 
 > 3- There is not any significant investigation of the uncertainty from readily identifiable sources as part of the work. Does one basic code, or modeling aspect dominate the uncertainty and/or variation in the answer? This might go great lengths to differentiate each of the approaches taken in solving the problem.
 
+See response to comment 10.
+
 > 4- UQ and V&V are never complete, but it can be adequate and fit to purpose. It is not clear that adequacy has been met in the case of the work presented in the paper. On the other hand UQ-V&V would not blunt many of the issues exposed in the tale being told.
 
+See response to comment 10.
+
 > 5- One of the key reasons to write your own CFD code is the depth of expertise and understanding that it endows upon those that undertake the endeavor. Often those who uses a “canned” code simply possess are far too superficial understanding of how the simulation works, and where errors and biases enter into the results.
+
+Does not need a response.
 
 > 6- I wouldn’t use the term “discretization meshes” but rather a “mesh to use for discretization”.
 
@@ -155,11 +151,26 @@ We replaced the term "discretization meshes" by "mesh for discretization" during
 
 > 7- The whole affair with OpenFoam and boundary conditions is an object lesson in why you write a code in the first place.
 
+Does not need a response.
+
 > 8- I found the end of the section for story 1 to be troubling. This would seem to be a place where convergence testing might be very useful (not just mesh, but linear and nonlinear residuals too). It might be good to elaborate a bit more on the basic methods used by OpenFoam in the solution technique; I suspect the variation found is directly link to the solution techniques.
+
+See response to comment 10.
 
 > 9- Tricks of the trade come directly from writing codes that work. If one doesn’t write the codes, these tricks start to look arbitrary and magical. Things like these tricks are often only justified by the fact they “work” and end up not being fully documented because they can’t be explained in a manner that isn’t slightly embarrassing.
 
 > 10- The variation in the plots is another place where the lack of convergence testing in the results appears to be especially worrisome. The degree of variation seems to be unacceptable, and not entirely well explained.
+
+Here, we address comments 3, 4, 8, and 10.
+These referee comments all bring up questions regarding uncertainty quantification and grid convergence.
+
+The longer response in the [comment on the GitHub issue](https://github.com/barbagroup/snake-repro/issues/7#issuecomment-247144378) mentions one possible way to quantify uncertainty: the grid-convergence index of Roache (1997). We attempted to apply this technique with cuIBM using the numerical solution on three systematically refined grids. Unfortunately, we encountered a few challenges. First, the quantity of interest in our study is the time-averaged lift coefficient (between 32 and 64 time units). For the medium mesh (the one reported in the manuscript), this requires 160,000 time steps (two days of run time on a K20). On a finer mesh, we need to reduce the time increment and tighten the iterative tolerances. After a few tries with different parameters, we had to give up on obtaining this fine-grid solution in a reasonable time frame.
+In other situations, one can complete a grid-convergence study with shorter simulations, but for this unsteady problem, we need several periods of shedding to calculate an average. It turned out to be too expensive to complete during this revision.
+Instead, we provide evidence of grid independence on the same grids as Krishnan et al. (2014) did. 
+We supplement the manuscript with additional Jupyter notebooks reporting on our efforts to assess independence with respect to grid spacing, time increment, and iterative tolerance.
+We investigated these issues with each software.
+
+Given space constraints for the manuscript, we point the readers to the supplementary materials in reference to these issues. (See [change](https://www.authorea.com/users/99991/articles/121035/commits/96f8e99d38859ad11c7058dcf6a3e9414516921e) in revised version.)
 
 > 11- The outflow boundary conditions issues were explored at length in the 1990’s by Phil Gresho and other researchers and documented in the Int. J Num. Meth. Fluids. It would seem to be a rather obvious source for gleaning greater insight on what is happening in this study.
 
@@ -455,3 +466,21 @@ _References:_
 >     9. Please rate and comment on the timeliness and long term interest of this manuscript to CiSE readers in the Detailed Comments section. Select all that apply.: Topic and content are of immediate and continuing interest to CiSE readers
 > 
 > Please rate the manuscript. Explain your choice in the Detailed Comments section.: Excellent
+
+
+## Additional changes
+
+Some of the language in the section reporting our experience with IBAMR can be read as direct criticism towards the team that developed this library. 
+We've heard from the IBAMR team that they object to our description.
+
+In particular, the sentence "The published record is incomplete in this regard: we could find no explanation for it [the use of a solid body discretization instead of a boundary discretization] in any paper using IBAMR" was interpreted as an accusation that the papers deliberately leave out important details. 
+This was not our intention in writing the text. 
+We simply want to report our experience trying to learn how to use this code, and our mistakes in the process.
+
+We modified the title of Story 2 to remove the word "trap" (see [change](https://www.authorea.com/users/99991/articles/121035/history/67b9906f2be1b199b8c5a8b338dd032447a3826d)) and polished our language in the section (see [change 1](https://www.authorea.com/users/99991/articles/121035/history/03d75aa05c452213a81b10e3c5f96cba9488bce6), [change 2](https://www.authorea.com/users/99991/articles/121035/history/71a9aa5f5077d68f467fc51f684b8aca1a52969e), and [change 3](https://www.authorea.com/users/99991/articles/121035/history/4ef0720312214ffee0b42eeb7cbd420d8ba6ec5e)).
+We also fixed imprecisions in the description of the IBAMR library (see [change](https://www.authorea.com/users/99991/articles/121035/history/ac4cea22bc1b1c88ad22ccb86f60dbb59026668f)).
+
+We also needed to correct the description of the outflow boundary conditions, which are not zero-gradient conditions, but traction-free conditions. 
+This was our mistake in the description and we modified it during the revision (see [change](https://www.authorea.com/users/99991/articles/121035/history/84de3fed3cec9e24ef93d294de478de4e9ab099a)). 
+And as the [discussion](http://lorenabarba.com/news/reproducible-and-replicable-cfd-its-harder-than-you-think/) following the post in our group web site shows, the IBAMR team is worried that readers could misinterpret Figure 5 as "a fundamental problem with the library." 
+Thus, we edited Figure 5 of the manuscript to include a plot of the vorticity field when using a stabilized outlet boundary condition.
