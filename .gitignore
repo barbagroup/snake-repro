@@ -12,3 +12,7 @@ MesnardBarba-CiSE.out
 MesnardBarba-CiSE.synctex.gz
 MesnardBarba-CiSE.fdb_latexmk
 MesnardBarba-CiSE.fls
+
+# ignore .html and .pdf files with reply to reviewers
+reviewers.html
+reviewers.pdf
