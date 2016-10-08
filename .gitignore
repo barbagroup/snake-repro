@@ -16,3 +16,6 @@ MesnardBarba-CiSE.fls
 # ignore .html and .pdf files with reply to reviewers
 reviewers.html
 reviewers.pdf
+
+# ignore .DS_Store
+**/.DS_Store
