@@ -14,6 +14,10 @@ The notebook [`tableOfContents`](https://github.com/barbagroup/snake-repro/blob/
 
 In each notebook, we include information about the dependencies needed by each code, the mesh information, the boundary conditions, the parameters for each linear solver, the command-line input to run the simulation and finally the Python post-processing scripts to generate the figures.
 
+### Dependencies
+
+The Python scripts rely on the package **`snake`** that we developed to post-process and compare the numerical solution from four different CFD codes. The package is hosted on [GitHub](https://github.com/mesnardo/snake) under the MIT License.
+
 ---
 
 The article reports on a full replication study of our previously published findings on bluff-body aerodynamics of flying snakes ([Krishnan et al., 2014](http://scitation.aip.org/content/aip/journal/pof2/26/3/10.1063/1.4866444)).
@@ -27,8 +31,7 @@ Each simulation folder contains a Jupyter Notebook, named `report`, with all the
 The folder `figures` contains all the plots and flow visualizations included in the paper. 
 The Python and bash scripts we used to generate the figures are in the folder `reproducibilityPackages/figures`.
 
-To postprocess and compare the numerical solution from the 4 different codes, we developed a Python package called [`snake`](https://github.com/mesnardo/snake), hosted on GitHub under the MIT License.
-
+---
 
 We used a total of four CFD solvers in the study:
 
