@@ -9,7 +9,7 @@ import shutil
 import argparse
 import warnings
 
-from matplotlib import pyplot
+from matplotlib import pyplot, gridspec
 
 import snake
 from snake.openfoam.simulation import OpenFOAMSimulation
