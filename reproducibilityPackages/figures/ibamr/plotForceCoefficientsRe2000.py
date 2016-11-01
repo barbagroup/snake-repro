@@ -208,3 +208,7 @@ os.system('convert -append {} {} {}'.format(file_path_in_1,
 os.system('convert -append {} {} {}'.format(file_path_in_1,
                                             file_path_in_2,
                                             file_path_out.replace('.png', '.pdf')))
+
+# remove temporary .png files
+os.remove(file_path_in_1)
+os.remove(file_path_in_2)
