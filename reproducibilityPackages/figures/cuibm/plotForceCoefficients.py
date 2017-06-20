@@ -206,7 +206,7 @@ ax.grid(True, zorder=0)
 ax.set_xlabel('non-dimensional time-unit')
 ax.set_ylabel('force coefficients')
 ax.plot(revision86.forces[0].times, 2.0*revision86.forces[0].values,
-        label='$C_d$ - revision86 - CUSP-0.4.0',
+        label='$C_d$ - old - CUSP-0.4.0',
         color='#377eb8',
         linestyle='-',
         linewidth=2,
@@ -218,7 +218,7 @@ ax.plot(krishnan.forces[0].times, 2.0*krishnan.forces[0].values,
         linewidth=1,
         zorder=11)
 ax.plot(revision86.forces[1].times, 2.0*revision86.forces[1].values,
-        label='$C_l$ - revision86 - CUSP-0.4.0',
+        label='$C_l$ - old - CUSP-0.4.0',
         color='#ff7f00',
         linewidth=2,
         linestyle='-',
