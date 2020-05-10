@@ -4,7 +4,7 @@
 
 Article submitted on 13 May 2016. Preprint on [arXiv:1605.04339](http://arxiv.org/abs/1605.04339)
 
-Decision 25 July 2016: Accept with minor revisions, _Computing in Science and Engineering_.
+Decision 25 July 2016: Accept with minor revisions. Published: 17 Aug. 2017 _Computing in Science and Engineering_, DOI: [10.1109/MCSE.2017.3151254](https://doi.org/10.1109/MCSE.2017.3151254)
 
 ### Contents
 
